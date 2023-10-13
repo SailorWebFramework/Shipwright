@@ -1,0 +1,13 @@
+name, unit
+accesskey, CHAR
+class, STRING
+contenteditable, FBOOL
+dir, DIRECTION
+draggable, TFAUTO
+hidden, BOOL
+id, STRING
+lang, STRING
+spellcheck, FBOOL
+tabindex, INT
+title, STRING
+translate, YN
