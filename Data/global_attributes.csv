@@ -10,4 +10,3 @@ lang, STRING
 spellcheck, FBOOL
 tabindex, INT
 title, STRING
-translate, YN
