@@ -19,11 +19,11 @@ tag_template_url = os.path.join(templates_url, 'HTMLTag.mustache')
 events_mustache_url =  os.path.join(templates_url, 'Events.mustache')
 css_props_template_url = os.path.join(templates_url, 'Properties.mustache')
 
-out_dir = os.path.join('..', 'Sailor', 'Sources', 'Generated')
-tag_out_dir = os.path.join('..', 'Sailor', 'Sources', 'Generated', 'Tags')
-page_out_dir = os.path.join('..', 'Sailor', 'Sources', 'Generated', 'Page')
-events_out_dir = os.path.join('..', 'Sailor', 'Sources', 'Generated', 'Events')
-css_props_out_dir = os.path.join('..', 'Sailor', 'Sources', 'Generated', 'Properties')
+out_dir = os.path.join('..', 'Sailor', 'Sailboat', 'Sources', 'Generated')
+tag_out_dir = os.path.join(out_dir, 'Tags')
+page_out_dir = os.path.join(out_dir, 'Page')
+events_out_dir = os.path.join(out_dir, 'Events')
+css_props_out_dir = os.path.join(out_dir, 'Properties')
 
 # https://www.w3schools.com/tags/default.asp
 # Generate Tags

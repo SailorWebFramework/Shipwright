@@ -11,9 +11,3 @@ Focus, none, none
 Blur, none, none
 DoubleClick, none, none
 Scroll, none, none
-TouchStart, object, touches
-TouchEnd, object, changedTouches
-TouchMove, object, changedTouches
-DragStart, object, dataTransfer
-DragOver, object, dataTransfer
-Drop, object, dataTransfer

@@ -6,9 +6,6 @@
 //  Created by Joshua Davis.
 //
 
-import Foundation
-import JavaScriptKit
-
 public struct {{ctag}}: HTMLElement {
 
     public var name: String { "{{tag}}" }
@@ -18,11 +15,11 @@ public struct {{ctag}}: HTMLElement {
         return self
     }
     
-    var attributes: Attributes
-    var events: Events
+    public var attributes: Attributes
+    public var events: Events
 
     // var children: [any Page]
-    var content: TagContent
+    public var content: TagContent
 
     public init() {   
         self.init("")       
