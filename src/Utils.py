@@ -16,6 +16,10 @@ class Utils:
 
         output = chevron.render(**args)
 
+        out_dir = os.path.dirname(out_url)
+
+        Utils.checkAndCreate(out_dir)
+
         of = open(out_url,"w")
         of.write(output)
         of.close()
