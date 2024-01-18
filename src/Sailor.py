@@ -7,7 +7,7 @@ from .Utils import Utils
 
 class Sailor:
 
-    excluded_tags = ["style", "head", "body", "script"]
+    excluded_tags = ["style", "head", "body", "script", "main"]
     
     def build(outdir, treasuredir):
         # click.echo(f"{outdir} : {treasuredir}.")
@@ -21,6 +21,7 @@ class Sailor:
         click.echo(f"building sailor...")
         
         # build 
+        # TODO: rename to "Tags"
         htmlout = os.path.join(outdir, "HTML")
         htmltresure = os.path.join(treasuredir, "htmlReference.json")
         Sailor.buildHTMLElements(htmlout, htmltresure)
