@@ -5,29 +5,74 @@
 //  Created by Joshua Davis.
 //
 
+import Sailboat
+
 /// {{description}}
 public struct {{ctag}}: HTMLElement {
+    public struct ElementAttributeGroup: AttributeGroup, GlobalAttributeGroup {
+        public let name: String
+        public let value: String
+        
+        public init(name: String, value: String) {
+            self.name = name
+            self.value = value
+        }
 
+        {{#attributes}}
+        ///{{description}}
+        {{#isWildCard}}
+        static func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
+            .init(name: "{{name}}-\(name)", value: value.description)
+        }
+        {{/isWildCard}}
+        {{^isWildCard}}
+        static func {{alias}}(_ value: {{type}}) -> Self {
+            {{#isStyle}}
+            .init(name: "{{name}}", value: Style(value).description)
+            {{/isStyle}}
+            {{^isStyle}}
+            {{#isSequence}}
+            .init(name: "{{name}}", value: value.map{ $0.description }.joined(separator: " "))
+            {{/isSequence}}
+            {{^isSequence}}
+            {{#isMappedBool}}
+            .init(name: "{{name}}", value: value ? "true" : "false")
+            {{/isMappedBool}}
+            {{^isMappedBool}}
+            .init(name: "{{name}}", value: value.description)
+            {{/isMappedBool}}
+            {{/isSequence}}
+            {{/isStyle}}
+        }
+        {{/isWildCard}}
+
+        {{/attributes}}
+    }
+
+    /// name of the html tag associated with this type
     public var name: String { "{{tag}}" }
 
-    public var body: some Page {
-        InternalError.recursingInPageBody(name: "{{tag}}")
-        return self
-    }
-    
-    public var attributes: Attributes
+    /// attributes associated with this type
+    public var attributes: [String: String]
+
+    /// events associated with this type
     public var events: Events
 
-    // var children: [any Page]
+    /// content that is contained by this html element
     public var content: TagContent
 
     public init() {   
         self.init("")       
     }
 
-    public init(@PageBuilder _ content: @escaping () -> any Operator) {
+    public init(_ attributes: ElementAttributeGroup..., @PageBuilder content: @escaping () -> any Operator) {
         self.content = .list(content)
         self.attributes = .init()
+        
+        for attribute in attributes {
+            self.attributes[attribute.name] = attribute.value
+        }
+        
         self.events = [:]
 
     }
@@ -38,20 +83,4 @@ public struct {{ctag}}: HTMLElement {
         self.events = [:]
     }
 
-    //MARK- ATTRIBUTES
-    public func style(_ properties: Style.Property...) -> Self {
-        return style(Style(properties))
-    }
-
-    public func style(_ style: Style) -> Self {
-        return attribute(.style, value: style)
-    }
-
-    public func attribute(_ type: Attribute, value: some AttributeValue) -> Self {
-        if self.attributes[type]?.description == value.description { return self }
-        var copy = self
-        copy.attributes[type] = value
-        return copy
-    }
-    
 }

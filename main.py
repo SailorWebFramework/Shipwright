@@ -18,6 +18,9 @@ def shipwright():
 @click.option('--treasuredir', default=path.join(os.getcwd(), "Treasure"), help='Selects where the input files are.')
 def build(target, outdir, treasuredir):
 
+    # TODO: remove everying in the generated folder here? maybe if -f is applied
+
+
     # build(template_url, out_url, data_args)
     if target == "sailor":
         Sailor.build(outdir, treasuredir)
