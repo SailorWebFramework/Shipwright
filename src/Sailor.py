@@ -90,11 +90,56 @@ class Sailor:
         Utils.build(templateURL, out_url, args)
 
     def buildUnits(outdir, treasuredir):
-        pass
+        tag_treasure = os.path.join(treasuredir, "units.json")
+        templateURL = os.path.join("Templates", 'Sailor', "HTML", "Unit+Enum.mustache")
+        
+        f = open(tag_treasure)
+        data = json.load(f)
+
+        for name, body in data.items():
+            description = body["description"]
+            cname = Utils.capitalize_keep_upper(name)
+            cases = list(
+                map(lambda v: {
+                "name": v[0],
+                "description": v[1]["description"],
+                "values": v[1]["values"] if "values" in v[1] else [],
+                "names": v[1]["names"] if "names" in v[1] else [],
+                "hasAssociatedValue": "values" in v[1],
+                "last": False
+            }, body["cases"].items()))
+
+            for case in cases:
+                case["names"] = list(map(lambda v: {"value": v, "last": False}, case["names"]))
+                if len(case["names"]) > 0:
+                    case["names"][-1]["last"] = True
+                
+                case["values"] = list(map(lambda v: {"value": v, "last": False}, case["values"]))
+                
+                if len(case["values"]) > 0:
+                    case["values"][-1]["last"] = True
+
+            cases[-1]["last"] = True
+
+            args = {
+                "cname": cname,
+                "cases": cases,
+                "description": description
+            }
+
+            out_url = os.path.join(outdir, f"Unit+{cname}.swift")
+
+            Utils.build(templateURL, out_url, args)
+
+        f.close()
+
+
 
     def buildCSSProperties():
         pass
     
+
+
     # helpers methods
 
     def formatAttributes(attributes):
