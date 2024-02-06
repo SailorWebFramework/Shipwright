@@ -6,16 +6,16 @@
 //
 
 extension Unit {
-    public enum {{cname}}: Equatable {
+    public enum {{cname}}: Equatable, CustomStringConvertible {
         {{#cases}}
         ///{{description}}
-        case {{name}}{{#hasAssociatedValue}}({{#values}}{{value}}{{^last}}, {{/last}}{{/values}}){{/hasAssociatedValue}}
+        case `{{alias}}`{{#hasAssociatedValue}}({{#values}}{{value}}{{^last}}, {{/last}}{{/values}}){{/hasAssociatedValue}}
         
         {{/cases}}
         public var description: String {
             switch self {
             {{#cases}}
-            case .{{name}}{{#hasAssociatedValue}}({{#names}}let {{value}}{{^last}}, {{/last}}{{/names}}){{/hasAssociatedValue}}:
+            case .{{alias}}{{#hasAssociatedValue}}({{#names}}let {{value}}{{^last}}, {{/last}}{{/names}}){{/hasAssociatedValue}}:
                 return "{{name}}{{#hasAssociatedValue}}({{#names}}\({{value}}){{^last}} {{/last}}{{/names}}){{/hasAssociatedValue}}"
             {{/cases}}
             }

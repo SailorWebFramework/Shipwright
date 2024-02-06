@@ -21,19 +21,34 @@ class Sailor:
 
         click.echo(f"building sailor...")
         
-        # build 
+        # build tags
         htmlout = os.path.join(outdir, "Tags")
         Utils.checkAndCreate(htmlout)
 
         Sailor.buildTags(htmlout, treasuredir)
 
+        # build units
         unitsout = os.path.join(outdir, "Units")
         Utils.checkAndCreate(unitsout)
 
         Sailor.buildUnits(unitsout, treasuredir)
 
+        Sailor.buildLanguageUnits(unitsout, treasuredir)
+
+        # build events
+        unitsout = os.path.join(outdir, "Events")
+        Utils.checkAndCreate(unitsout)
+
+        Sailor.buildEvents()
+
+        # build events
+        Sailor.buildEventResultMap()
+
+        # build attributes
         Sailor.buildGlobalAttributeGroup(outdir, treasuredir)
 
+
+        # todo: css properties
         Sailor.buildCSSProperties()
 
         return 
@@ -102,6 +117,7 @@ class Sailor:
             cases = list(
                 map(lambda v: {
                 "name": v[0],
+                "alias": v[0],
                 "description": v[1]["description"],
                 "values": v[1]["values"] if "values" in v[1] else [],
                 "names": v[1]["names"] if "names" in v[1] else [],
@@ -110,6 +126,8 @@ class Sailor:
             }, body["cases"].items()))
 
             for case in cases:
+                case["alias"] = Utils.switch_to_camel(case["alias"])
+
                 case["names"] = list(map(lambda v: {"value": v, "last": False}, case["names"]))
                 if len(case["names"]) > 0:
                     case["names"][-1]["last"] = True
@@ -133,12 +151,60 @@ class Sailor:
 
         f.close()
 
+    def buildLanguageUnits(outdir, treasuredir):
+        tag_treasure = os.path.join(treasuredir, "language-codes.json")
+        templateURL = os.path.join("Templates", 'Sailor', "HTML", "Unit+Enum.mustache")
+        
+        f = open(tag_treasure)
+        data = json.load(f)
 
+        # for name, code in data.items():
+        description = "Language code for a specific language."
+        cname = "Language"
+        cases = list(
+            map(lambda v: {
+            "name": v[1],
+            "alias": v[1],
+            "description": f"language code for {v[0]}.",
+            "values": [],
+            "names": [],
+            "hasAssociatedValue": False,
+            "last": False
+        }, data.items()))
+
+        for case in cases:
+            case["names"] = list(map(lambda v: {"value": v, "last": False}, case["names"]))
+            if len(case["names"]) > 0:
+                case["names"][-1]["last"] = True
+            
+            case["values"] = list(map(lambda v: {"value": v, "last": False}, case["values"]))
+            
+            if len(case["values"]) > 0:
+                case["values"][-1]["last"] = True
+
+        cases[-1]["last"] = True
+
+        args = {
+            "cname": cname,
+            "cases": cases,
+            "description": description
+        }
+
+        out_url = os.path.join(outdir, f"Unit+{cname}.swift")
+
+        Utils.build(templateURL, out_url, args)
+
+        f.close()
+
+    def buildEvents():
+        pass
+
+    def buildEventResultMap():
+        pass
 
     def buildCSSProperties():
         pass
     
-
 
     # helpers methods
 
@@ -161,12 +227,7 @@ class Sailor:
 
         def parse_name(name) -> str:
             return (
-                Utils.switch_to_camel(
-                    Utils.switch_to_camel(
-                        name.replace("*", ""), 
-                        "_"), 
-                    "-"
-                )
+                Utils.switch_to_camel(name.replace("*", ""))
             )
         def parse_alias(name) -> str:
             name = parse_name(name)

@@ -43,22 +43,19 @@ public extension GlobalAttributeGroup {
     {{/attributes}}
 }
 
-public extension HTMLElement {
+public extension Element {
     {{#attributes}}
     ///{{description}}
     {{#isWildCard}}
     func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-        return attribute(.{{name}}(name, value))
+        attribute(ElementAttributeGroup(name: "{{name}}-name", value: value.description))
     }
     {{/isWildCard}}
     {{^isWildCard}}
     func {{alias}}(_ value: {{type}}) -> Self {
-        return attribute(.{{name}}(value))
+        attribute(ElementAttributeGroup(name: "{{name}}", value: value.description))
     }
     {{/isWildCard}}
 
     {{/attributes}}
-    public func href(_ value: String) -> Self {
-        return attribute(.href(value))
-    }
 }

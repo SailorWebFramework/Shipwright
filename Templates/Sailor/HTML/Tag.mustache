@@ -8,7 +8,7 @@
 import Sailboat
 
 /// {{description}}
-public struct {{ctag}}: HTMLElement {
+public struct {{ctag}}: Element {
     public struct ElementAttributeGroup: AttributeGroup, GlobalAttributeGroup {
         public let name: String
         public let value: String
@@ -83,4 +83,22 @@ public struct {{ctag}}: HTMLElement {
         self.events = [:]
     }
 
+}
+
+// MARK: - Attributes
+public extension {{ctag}} {
+    {{#attributes}}
+    ///{{description}}
+    {{#isWildCard}}
+    func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
+        attribute(ElementAttributeGroup(name: "{{name}}-name", value: value.description))
+    }
+    {{/isWildCard}}
+    {{^isWildCard}}
+    func {{alias}}(_ value: {{type}}) -> Self {
+        attribute(ElementAttributeGroup(name: "{{name}}", value: value.description))
+    }
+    {{/isWildCard}}
+
+    {{/attributes}}
 }
