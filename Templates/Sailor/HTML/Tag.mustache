@@ -61,28 +61,47 @@ public struct {{ctag}}: Element {
     /// content that is contained by this html element
     public var content: TagContent
 
+    {{#inits}}
+    {{#initEmpty}}
     public init() {   
-        self.init("")       
+        self.content = .text("")
+        self.attributes = .init()
+        self.events = .init()
     }
-
+    {{/initEmpty}}
+    {{#initBody}}
     public init(_ attributes: ElementAttributeGroup..., @PageBuilder content: @escaping () -> any Operator) {
         self.content = .list(content)
         self.attributes = .init()
-        
+        self.events = .init()
+
         for attribute in attributes {
             self.attributes[attribute.name] = attribute.value
         }
-        
-        self.events = [:]
 
     }
-    
+    {{/initBody}}
+    {{#initText}}
     public init(_ text: String) {
         self.content = .text(text)
         self.attributes = .init()
-        self.events = [:]
+        self.events = .init()
     }
+    {{/initText}}
+    {{#initRequired}}
+    public init({{#args}}{{name}}: {{type}}{{^last}}, {{/last}}{{/args}}) {
+        self.content = .text("")
+        self.attributes = .init()
+        self.events = .init()
 
+        {{#args}}
+        self.attributes["{{name}}"] = {{name}}
+        {{/args}}
+        
+    }
+    {{/initRequired}}
+
+    {{/inits}}
 }
 
 // MARK: - Attributes
