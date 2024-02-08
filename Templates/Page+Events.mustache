@@ -2,12 +2,12 @@
 
 
 //MARK- Events
-extension Page {
+extension Element {
 
     // old: App.console(error: EventError.eventNotModifiedForCustomComponent(self, "on{{name}}"))
     // now: Wraps in div by default for custom pages
     {{#events}}
-    public func on{{name}}(_ completion: @escaping ({{#istyped}}{{ctype}}{{/istyped}}) -> Void) -> any Page {
+    public func on{{name}}(_ completion: @escaping ({{#istyped}}{{{ctype}}}{{/istyped}}) -> Void) -> any Page {
         Div { 
             self 
         }.on{{name}} { {{#istyped}}value in{{/istyped}}

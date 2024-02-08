@@ -56,7 +56,7 @@ class Sailor:
         
         f = open(tag_treasure)
         data = json.load(f)
-
+        
         for tag, body in data.items():
             tag = tag.lower()
             description = body["description"]
@@ -76,12 +76,14 @@ class Sailor:
                 "attributes": attributes,
                 "inits": list(map(lambda v: {
                     "initRequired": v["type"] == "required",
+                    "initRequiredWithBody": v["type"] == "required-with-body",
                     "initEmpty": v["type"] == "empty",
                     "initText": v["type"] == "text",
                     "initBody": v["type"] == "body",
-                    "args": Utils.createLastElementDictArray(list(map(lambda arg: { "name": arg[0], "type": arg[1]}, v["args"].items())) if "args" in v else [])
+                    "args": Utils.createLastElementDictArray(list(map(lambda arg: SailorUtils.createArgs(arg), v["args"].items())) if "args" in v else [])
                 }, body["inits"]))
             }
+            
             # print(args)
             out_url = os.path.join(outdir, f"{args['ctag']}.swift")
 

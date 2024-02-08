@@ -89,17 +89,47 @@ public struct {{ctag}}: Element {
     }
     {{/initText}}
     {{#initRequired}}
-    public init({{#args}}{{name}}: {{type}}{{^last}}, {{/last}}{{/args}}) {
+    public init({{#args}}{{alias}}: {{{type}}}{{^last}}, {{/last}}{{/args}}) {
         self.content = .text("")
         self.attributes = .init()
         self.events = .init()
 
         {{#args}}
-        self.attributes["{{name}}"] = {{name}}
+        {{#isBinding}}
+        self.attributes["{{name}}"] = {{name}}.wrappedValue.description
+        self.events["{{event}}"] = { eventResult in
+            guard case let .{{ltype}}(bindedValue) = eventResult else { return }
+            {{name}}.set(bindedValue)
+        }
+        {{/isBinding}}
+        {{^isBinding}}
+        self.attributes["{{name}}"] = {{name}}.description
+        {{/isBinding}}
         {{/args}}
         
     }
     {{/initRequired}}
+    {{#initRequiredWithBody}}
+    public init({{#args}}{{alias}}: {{{type}}}, {{/args}}@PageBuilder content: @escaping () -> any Operator) {
+        self.content = .list(content)
+        self.attributes = .init()
+        self.events = .init()
+
+        {{#args}}
+        {{#isBinding}}
+        self.attributes["{{name}}"] = {{name}}.wrappedValue.description
+        self.events["{{event}}"] = { eventResult in
+            guard case let .{{ltype}}(bindedValue) = eventResult else { return }
+            input.set(bindedValue)
+        }
+        {{/isBinding}}
+        {{^isBinding}}
+        self.attributes["{{name}}"] = {{name}}.description
+        {{/isBinding}}
+        {{/args}}
+        
+    }
+    {{/initRequiredWithBody}}
 
     {{/inits}}
 }
@@ -110,12 +140,12 @@ public extension {{ctag}} {
     ///{{description}}
     {{#isWildCard}}
     func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-        attribute(ElementAttributeGroup(name: "{{name}}-name", value: value.description))
+        attribute(.init(name: "{{name}}-name", value: value.description))
     }
     {{/isWildCard}}
     {{^isWildCard}}
     func {{alias}}(_ value: {{type}}) -> Self {
-        attribute(ElementAttributeGroup(name: "{{name}}", value: value.description))
+        attribute(.init(name: "{{name}}", value: value.description))
     }
     {{/isWildCard}}
 
