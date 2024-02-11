@@ -6,6 +6,8 @@ class SailorUtils:
         "class": "className",
     }
 
+    excluded_attributes = ["class", "style"]
+
     def createArgs(arg):
         alias = arg[0][0] + " " + arg[0][1:] if arg[0][0] == "_" else arg[0]
         name = arg[0].replace("_", "")
@@ -58,18 +60,21 @@ class SailorUtils:
             return name
 
         return list(
-            map( 
-                # name, value
-                lambda item: {
-                    "name": parse_name(item[0]),
-                    "alias": parse_alias(item[0]),
-                    "description": item[1]["description"],
-                    "type": SailorUtils.parse_type(item[1]["type"]),
-                    "isWildCard": "*" in item[0],
-                    "isSequence": "sequence[" in item[1]["type"],
-                    "isMappedBool": "/bool" in item[1]["type"],
-                    "isStyle": "style" in item[0],
-                }, 
-                attributes.items()
+            filter(
+                lambda item: item["name"] not in SailorUtils.excluded_attributes,
+                map( 
+                    # name, value
+                    lambda item: {
+                        "name": parse_name(item[0]),
+                        "alias": parse_alias(item[0]),
+                        "description": item[1]["description"],
+                        "type": SailorUtils.parse_type(item[1]["type"]),
+                        "isWildCard": "*" in item[0],
+                        "isSequence": "sequence[" in item[1]["type"],
+                        "isMappedBool": "/bool" in item[1]["type"],
+                        "isStyle": "style" in item[0],
+                    }, 
+                    attributes.items()
+                )
             )
         )
