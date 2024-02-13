@@ -1,7 +1,0 @@
-name, unit, tags
-accept, STRING, input
-value, STRING, input
-accept-charset, STRING, form
-action, STRING, form
-alt, STRING, area.img.input
-autocomplete, STRING, form.input

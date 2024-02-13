@@ -43,6 +43,8 @@ class Sailor:
         # build attributes
         Sailor.buildGlobalAttributeGroup(outdir, treasuredir)
 
+        # build tailwind
+        Sailor.buildTailwind(outdir, treasuredir)
 
         # todo: css properties
         Sailor.buildCSSProperties()
@@ -90,6 +92,57 @@ class Sailor:
             Utils.build(templateURL, out_url, args)
 
         f.close()
+
+    def buildTailwind(outdir, treasuredir):
+        tag_treasure = os.path.join(treasuredir, "tailwind.json")
+        templateURL = os.path.join("Templates", "Sailor", "Styling", "Tailwind+Classes.mustache")
+        
+        f = open(tag_treasure)
+        data = json.load(f)
+
+        def convert_name(name):
+            if name[0] == "-":
+                name = "neg" + name[1:]
+            name = name.replace(" ", "")
+            name = name.replace("/", "v")
+            name = name.replace("\n", "")
+            name = name.replace(".", "")
+            name = name.replace("*", "")
+            name = name.replace("#", "")
+            name = name.replace(":", "")
+            return name
+
+        classes = list(
+            map(
+                lambda v: {
+                    "name": v[0].replace(".", ""),
+                    "alias": Utils.switch_to_camel(convert_name(v[0].replace(".", ""))),
+                    "description": v[1].replace("\n", ""),
+                    "isPack": ":" in v[0],
+                }, data.items()
+            )
+        )
+        packables = list(
+            filter(
+                lambda v: ":" not in v["name"],
+                map(
+                    lambda v: {
+                        "name": v[0].replace(".", ""),
+                        "alias": Utils.switch_to_camel(convert_name(v[0].replace(".", ""))),
+                        "description": v[1].replace("\n", ""),
+                    }, data.items()
+                )
+            )
+        )
+
+        args = {
+            "description": "Tailwind CSS classes supported on sailor.",
+            "cases": classes,
+            "packables": packables
+        }
+
+        out_url = os.path.join(outdir, "Tailwind+Classes.swift")
+        Utils.build(templateURL, out_url, args)
 
     def buildGlobalAttributeGroup(outdir, treasuredir):
         # TODO: Utils.templates, Utils.tags
