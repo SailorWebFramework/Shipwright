@@ -70,6 +70,12 @@ class Sailor:
 
             if tag in SailorUtils.excluded_tags:
                 continue
+            
+            def check_init(name):
+                for init in body["inits"]:
+                    if name == init["type"]:
+                        return True
+                return False
 
             args = {
                 "ctag": tag.capitalize(),
@@ -80,7 +86,7 @@ class Sailor:
                     "initRequired": v["type"] == "required",
                     "initRequiredWithBody": v["type"] == "required-with-body",
                     "initEmpty": v["type"] == "empty",
-                    "initText": v["type"] == "text",
+                    "initText": v["type"] == "text" and not check_init("body"),
                     "initBody": v["type"] == "body",
                     "args": Utils.createLastElementDictArray(list(map(lambda arg: SailorUtils.createArgs(arg), v["args"].items())) if "args" in v else [])
                 }, body["inits"]))

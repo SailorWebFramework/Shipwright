@@ -1,12 +1,12 @@
 from .Utils import Utils
 
 class SailorUtils:
-    excluded_tags = ["style", "head", "body", "script", "main", "html"]
+    excluded_tags = ["style", "head", "body", "script", "main", "html", "base", "meta", "title", "link"]
     attribute_alias = {
         "class": "className",
     }
 
-    excluded_attributes = ["class", "style"]
+    excluded_attributes = ["class", "style", "id"]
 
     def createArgs(arg):
         alias = arg[0][0] + " " + arg[0][1:] if arg[0][0] == "_" else arg[0]
@@ -27,23 +27,26 @@ class SailorUtils:
             }
 
     def parse_type(type) -> str:
+        def wrap_in_func(mystr):
+            return f'(@escaping () -> {mystr})'
+        
         if "char" == type:
-            return "Character"
+            return wrap_in_func("Character")
         
         if "sequence[" in type:
-            return Utils.capitalize_keep_upper(f'{type[9:-1]}...')
+            return  wrap_in_func(type[9:-1]) # wrap_in_func(Utils.capitalize_keep_upper(f'{type[9:-1]}...'))
         
         if "binding[" in type:
             return Utils.capitalize_keep_upper(f'Binding<{type[8:-1]}>')
 
         if "," in type:
-            return Utils.capitalize_keep_upper(type.split(",")[-1])
+            return wrap_in_func(Utils.capitalize_keep_upper(type.split(",")[-1]))
         
         # TODO: someohow convert this value to the first value in Sailor
         if "/" in type:
-            return Utils.capitalize_keep_upper(type.split("/")[-1])
+            return wrap_in_func(Utils.capitalize_keep_upper(type.split("/")[-1]))
         
-        return Utils.capitalize_keep_upper(type)
+        return wrap_in_func(Utils.capitalize_keep_upper(type))
 
     # helpers methods
 

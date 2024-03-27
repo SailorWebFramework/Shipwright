@@ -5,133 +5,105 @@
 //  Created by Joshua Davis.
 //
 
+import Foundation
 import Sailboat
+import SailorShared
+
+#if os(WASI)
+import SailorWeb
+#else
+// if any other target are created
+#endif
 
 /// {{description}}
-public struct {{ctag}}: Element {
-    public struct ElementAttributeGroup: AttributeGroup, GlobalAttributeGroup {
-        public let name: String
-        public let value: String
-        
-        public init(name: String, value: String) {
-            self.name = name
-            self.value = value
-        }
-
-        {{#attributes}}
-        ///{{description}}
-        {{#isWildCard}}
-        static func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-            .init(name: "{{name}}-\(name)", value: value.description)
-        }
-        {{/isWildCard}}
-        {{^isWildCard}}
-        static func {{alias}}(_ value: {{type}}) -> Self {
-            {{#isStyle}}
-            .init(name: "{{name}}", value: Style(value).description)
-            {{/isStyle}}
-            {{^isStyle}}
-            {{#isSequence}}
-            .init(name: "{{name}}", value: value.map{ $0.description }.joined(separator: " "))
-            {{/isSequence}}
-            {{^isSequence}}
-            {{#isMappedBool}}
-            .init(name: "{{name}}", value: value ? "true" : "false")
-            {{/isMappedBool}}
-            {{^isMappedBool}}
-            .init(name: "{{name}}", value: value.description)
-            {{/isMappedBool}}
-            {{/isSequence}}
-            {{/isStyle}}
-        }
-        {{/isWildCard}}
-
-        {{/attributes}}
-    }
-
+public struct {{ctag}}: BodyElement {
     /// name of the html tag associated with this type
-    public var name: String { "{{tag}}" }
+    public static var name: String { "{{tag}}" }
+
+    /// unique identifier for this html element
+    public var id: ElementID
 
     /// attributes associated with this type
-    public var attributes: [String: String]
+    public var attributes: [String: () -> String]
 
     /// events associated with this type
-    public var events: Events
+    public var events: [String: (EventResult) -> Void]
 
     /// content that is contained by this html element
-    public var content: TagContent
+    public var content: () -> any Fragment
+
+    public var renderer: any Renderable
+
+        internal init(bodyValue: (() -> any Fragment)?) {
+        let id = UUID().uuidString
+        self.id = id
+        self.attributes = [:]
+        self.events = [:]
+        self.content = bodyValue ?? { List() }
+        #if os(WASI)
+        self.renderer = JSNode(named: Self.name, elementID: id)
+        #else
+        self.renderer = EmptyRenderer()
+        #endif
+        
+        self.attributes["id"] = { id }
+    }
 
     {{#inits}}
     {{#initEmpty}}
-    public init() {   
-        self.content = .text("")
-        self.attributes = .init()
-        self.events = .init()
+    public init() {  
+        self.init(bodyValue: nil)
     }
     {{/initEmpty}}
     {{#initBody}}
-    public init(_ attributes: ElementAttributeGroup..., @PageBuilder content: @escaping () -> any Operator) {
-        self.content = .list(content)
-        self.attributes = .init()
-        self.events = .init()
-
-        for attribute in attributes {
-            self.attributes[attribute.name] = attribute.value
-        }
-
+    public init(@PageBuilder _ content: @escaping () -> any Fragment) {
+        self.init(bodyValue: content)
     }
     {{/initBody}}
     {{#initText}}
-    public init(_ text: String) {
-        self.content = .text(text)
-        self.attributes = .init()
-        self.events = .init()
+    public init(@PageBuilder _ content: @escaping () -> any Fragment) {
+        self.init(bodyValue: content)
     }
     {{/initText}}
     {{#initRequired}}
     public init({{#args}}{{alias}}: {{{type}}}{{^last}}, {{/last}}{{/args}}) {
-        self.content = .text("")
-        self.attributes = .init()
-        self.events = .init()
+        self.init(bodyValue: nil)
 
         {{#args}}
         {{#isBinding}}
-        self.attributes["{{name}}"] = {{name}}.wrappedValue.description
+        self.attributes["{{name}}"] = { {{name}}.wrappedValue.description }
         self.events["{{event}}"] = { eventResult in
             guard case let .{{ltype}}(bindedValue) = eventResult else { return }
             {{name}}.set(bindedValue)
         }
         {{/isBinding}}
         {{^isBinding}}
-        self.attributes["{{name}}"] = {{name}}.description
+        self.attributes["{{name}}"] = { {{name}}().description }
         {{/isBinding}}
         {{/args}}
-        
     }
     {{/initRequired}}
     {{#initRequiredWithBody}}
-    public init({{#args}}{{alias}}: {{{type}}}, {{/args}}@PageBuilder content: @escaping () -> any Operator) {
-        self.content = .list(content)
-        self.attributes = .init()
-        self.events = .init()
+    public init({{#args}}{{alias}}: {{{type}}}, {{/args}}@PageBuilder _ content: @escaping () -> any Fragment) {
+        self.init(bodyValue: content)
 
         {{#args}}
         {{#isBinding}}
-        self.attributes["{{name}}"] = {{name}}.wrappedValue.description
+        self.attributes["{{name}}"] = { {{name}}.wrappedValue.description }
         self.events["{{event}}"] = { eventResult in
             guard case let .{{ltype}}(bindedValue) = eventResult else { return }
             input.set(bindedValue)
         }
         {{/isBinding}}
         {{^isBinding}}
-        self.attributes["{{name}}"] = {{name}}.description
+        self.attributes["{{name}}"] = { {{name}}().description }
         {{/isBinding}}
         {{/args}}
-        
     }
     {{/initRequiredWithBody}}
 
     {{/inits}}
+
 }
 
 // MARK: - Attributes
@@ -139,13 +111,13 @@ public extension {{ctag}} {
     {{#attributes}}
     ///{{description}}
     {{#isWildCard}}
-    func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-        attribute(.init(name: "{{name}}-name", value: value.description))
+    func {{alias}}(_ name: String, _ value: {{{type}}}) -> Self {
+        attribute(.init(name: "{{name}}-\(name)", value: { value().description }))
     }
     {{/isWildCard}}
     {{^isWildCard}}
-    func {{alias}}(_ value: {{type}}) -> Self {
-        attribute(.init(name: "{{name}}", value: value.description))
+    func {{alias}}(_ value: {{{type}}}) -> Self {
+        attribute(.init(name: "{{name}}", value: { value().description }))
     }
     {{/isWildCard}}
 

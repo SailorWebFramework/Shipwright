@@ -7,53 +7,17 @@
 
 import Sailboat
 
-///{{description}}
-public protocol GlobalAttributeGroup: AttributeGroup { }
-
-public extension GlobalAttributeGroup {
-    
-    {{#attributes}}
-    ///{{description}}
-    {{#isWildCard}}
-    static func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-        .init(name: "{{name}}-\(name)", value: value.description)
-    }
-    {{/isWildCard}}
-    {{^isWildCard}}
-    static func {{alias}}(_ value: {{type}}) -> Self {
-        {{#isStyle}}
-        .init(name: "{{name}}", value: Style(value).description)
-        {{/isStyle}}
-        {{^isStyle}}
-        {{#isSequence}}
-        .init(name: "{{name}}", value: value.map{ $0.description }.joined(separator: " "))
-        {{/isSequence}}
-        {{^isSequence}}
-        {{#isMappedBool}}
-        .init(name: "{{name}}", value: value ? "true" : "false")
-        {{/isMappedBool}}
-        {{^isMappedBool}}
-        .init(name: "{{name}}", value: value.description)
-        {{/isMappedBool}}
-        {{/isSequence}}
-        {{/isStyle}}
-    }
-    {{/isWildCard}}
-
-    {{/attributes}}
-}
-
 public extension Element {
     {{#attributes}}
     ///{{description}}
     {{#isWildCard}}
-    func {{alias}}(_ name: String, _ value: {{type}}) -> Self {
-        attribute(ElementAttributeGroup(name: "{{name}}-name", value: value.description))
+    func {{alias}}(_ name: String, _ value: {{{type}}}) -> Self {
+        attribute(.init(name: "{{name}}-name", value: { value().description }))
     }
     {{/isWildCard}}
     {{^isWildCard}}
-    func {{alias}}(_ value: {{type}}) -> Self {
-        attribute(ElementAttributeGroup(name: "{{name}}", value: value.description))
+    func {{alias}}(_ value: {{{type}}}) -> Self {
+        attribute(.init(name: "{{name}}", value: { value().description }))
     }
     {{/isWildCard}}
 
