@@ -44,7 +44,7 @@ class Sailor:
         Sailor.buildGlobalAttributeGroup(outdir, treasuredir)
 
         # build tailwind
-        Sailor.buildTailwind(outdir, treasuredir)
+        # Sailor.buildTailwind(outdir, treasuredir)
 
         # todo: css properties
         Sailor.buildCSSProperties()
@@ -266,6 +266,47 @@ class Sailor:
     def buildEventResultMap():
         pass
 
-    def buildCSSProperties():
-        pass
-    
+    def buildCSSProperties(outdir, treasuredir):
+        tag_treasure = os.path.join(treasuredir, "properties.json")
+        templateURL = os.path.join("Templates", 'Sailor', "Styling", "Style+Property.mustache")
+        
+        f = open(tag_treasure)
+        data = json.load(f)
+
+        # for name, body in data.items():
+        #     pass
+
+        description = body["description"]
+        cname = Utils.capitalize_keep_upper(name)
+        cases = list(
+            map(lambda v: {
+            "name": v[0],
+            "alias": Utils.switch_to_camel(v[0]),
+            "description": v[1]["description"]
+        }, body["cases"].items()))
+
+        for case in cases:
+            case["alias"] = Utils.switch_to_camel(case["alias"])
+
+            case["names"] = list(map(lambda v: {"value": v, "last": False}, case["names"]))
+            if len(case["names"]) > 0:
+                case["names"][-1]["last"] = True
+            
+            case["values"] = list(map(lambda v: {"value": v, "last": False}, case["values"]))
+            
+            if len(case["values"]) > 0:
+                case["values"][-1]["last"] = True
+
+        cases[-1]["last"] = True
+
+        args = {
+            "cname": cname,
+            "cases": cases,
+            "description": description
+        }
+
+        out_url = os.path.join(outdir, f"Style+Property.swift")
+
+        Utils.build(templateURL, out_url, args)
+
+        f.close()

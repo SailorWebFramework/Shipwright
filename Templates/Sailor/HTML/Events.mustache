@@ -3,22 +3,18 @@
 extension Element {
 
     public func on{{name}}(_ completion: @escaping ({{#istyped}}{{ctype}}{{/istyped}}) -> Void) -> Self {
-        var copy = self
-
         {{#istyped}}
-        copy.events["{{lname}}"] = { eventResult in
+        withEvent(name: "{{lname}}") { eventResult in
             if case let EventResult.{{ltype}}(value) = eventResult {
                 completion(value)
             }
         }
         {{/istyped}}
         {{^istyped}}
-        copy.events["{{lname}}"] = { _ in
+        withEvent(name: "{{lname}}") { _ in
             completion()
         }
         {{/istyped}}
-
-        return copy
     }
 
 }

@@ -5,50 +5,14 @@
 //  Created by Joshua Davis on 10/5/23.
 //
 
-extension Style {
+public extension Style.Property {
     public enum Property: Hashable {
-        case accentColor(Unit.Color),
-             backgroundColor(Unit.Color),
-             display(Unit.Display),
-             width(Unit.Dimention),
-             height(Unit.Dimention)
-        
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(description)
+        {{#properties}}
+        /// {{description}}
+        public static func {{alias}}(_ value: {{type}}) -> Self {
+            .init(name: {{name}}, value: {{value}}.description)
         }
-        
-        public var description: String {
-            "\(self.name):\(self.value)"
-        }
-        
-        public var name: String {
-            switch(self) {
-            case .accentColor(_):
-                return "accent-color"
-            case .backgroundColor(_):
-                return "background-color"
-            case .display(_):
-                return "display"
-            case .width(_):
-                return "width"
-            case .height(_):
-                return "height"
-            }
-        }
-            
-        public var value: String {
-            switch(self) {
-            case .accentColor(let color):
-                return color.description
-            case .backgroundColor(let color):
-                return color.description
-            case .display(let display):
-                return display.description
-            case .width(let dimention):
-                return dimention.description
-            case .height(let dimention):
-                return dimention.description
-            }
-        }
+
+        {{/properties}}
     }
 }
