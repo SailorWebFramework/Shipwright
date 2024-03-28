@@ -57,4 +57,7 @@ class Utils:
         return output
     
 
-
+    def put_formatted(data, names):
+        for name in names:
+            data = data.replace("{{" + f'{name}' + "}}", f'\\(name)')
+        return data

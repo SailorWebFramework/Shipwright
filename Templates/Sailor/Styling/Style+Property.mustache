@@ -6,13 +6,11 @@
 //
 
 public extension Style.Property {
-    public enum Property: Hashable {
-        {{#properties}}
-        /// {{description}}
-        public static func {{alias}}(_ value: {{type}}) -> Self {
-            .init(name: {{name}}, value: {{value}}.description)
-        }
-
-        {{/properties}}
+    {{#properties}}
+    /// {{description}}
+    static func {{alias}}(_ value: {{{type}}}) -> Self {
+        .init(name: "{{name}}", value: value.description)
     }
+
+    {{/properties}}
 }

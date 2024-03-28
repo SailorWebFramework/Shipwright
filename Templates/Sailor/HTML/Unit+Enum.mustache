@@ -16,7 +16,12 @@ extension Unit {
             switch self {
             {{#cases}}
             case .{{alias}}{{#hasAssociatedValue}}({{#names}}let {{value}}{{^last}}, {{/last}}{{/names}}){{/hasAssociatedValue}}:
-                return "{{name}}{{#hasAssociatedValue}}({{#names}}\({{value}}){{^last}} {{/last}}{{/names}}){{/hasAssociatedValue}}"
+                {{#isFormatted}}
+                return "{{format}}"
+                {{/isFormatted}}
+                {{^isFormatted}}
+                    return "{{name}}{{#hasAssociatedValue}}({{#names}}\({{value}}){{^last}} {{/last}}{{/names}}){{/hasAssociatedValue}}"
+                {{/isFormatted}}
             {{/cases}}
             }
         }
