@@ -168,6 +168,13 @@ class Sailor:
         out_url = os.path.join(outdir, "GlobalAttributeGroup.swift")
         Utils.build(templateURL, out_url, args)
 
+    def buildPropUnits(outdir, treasuredir):
+        unit_treasure = os.path.join(treasuredir, "units.json")
+        punit_treasure = os.path.join(treasuredir, "property_units.json")
+
+        templateURL = os.path.join("Templates", 'Sailor', "HTML", "PropUnit+Units.mustache")
+        # TODO:
+        
     def buildUnits(outdir, treasuredir):
         tag_treasure = os.path.join(treasuredir, "units.json")
         templateURL = os.path.join("Templates", 'Sailor', "HTML", "Unit+Enum.mustache")
@@ -175,33 +182,47 @@ class Sailor:
         f = open(tag_treasure)
         data = json.load(f)
 
-        for name, body in data.items():
-            description = body["description"]
-            cname = Utils.capitalize_keep_upper(name)
-            cases = list(
+        def format_cases(body):
+            return list(
                 map(lambda v: {
-                "name": v[0],
-                "alias": v[0],
+                "name": SailorUtils.remove_case_id(v[0]),
+                "alias": SailorUtils.remove_case_id(v[0]),
                 "description": v[1]["description"],
-                "values": v[1]["values"] if "values" in v[1] else [],
-                "names": v[1]["names"] if "names" in v[1] else [],
+                "args": [
+                    {"name": name, "value": SailorUtils.convert_type(value)} for value, name in zip(
+                        v[1]["values"] if "values" in v[1] else [], v[1]["names"] if "names" in v[1] else []
+                    )
+                ],
+                # "values": v[1]["values"] if "values" in v[1] else [],
+                # "names": v[1]["names"] if "names" in v[1] else [],
                 "hasAssociatedValue": "values" in v[1],
                 "isFormatted": "format" in v[1],
                 "format": SailorUtils.put_formatted(v[1]["format"], v[1]["names"]) if "format" in v[1] else "",
                 "last": False
             }, body["cases"].items()))
 
+        for name, body in data.items():
+            description = body["description"]
+            cname = Utils.capitalize_keep_upper(name)
+            cases = format_cases(body)
+
+            # print(name)
+            if "inherit" in body:
+                for inherited_unit in body["inherit"]:
+                    cases.extend(format_cases(data[inherited_unit]))
+
             for case in cases:
                 case["alias"] = Utils.switch_to_camel(case["alias"])
 
-                case["names"] = list(map(lambda v: {"value": v, "last": False}, case["names"]))
-                if len(case["names"]) > 0:
-                    case["names"][-1]["last"] = True
+                for arg in case["args"]: arg["last"] = False
                 
-                case["values"] = list(map(lambda v: {"value": v, "last": False}, case["values"]))
+                if len(case["args"]) > 0:
+                    case["args"][-1]["last"] = True
                 
-                if len(case["values"]) > 0:
-                    case["values"][-1]["last"] = True
+                # case["values"] = list(map(lambda v: {"value": v, "last": False}, case["values"]))
+                
+                # if len(case["values"]) > 0:
+                #     case["values"][-1]["last"] = True
 
             cases[-1]["last"] = True
 
@@ -270,25 +291,35 @@ class Sailor:
 
     def buildCSSProperties(outdir, treasuredir):
         tag_treasure = os.path.join(treasuredir, "properties.json")
+        tag_global_props = os.path.join(treasuredir, "global-property-cases.json")
+
         templateURL = os.path.join("Templates", 'Sailor', "Styling", "Style+Property.mustache")
         
         f = open(tag_treasure)
         data = json.load(f)
+
+        fg = open(tag_global_props)
+        global_data = json.load(fg)
 
         args = {
             "properties": []
         }
 
         for name, body in data.items():
+            converted_types = [SailorUtils.convert_type(t) for t in body["types"]]
             args["properties"].append({
                 "name": name,
                 "alias": Utils.switch_to_camel(name),
-                "type": body["type"],
+                "typedNames": [ {"tname": tname, "type": tvalue, "last": False} for tname, tvalue in zip(body["names"], converted_types) ],
+                "formatted": SailorUtils.put_formatted(body["format"], body["names"]),
                 "description": body["description"]
             })
 
-        out_url = os.path.join(outdir, f"Style+Properties.swift")
+            args["properties"][-1]["typedNames"][-1]["last"] = True
+
+        out_url = os.path.join(outdir, f"Property+Properties.swift")
 
         Utils.build(templateURL, out_url, args)
 
         f.close()
+        fg.close()

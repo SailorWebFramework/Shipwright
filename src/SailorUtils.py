@@ -1,4 +1,6 @@
 from .Utils import Utils
+import chevron
+import re
 
 class SailorUtils:
     excluded_tags = ["style", "head", "body", "script", "main", "html", "base", "meta", "title", "link"]
@@ -38,7 +40,7 @@ class SailorUtils:
         
         if "binding[" in type:
             return Utils.capitalize_keep_upper(f'Binding<{type[8:-1]}>')
-
+        
         if "," in type:
             return wrap_in_func(Utils.capitalize_keep_upper(type.split(",")[-1]))
         
@@ -83,6 +85,57 @@ class SailorUtils:
         )
     
     def put_formatted(data, names):
+        pattern = re.compile(r"{{\?.*?\?}}")
+        matches = []
+
+        # Use finditer() to get match objects, which include the start and end positions
+        for match in pattern.finditer(data):
+            # Append a tuple with the match and its start and end indices
+            matches.append((match.group(), match.start(), match.end()))
+            print("FOUND MATCH", match.group(), match.start(), match.end())
+        
+        for match in matches:
+            found = []
+            output = match[0]
+            for name in names:
+                formatted_name = "{{!" + f'{name}' + "}}"
+                if formatted_name in match[0]:
+                    found.append(name)
+                    output = output.replace(formatted_name, f'\\({name}!.description)')
+            
+            print("mid", output)
+            condition = ""
+            
+            for name in found:
+                condition += f'{name} != nil && '
+            
+            if condition != "":
+                condition = condition[:-4]
+                output = f'\\({condition} ? "{output[3:-3]}" : "")'
+
+            data = data.replace(match[0], output)
+
+        # args = {
+        #     'template': data,
+        #     'data': {}
+        # }
+        # for name in names:
+        #     args['data'][name] = f'\\({name}.description)'
+
+        # output = chevron.render(**args)
+
         for name in names:
-            data = data.replace("{{" + f'{name}' + "}}", f'\\({name})')
+            data = data.replace("{{" + f'{name}' + "}}", f'\\({name}.description)')
+
+        print("DATA", data)
+
         return data
+    
+    def remove_case_id(name):
+        return name.split(":")[0]
+    
+    def convert_type(value):
+        if "optional[" in value:
+            return str(value[9:-1]) + "? = nil"
+        
+        return value

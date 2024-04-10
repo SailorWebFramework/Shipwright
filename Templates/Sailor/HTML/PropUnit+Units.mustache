@@ -5,7 +5,7 @@
 //  Created by Joshua Davis on 10/6/23.
 //
 
-extension Unit {
+extension PropUnit {
     public struct {{cname}} {
         var value: String
 
@@ -22,7 +22,7 @@ extension Unit {
         {{#hasAssociatedValue}}
         public static func `{{alias}}`({{#args}}_ {{name}}: {{value}}{{^last}}, {{/last}}{{/args}}) -> Self {
             {{#isFormatted}}
-            return .init("{{{format}}}")
+            return .init("{{format}}")
             {{/isFormatted}}
             {{^isFormatted}}
             return .init("{{name}}({{#args}}\({{name}}){{^last}} {{/last}}{{/args}})")
@@ -32,7 +32,7 @@ extension Unit {
         {{^hasAssociatedValue}}
         public static var `{{alias}}`: Self {
             {{#isFormatted}}
-            return .init("{{{format}}}")
+            return .init("{{format}}")
             {{/isFormatted}}
             {{^isFormatted}}
             return .init("{{name}}")
