@@ -61,6 +61,7 @@ class Sailor:
         
         for tag, body in data.items():
             tag = tag.lower()
+
             description = body["description"]
 
             if "attributes" not in body:
@@ -70,27 +71,48 @@ class Sailor:
 
             if tag in SailorUtils.excluded_tags:
                 continue
-            
-            def check_init(name):
-                for init in body["inits"]:
-                    if name == init["type"]:
-                        return True
-                return False
 
+            if "alias" in body:
+                ctag = body["alias"]
+            else:
+                ctag = tag.capitalize()
+            
+            # def check_init(name):
+            #     for init in body["inits"]:
+            #         if name == init["type"]:
+            #             return True
+            #     return False
+
+            # TODO: add this back in, removed for 0.2
+            
             args = {
-                "ctag": tag.capitalize(),
+                "ctag": ctag,
                 "tag": tag.lower(),
+                "head": body["type"] == "head" if "type" in body else False,
                 "description": description,
                 "attributes": attributes,
                 "inits": list(map(lambda v: {
                     "initRequired": v["type"] == "required",
                     "initRequiredWithBody": v["type"] == "required-with-body",
+                    "initRequiredWithText": v["type"] == "required-with-text",
                     "initEmpty": v["type"] == "empty",
-                    "initText": v["type"] == "text" and not check_init("body"),
+                    "initText": v["type"] == "text", # and not check_init("body")
                     "initBody": v["type"] == "body",
                     "args": Utils.createLastElementDictArray(list(map(lambda arg: SailorUtils.createArgs(arg), v["args"].items())) if "args" in v else [])
                 }, body["inits"]))
             }
+
+            # # add default inits for all tags
+            # args["inits"] = list(filter(lambda v: v["initRequired"] or v["initRequiredWithBody"], args["inits"]))
+
+            # args["inits"].append({
+            #     "initRequired": False,
+            #     "initRequiredWithBody": False,
+            #     "initEmpty": True,
+            #     "initText": False,
+            #     "initBody":True,
+            #     "args": False
+            # })
             
             # print(args)
             out_url = os.path.join(outdir, f"{args['ctag']}.swift")
@@ -170,7 +192,7 @@ class Sailor:
 
     def buildPropUnits(outdir, treasuredir):
         unit_treasure = os.path.join(treasuredir, "units.json")
-        punit_treasure = os.path.join(treasuredir, "property_units.json")
+        # punit_treasure = os.path.join(treasuredir, "property_units.json")
 
         templateURL = os.path.join("Templates", 'Sailor', "HTML", "PropUnit+Units.mustache")
         # TODO:
@@ -206,7 +228,6 @@ class Sailor:
             cname = Utils.capitalize_keep_upper(name)
             cases = format_cases(body)
 
-            # print(name)
             if "inherit" in body:
                 for inherited_unit in body["inherit"]:
                     cases.extend(format_cases(data[inherited_unit]))
@@ -291,35 +312,50 @@ class Sailor:
 
     def buildCSSProperties(outdir, treasuredir):
         tag_treasure = os.path.join(treasuredir, "properties.json")
-        tag_global_props = os.path.join(treasuredir, "global-property-cases.json")
+        # tag_global_props = os.path.join(treasuredir, "global-property-cases.json")
 
         templateURL = os.path.join("Templates", 'Sailor', "Styling", "Style+Property.mustache")
         
         f = open(tag_treasure)
         data = json.load(f)
 
-        fg = open(tag_global_props)
-        global_data = json.load(fg)
+        completed = set()
+
+        # fg = open(tag_global_props)
+        # global_data = json.load(fg)
 
         args = {
             "properties": []
         }
 
         for name, body in data.items():
+            name = name.split(":")[0]
             converted_types = [SailorUtils.convert_type(t) for t in body["types"]]
-            args["properties"].append({
-                "name": name,
-                "alias": Utils.switch_to_camel(name),
-                "typedNames": [ {"tname": tname, "type": tvalue, "last": False} for tname, tvalue in zip(body["names"], converted_types) ],
-                "formatted": SailorUtils.put_formatted(body["format"], body["names"]),
-                "description": body["description"]
-            })
+            
+            if body["names"] != []:
+                args["properties"].append({
+                    "name": name,
+                    "alias": Utils.switch_to_camel(name),
+                    "typedNames": [ {"tname": tname, "type": tvalue, "last": False} for tname, tvalue in zip(body["names"], converted_types) ],
+                    "formatted": SailorUtils.put_formatted(body["format"], body["names"]),
+                    "description": body["description"]
+                })
 
-            args["properties"][-1]["typedNames"][-1]["last"] = True
+                args["properties"][-1]["typedNames"][-1]["last"] = True
+
+            if name not in completed:
+                completed.add(name)
+                args["properties"].append({
+                    "name": name,
+                    "alias": Utils.switch_to_camel(name),
+                    "typedNames": [ {"tname": "globalValue", "type": "Unit.Global", "last": True } ],
+                    "formatted": SailorUtils.put_formatted("{{globalValue}}", ["globalValue"]),
+                    "description": body["description"]
+                })
 
         out_url = os.path.join(outdir, f"Property+Properties.swift")
 
         Utils.build(templateURL, out_url, args)
 
         f.close()
-        fg.close()
+        # fg.close()

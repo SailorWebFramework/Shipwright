@@ -3,12 +3,12 @@ import chevron
 import re
 
 class SailorUtils:
-    excluded_tags = ["style", "head", "body", "script", "main", "html", "base", "meta", "title", "link"]
+    excluded_tags = ["style", "head", "body", "script", "main", "html", "data", "noscript"]
     attribute_alias = {
         "class": "className",
     }
 
-    excluded_attributes = ["class", "style", "id"]
+    excluded_attributes = ["class", "style"]
 
     def createArgs(arg):
         alias = arg[0][0] + " " + arg[0][1:] if arg[0][0] == "_" else arg[0]
@@ -30,7 +30,7 @@ class SailorUtils:
 
     def parse_type(type) -> str:
         def wrap_in_func(mystr):
-            return f'(@escaping () -> {mystr})'
+            return f'@autoclosure @escaping () -> {mystr}'
         
         if "char" == type:
             return wrap_in_func("Character")
@@ -92,7 +92,7 @@ class SailorUtils:
         for match in pattern.finditer(data):
             # Append a tuple with the match and its start and end indices
             matches.append((match.group(), match.start(), match.end()))
-            print("FOUND MATCH", match.group(), match.start(), match.end())
+            # print("FOUND MATCH", match.group(), match.start(), match.end())
         
         for match in matches:
             found = []
@@ -103,7 +103,7 @@ class SailorUtils:
                     found.append(name)
                     output = output.replace(formatted_name, f'\\({name}!.description)')
             
-            print("mid", output)
+            # print("mid", output)
             condition = ""
             
             for name in found:
@@ -127,7 +127,7 @@ class SailorUtils:
         for name in names:
             data = data.replace("{{" + f'{name}' + "}}", f'\\({name}.description)')
 
-        print("DATA", data)
+        # print("DATA", data)
 
         return data
     
