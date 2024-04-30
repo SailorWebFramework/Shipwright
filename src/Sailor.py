@@ -72,11 +72,12 @@ class Sailor:
             if tag in SailorUtils.excluded_tags:
                 continue
 
-            if "alias" in body:
-                ctag = body["alias"]
-            else:
-                ctag = tag.capitalize()
-            
+            # if "alias" in body:
+            #     ctag = body["alias"]
+            # else:
+            #     ctag = tag.capitalize()
+            ctag = tag.capitalize()
+
             # def check_init(name):
             #     for init in body["inits"]:
             #         if name == init["type"]:
@@ -115,7 +116,7 @@ class Sailor:
             # })
             
             # print(args)
-            out_url = os.path.join(outdir, f"{args['ctag']}.swift")
+            out_url = os.path.join(outdir, f"HTML+{args['ctag']}.swift")
 
             Utils.build(templateURL, out_url, args)
 
@@ -353,7 +354,7 @@ class Sailor:
                     "description": body["description"]
                 })
 
-        out_url = os.path.join(outdir, f"Property+Properties.swift")
+        out_url = os.path.join(outdir, f"CSS+Properties.swift")
 
         Utils.build(templateURL, out_url, args)
 

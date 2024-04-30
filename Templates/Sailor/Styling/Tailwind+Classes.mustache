@@ -6,26 +6,19 @@
 //  Created by Joshua Davis on 10/6/23.
 //
 
-public struct TailwindClass {
-    let name: String
-    let alias: String
-    var description: String { name }
+public typealias TW = String
 
-    internal init(name: String, alias: String) {
-        self.name = name
-        self.alias = alias
-    }
-
+public extension TW {
     {{#cases}}
     ///{{description}}
     {{#isPack}}
-    public static func {{alias}}(_ classes: TailwindClass...) -> TailwindClass {
-        .init(name: "{{name}}" + classes.map { $0.description }.joined(separator: " {{name}}"), alias: "{{alias}}")
+    static func {{alias}}(_ classes: TW...) -> TW {
+        "{{name}}" + classes.map { $0.description }.joined(separator: " {{name}}")
     }
     {{/isPack}}
     {{^isPack}}
-    public static var `{{alias}}`: TailwindClass {
-        .init(name: "{{name}}", alias: "{{alias}}")
+    static var `{{alias}}`: TW {
+        "{{name}}"
     }    
     {{/isPack}}
 

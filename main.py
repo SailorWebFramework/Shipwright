@@ -15,7 +15,7 @@ def shipwright():
 @shipwright.command()
 @click.argument("target")
 @click.option('--outdir', default=path.join(os.getcwd(), "Generated"), help='Selects where to output the build.')
-@click.option('--treasuredir', default=path.join(os.getcwd(), "Treasure", "json"), help='Selects where the input files are.')
+@click.option('--treasuredir', default=path.join(os.getcwd(), "..", "Treasure", "json"), help='Selects where the input files are.')
 def build(target, outdir, treasuredir):
 
     # TODO: remove everying in the generated folder here? maybe if -f is applied
