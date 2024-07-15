@@ -2,13 +2,11 @@
 //
 //  Property.swift
 //
-//  Created by Joshua Davis on 10/5/23.
-//
 
 public enum CSS {
     {{#properties}}
     /// {{description}}
-    public static func {{alias}}({{#typedNames}}_ {{tname}}: {{{type}}}{{^last}}, {{/last}}{{/typedNames}}) -> Property {
+    public static func {{alias}}({{#typedNames}}{{^shownParams}}_ {{/shownParams}}{{tname}}: {{{type}}}{{^last}}, {{/last}}{{/typedNames}}) -> Property {
         Property(
             name: "{{name}}",
             value: "{{{formatted}}}"

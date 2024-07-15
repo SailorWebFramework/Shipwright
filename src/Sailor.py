@@ -212,15 +212,23 @@ class Sailor:
                 "alias": SailorUtils.remove_case_id(v[0]),
                 "description": v[1]["description"],
                 "args": [
-                    {"name": name, "value": SailorUtils.convert_type(value)} for value, name in zip(
-                        v[1]["values"] if "values" in v[1] else [], v[1]["names"] if "names" in v[1] else []
+                    {
+                        "name": SailorUtils.formatName(name), 
+                        "value": SailorUtils.convert_type(value),
+                        "isShown": isShown,
+                    } for value, name, isShown in zip(
+                        v[1]["values"] if "values" in v[1] else [], 
+                        v[1]["names"] if "names" in v[1] else [],
+                        ([True] * len(v[1]["names"] if "names" in v[1] else []) if "showNames" in v[1] else
+                        v[1]["shown"] if "shown" in v[1] 
+                        else [False] * len(v[1]["names"] if "names" in v[1] else [])),
                     )
                 ],
                 # "values": v[1]["values"] if "values" in v[1] else [],
                 # "names": v[1]["names"] if "names" in v[1] else [],
                 "hasAssociatedValue": "values" in v[1],
                 "isFormatted": "format" in v[1],
-                "format": SailorUtils.put_formatted(v[1]["format"], v[1]["names"]) if "format" in v[1] else "",
+                "format": SailorUtils.put_formatted(v[1]["format"], v[1]["names"], types=v[1]["values"]) if "format" in v[1] else "",
                 "last": False
             }, body["cases"].items()))
 
@@ -311,6 +319,7 @@ class Sailor:
     def buildEventResultMap():
         pass
 
+
     def buildCSSProperties(outdir, treasuredir):
         tag_treasure = os.path.join(treasuredir, "properties.json")
         # tag_global_props = os.path.join(treasuredir, "global-property-cases.json")
@@ -331,28 +340,62 @@ class Sailor:
 
         for name, body in data.items():
             name = name.split(":")[0]
-            converted_types = [SailorUtils.convert_type(t) for t in body["types"]]
+            params = []
+
+            if "*" in name:
+                name = name[:-2]
+
+                for label, body in body.items():
+                    label = label.split(":")[0]
+                    params.append((label, body))
+            else:
+                params = [("", body)]
             
-            if body["names"] != []:
-                args["properties"].append({
-                    "name": name,
-                    "alias": Utils.switch_to_camel(name),
-                    "typedNames": [ {"tname": tname, "type": tvalue, "last": False} for tname, tvalue in zip(body["names"], converted_types) ],
-                    "formatted": SailorUtils.put_formatted(body["format"], body["names"]),
-                    "description": body["description"]
-                })
+            for param in params:
+                # if param[0] != "":
+                #     print(param[0])
+                body = param[1]
+                formatted_names = [SailorUtils.check_keyword_name(name) for name in body["names"]]
+                is_param = param[0] != "" 
+                is_shorthand = "shorthand" in body and body["shorthand"]
+                shown_params = is_param or is_shorthand
+                converted_types = [SailorUtils.convert_type(t) for t in body["types"]]
+                if is_param:
+                    full_name = name + "-" + param[0]
+                    if "alias" in body:
+                        full_name = body["alias"]
+                else:
+                    full_name = name
 
-                args["properties"][-1]["typedNames"][-1]["last"] = True
+                # normal initializers
+                if body["names"] != []:
+                    args["properties"].append({
+                        "name": full_name,
+                        "shownParams": shown_params,
+                        "isShorthand": is_shorthand,
+                        "alias": SailorUtils.check_keyword_name(Utils.switch_to_camel(name)),
+                        "typedNames": [ {"tname": tname, "type": tvalue, "last": False} for tname, tvalue in zip(formatted_names, converted_types) ],
+                        "formatted": SailorUtils.put_formatted(body["format"], body["names"], formatted_names, body["types"]),
+                        "description": body["description"]
+                    })
+                    
+                    args["properties"][-1]["typedNames"][-1]["last"] = True
 
-            if name not in completed:
-                completed.add(name)
-                args["properties"].append({
-                    "name": name,
-                    "alias": Utils.switch_to_camel(name),
-                    "typedNames": [ {"tname": "globalValue", "type": "Unit.Global", "last": True } ],
-                    "formatted": SailorUtils.put_formatted("{{globalValue}}", ["globalValue"]),
-                    "description": body["description"]
-                })
+                # global params initializer
+                if name not in completed:
+                    #typeName = "globalValue" if param[0] == "" else param[0]
+                    typeName = "globalValue"
+
+                    completed.add(name)
+                    args["properties"].append({
+                        "name": name,
+                        "shownParams": False, # shown_params
+                        "isShorthand": False,
+                        "alias": SailorUtils.check_keyword_name(Utils.switch_to_camel(name)),
+                        "typedNames": [ {"tname": typeName, "type": "Unit.Global", "last": True } ],
+                        "formatted": SailorUtils.put_formatted("{{" + typeName + "}}", [typeName]),
+                        "description": body["description"]
+                    })
 
         out_url = os.path.join(outdir, f"CSS+Properties.swift")
 

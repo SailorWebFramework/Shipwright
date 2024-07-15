@@ -4,6 +4,7 @@ import re
 
 class SailorUtils:
     excluded_tags = ["style", "head", "body", "script", "main", "html", "data", "noscript"]
+    key_words = ["repeat", "class", "var", "default", "break"]
     attribute_alias = {
         "class": "className",
     }
@@ -50,6 +51,11 @@ class SailorUtils:
         
         return wrap_in_func(Utils.capitalize_keep_upper(type))
 
+    def check_keyword_name(name):
+        if name in SailorUtils.key_words:
+            return "`" + name + "`"
+        return name
+    
     # helpers methods
 
     def formatAttributes(attributes):
@@ -84,7 +90,35 @@ class SailorUtils:
             )
         )
     
-    def put_formatted(data, names):
+    def formatName(name):
+        output = name
+        if "@" == output[0]:
+            output = output[1:]
+        
+        output = Utils.switch_to_camel(output)
+        return output
+    
+    def put_formatted(data, names, real_names=None, types=None):
+
+        def mapName(name, type=None):
+            if type is None:
+                return name
+            if "@" == name[0]:
+                return f'Utils.when({mapSearch(name)}, ret: "{name[1:]}")'
+            if "optional[" in type:
+                return f"Utils.unwrapUnit({name})"
+            
+            return name
+        
+        def mapSearch(name):
+            return SailorUtils.formatName(name)
+
+        if real_names is None:
+            real_names = names
+
+        if data[0:4] == "#SEQ":
+            data = f'\\({real_names[-1]}.map {{ $0.description }}.joined(separator: "{data[4]}"))' + data[4:]
+        
         pattern = re.compile(r"{{\?.*?\?}}")
         matches = []
 
@@ -97,11 +131,11 @@ class SailorUtils:
         for match in matches:
             found = []
             output = match[0]
-            for name in names:
+            for name, real_name in zip(names, real_names):
                 formatted_name = "{{!" + f'{name}' + "}}"
                 if formatted_name in match[0]:
-                    found.append(name)
-                    output = output.replace(formatted_name, f'\\({name}!.description)')
+                    found.append(real_name)
+                    output = output.replace(formatted_name, f'\\({real_name}!.description)')
             
             # print("mid", output)
             condition = ""
@@ -124,10 +158,12 @@ class SailorUtils:
 
         # output = chevron.render(**args)
 
-        for name in names:
-            data = data.replace("{{" + f'{name}' + "}}", f'\\({name}.description)')
-
-        # print("DATA", data)
+        if types is None:
+            for name, real_name in zip(names, real_names):
+                data = data.replace("{{" + f'{mapSearch(name)}' + "}}", f'\\({mapName(real_name)})')
+        else:
+            for name, real_name, type in zip(names, real_names, types):
+                data = data.replace("{{" + f'{mapSearch(name)}' + "}}", f'\\({ mapName(real_name, type) })')
 
         return data
     
@@ -137,5 +173,8 @@ class SailorUtils:
     def convert_type(value):
         if "optional[" in value:
             return str(value[9:-1]) + "? = nil"
+        
+        if "sequence[" in value:
+            return str(value[9:-1]) + "..."
         
         return value
