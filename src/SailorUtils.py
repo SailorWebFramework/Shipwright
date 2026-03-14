@@ -116,8 +116,30 @@ class SailorUtils:
         if real_names is None:
             real_names = names
 
-        if data[0:4] == "#SEQ":
-            data = f'\\({real_names[-1]}.map {{ $0.description }}.joined(separator: "{data[4]}"))' + data[4:]
+        # Handle #SEQ markers — each #SEQ consumes the next sequence-typed parameter in order
+        if "#SEQ" in data:
+            seq_params = []
+            if types is not None:
+                for rn, t in zip(real_names, types):
+                    if "sequence[" in t:
+                        seq_params.append(rn)
+            elif names is not None:
+                seq_params = list(real_names)
+
+            seq_idx = 0
+            result = ""
+            i = 0
+            while i < len(data):
+                if data[i:i+4] == "#SEQ" and i + 4 < len(data):
+                    separator = data[i + 4]
+                    param = seq_params[seq_idx] if seq_idx < len(seq_params) else real_names[-1]
+                    result += f'\\({param}.map {{ $0.description }}.joined(separator: "{separator}"))'
+                    seq_idx += 1
+                    i += 5  # skip #SEQ and separator char
+                else:
+                    result += data[i]
+                    i += 1
+            data = result
         
         pattern = re.compile(r"{{\?.*?\?}}")
         matches = []

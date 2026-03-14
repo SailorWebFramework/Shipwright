@@ -228,7 +228,7 @@ class Sailor:
                 # "names": v[1]["names"] if "names" in v[1] else [],
                 "hasAssociatedValue": "values" in v[1],
                 "isFormatted": "format" in v[1],
-                "format": SailorUtils.put_formatted(v[1]["format"], v[1]["names"], types=v[1]["values"]) if "format" in v[1] else "",
+                "format": SailorUtils.put_formatted(v[1]["format"], v[1].get("names", []), types=v[1].get("values", [])) if "format" in v[1] else "",
                 "last": False
             }, body["cases"].items()))
 
