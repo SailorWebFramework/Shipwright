@@ -381,8 +381,8 @@ class Sailor:
                     
                     args["properties"][-1]["typedNames"][-1]["last"] = True
 
-                # global params initializer
-                if name not in completed:
+                # global params initializer (skip if property already uses Unit.Global)
+                if name not in completed and not (len(body["types"]) == 1 and body["types"][0] == "Unit.Global"):
                     #typeName = "globalValue" if param[0] == "" else param[0]
                     typeName = "globalValue"
 
