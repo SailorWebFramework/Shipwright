@@ -32,13 +32,13 @@ class Sailor:
         Sailor.buildLanguageUnits(unitsout, treasuredir)
 
         # build events
-        unitsout = os.path.join(outdir, "Events")
-        Utils.checkAndCreate(unitsout)
+        eventsout = os.path.join(outdir, "Events")
+        Utils.checkAndCreate(eventsout)
 
-        Sailor.buildEvents()
+        Sailor.buildEvents(eventsout, treasuredir)
 
-        # build events
-        Sailor.buildEventResultMap()
+        # build event result map
+        Sailor.buildEventResultMap(eventsout, treasuredir)
 
         # build attributes
         Sailor.buildGlobalAttributeGroup(outdir, treasuredir)
@@ -139,6 +139,7 @@ class Sailor:
             name = name.replace("*", "")
             name = name.replace("#", "")
             name = name.replace(":", "")
+            name = name.replace("%", "Pct")
             return name
 
         classes = list(
@@ -313,11 +314,158 @@ class Sailor:
 
         f.close()
 
-    def buildEvents():
-        pass
+    def buildEvents(outdir, treasuredir):
+        event_treasure = os.path.join(treasuredir, "events.json")
+        global_template = os.path.join("Templates", "Sailor", "HTML", "EventGroup.mustache")
+        targeted_template = os.path.join("Templates", "Sailor", "HTML", "TargetedEventGroup.mustache")
 
-    def buildEventResultMap():
-        pass
+        f = open(event_treasure)
+        data = json.load(f)
+
+        # Map events.json data types to EventResult types
+        type_map = {
+            "string": {"ctype": "String", "ltype": "string"},
+            "int": {"ctype": "Int", "ltype": "int"},
+            "float": {"ctype": "Double", "ltype": "float"},
+            "bool": {"ctype": "Bool", "ltype": "bool"},
+        }
+
+        def format_event(event_name, event_body):
+            """Convert an events.json event entry into mustache template data."""
+            cname = Utils.capitalize_keep_upper(event_name)
+
+            has_data = event_body.get("data") is not None
+            # Use the first data field as the typed value
+            data_field = None
+            data_key = None
+            if has_data:
+                data_key = next(iter(event_body["data"]))
+                data_field = event_body["data"][data_key]
+
+            # Event name uses "js_event:field" for typed events (so JSNode
+            # can split on ":" — the part before ":" is the addEventListener
+            # name, the full string is the resultMap key)
+            js_event = event_body["js_event"]
+            lname = f"{js_event}:{data_key}" if has_data else js_event
+
+            result = {
+                "name": cname,
+                "lname": lname,
+                "description": event_body["description"],
+                "istyped": has_data,
+            }
+
+            if has_data and data_field:
+                mapped = type_map.get(data_field["type"], {"ctype": "String", "ltype": "string"})
+                result["ctype"] = mapped["ctype"]
+                result["ltype"] = mapped["ltype"]
+
+            return result
+
+        # --- Build global events (one file with all global events on Element) ---
+        global_events = []
+        for event_name, event_body in data.get("global", {}).items():
+            global_events.append(format_event(event_name, event_body))
+
+        if global_events:
+            args = {
+                "groupName": "Element+GlobalEvents",
+                "events": global_events,
+            }
+            out_url = os.path.join(outdir, "Element+GlobalEvents.swift")
+            Utils.build(global_template, out_url, args)
+
+        # --- Build targeted events (one file per tag) ---
+        # Collect all events for each tag across all groups
+        tag_events = {}
+        for group_name, group_body in data.get("targeted", {}).items():
+            tags = group_body.get("tags", [])
+            events = group_body.get("events", {})
+
+            for tag in tags:
+                if tag not in tag_events:
+                    tag_events[tag] = []
+                for event_name, event_body in events.items():
+                    tag_events[tag].append(format_event(event_name, event_body))
+
+        for tag, events in tag_events.items():
+            # Skip tags that are excluded from codegen
+            if tag in SailorUtils.excluded_tags:
+                continue
+
+            ctag = tag.capitalize()
+            args = {
+                "ctag": ctag,
+                "events": events,
+            }
+            out_url = os.path.join(outdir, f"HTML+{ctag}+Events.swift")
+            Utils.build(targeted_template, out_url, args)
+
+        f.close()
+
+    def buildEventResultMap(outdir, treasuredir):
+        event_treasure = os.path.join(treasuredir, "events.json")
+        templateURL = os.path.join("Templates", "Sailor", "HTML", "EventResult+ResultMap.mustache")
+
+        f = open(event_treasure)
+        data = json.load(f)
+
+        # Collect all events that have data fields (need extraction logic)
+        events = []
+        seen = set()
+
+        for section in ["global", "targeted"]:
+            section_data = data.get(section, {})
+            if section == "global":
+                items = section_data.items()
+            else:
+                items = []
+                for group_body in section_data.values():
+                    items.extend(group_body.get("events", {}).items())
+
+            for event_name, event_body in items:
+                js_event = event_body["js_event"]
+                if js_event in seen:
+                    continue
+                if event_body.get("data") is None:
+                    continue
+
+                seen.add(js_event)
+                first_key = next(iter(event_body["data"]))
+                field = event_body["data"][first_key]
+
+                # Map data type to JSValue accessor
+                js_accessor_map = {
+                    "string": "string",
+                    "int": "number",
+                    "float": "number",
+                    "bool": "boolean",
+                }
+
+                # Map data type to EventResult case
+                result_type_map = {
+                    "string": "string",
+                    "int": "int",
+                    "float": "float",
+                    "bool": "bool",
+                }
+
+                events.append({
+                    "name": f"{js_event}:{first_key}",
+                    "path": field["path"],
+                    "js_accessor": js_accessor_map.get(field["type"], "string"),
+                    "result_type": result_type_map.get(field["type"], "string"),
+                    "last": False,
+                })
+
+        if events:
+            events[-1]["last"] = True
+
+            args = {"events": events}
+            out_url = os.path.join(outdir, "EventResult+ResultMap.swift")
+            Utils.build(templateURL, out_url, args)
+
+        f.close()
 
 
     def buildCSSProperties(outdir, treasuredir):
