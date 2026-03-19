@@ -49,7 +49,12 @@ class Sailor:
         # todo: css properties
         Sailor.buildCSSProperties(outdir, treasuredir)
 
-        return 
+        # build DOM methods (element handles)
+        methodsout = os.path.join(outdir, "Methods")
+        Utils.checkAndCreate(methodsout)
+        Sailor.buildMethods(methodsout, treasuredir)
+
+        return
     
     def buildTags(outdir, treasuredir):
         # TODO: Utils.templates, Utils.tags
@@ -551,3 +556,291 @@ class Sailor:
 
         f.close()
         # fg.close()
+
+    def buildMethods(outdir, treasuredir):
+        """Generate typed element handle types from methods.json.
+
+        Produces:
+        - ElementHandle.swift — base handle with HTMLElement methods
+        - <Tag>Handle.swift — per-tag handles with inherited + specific methods
+        - Element+Handle.swift — .handle computed property on Element
+        - HTML+<Tag>+Handle.swift — .handle typed property per tag
+        """
+        methods_treasure = os.path.join(treasuredir, "methods.json")
+        if not os.path.exists(methods_treasure):
+            click.echo("  skipping methods (no methods.json)")
+            return
+
+        f = open(methods_treasure)
+        data = json.load(f)
+        f.close()
+
+        interfaces = data.get("interfaces", {})
+        tag_map = data.get("tag_interface_map", {})
+
+        return_cast_map = {
+            "Bool": "result.boolean",
+            "String": "result.string",
+            "Int": "Int(result.number)",
+            "Double": "Double(result.number)",
+        }
+
+        def swift_param_sig(param):
+            """Generate Swift parameter signature."""
+            name = param["name"]
+            ptype = param["type"]
+            if param.get("optional", False):
+                default = param.get("default", "nil")
+                ptype_opt = f"{ptype}?" if "nil" == default else ptype
+                return f"{name}: {ptype_opt} = {default}"
+            return f"{name}: {ptype}"
+
+        def swift_js_arg(param):
+            """Generate JS argument for a method call."""
+            name = param["name"]
+            js_type = param.get("js_type", "string")
+            js_transform = param.get("js_transform")
+            if js_transform:
+                return js_transform.replace("value", name)
+            if js_type == "number":
+                return name
+            if js_type == "string":
+                return name
+            return name
+
+        def generate_method_swift(method_name, method_body, indent="    "):
+            """Generate a Swift method from a methods.json entry."""
+            lines = []
+            js_method = method_body["js_method"]
+            params = method_body.get("params", [])
+            returns = method_body.get("returns")
+            desc = method_body["description"]
+
+            lines.append(f"{indent}/// {desc}")
+
+            # Build signature
+            if params:
+                param_strs = [swift_param_sig(p) for p in params]
+                sig = ", ".join(param_strs)
+                lines.append(f"{indent}public func {method_name}({sig}) {{")
+                lines.append(f"{indent}    #if os(WASI)")
+                # Build JS call args
+                js_args = ", ".join([swift_js_arg(p) for p in params])
+                lines.append(f"{indent}    _ = jsValue?.{js_method}?({js_args})")
+                lines.append(f"{indent}    #endif")
+                lines.append(f"{indent}}}")
+            elif returns:
+                cast = return_cast_map.get(returns, "result.string")
+                lines.append(f"{indent}@discardableResult")
+                lines.append(f"{indent}public func {method_name}() -> {returns}? {{")
+                lines.append(f"{indent}    #if os(WASI)")
+                lines.append(f"{indent}    guard let result = jsValue?.{js_method}?() else {{ return nil }}")
+                lines.append(f"{indent}    return {cast}")
+                lines.append(f"{indent}    #else")
+                lines.append(f"{indent}    return nil")
+                lines.append(f"{indent}    #endif")
+                lines.append(f"{indent}}}")
+            else:
+                lines.append(f"{indent}public func {method_name}() {{")
+                lines.append(f"{indent}    #if os(WASI)")
+                lines.append(f"{indent}    _ = jsValue?.{js_method}?()")
+                lines.append(f"{indent}    #endif")
+                lines.append(f"{indent}}}")
+
+            lines.append("")
+            return "\n".join(lines)
+
+        def generate_delegation(method_name, method_body, indent="    "):
+            """Generate a method that delegates to base.method()."""
+            lines = []
+            params = method_body.get("params", [])
+            returns = method_body.get("returns")
+            desc = method_body["description"]
+
+            lines.append(f"{indent}/// {desc}")
+
+            if params:
+                param_strs = [swift_param_sig(p) for p in params]
+                sig = ", ".join(param_strs)
+                call_args = ", ".join([f"{p['name']}: {p['name']}" for p in params])
+                lines.append(f"{indent}public func {method_name}({sig}) {{")
+                lines.append(f"{indent}    base.{method_name}({call_args})")
+                lines.append(f"{indent}}}")
+            elif returns:
+                lines.append(f"{indent}@discardableResult")
+                lines.append(f"{indent}public func {method_name}() -> {returns}? {{ base.{method_name}() }}")
+            else:
+                lines.append(f"{indent}public func {method_name}() {{ base.{method_name}() }}")
+
+            lines.append("")
+            return "\n".join(lines)
+
+        # ---- 1. Generate ElementHandle.swift (base HTMLElement methods) ----
+        base_methods = interfaces.get("HTMLElement", {}).get("methods", {})
+
+        element_handle_lines = [
+            "// This file was autogenerated by Shipwright. DO NOT CHANGE.",
+            "//",
+            "//  ElementHandle.swift",
+            "//",
+            "",
+            "import Sailboat",
+            "",
+            "#if os(WASI)",
+            "@_spi(Private) import SailorWeb",
+            "import JavaScriptKit",
+            "#endif",
+            "",
+            "/// Typed element handle for calling DOM methods on any HTML element.",
+            "/// Wraps the underlying renderer and provides type-safe method calls.",
+            "@MainActor",
+            "public struct ElementHandle {",
+            "    @_spi(Private) public let renderer: any Renderable",
+            "",
+            "    public init(_ renderer: any Renderable) {",
+            "        self.renderer = renderer",
+            "    }",
+            "",
+            "    #if os(WASI)",
+            "    /// Access the underlying JSValue for direct method calls",
+            "    internal var jsValue: JSValue? {",
+            "        (renderer as? JSNode)?.element",
+            "    }",
+            "    #endif",
+            "}",
+            "",
+            "// MARK: - Base HTMLElement methods (available on all elements)",
+            "",
+            "extension ElementHandle {",
+        ]
+
+        for method_name, method_body in base_methods.items():
+            element_handle_lines.append(generate_method_swift(method_name, method_body))
+
+        element_handle_lines.append("}")
+
+        out_url = os.path.join(outdir, "ElementHandle.swift")
+        of = open(out_url, "w")
+        of.write("\n".join(element_handle_lines))
+        of.close()
+
+        # ---- 2. Generate per-tag handles ----
+        for tag, interface_name in tag_map.items():
+            if tag in SailorUtils.excluded_tags:
+                continue
+
+            interface = interfaces.get(interface_name, {})
+            tag_methods = interface.get("methods", {})
+            ctag = tag.capitalize()
+
+            # Collect inherited base methods for delegation
+            inherited = interfaces.get("HTMLElement", {}).get("methods", {})
+
+            # Also check if this interface inherits from another non-HTMLElement
+            parent = interface.get("inherits")
+            parent_methods = {}
+            if parent and parent != "HTMLElement":
+                parent_methods = interfaces.get(parent, {}).get("methods", {})
+
+            tag_handle_lines = [
+                "// This file was autogenerated by Shipwright. DO NOT CHANGE.",
+                "//",
+                f"//  {ctag}Handle.swift",
+                "//",
+                "",
+                "import Sailboat",
+                "",
+                "#if os(WASI)",
+                "@_spi(Private) import SailorWeb",
+                "import JavaScriptKit",
+                "#endif",
+                "",
+                f"/// Typed element handle for {ctag} — includes tag-specific DOM methods.",
+                "@MainActor",
+                f"public struct {ctag}Handle {{",
+                "    @_spi(Private) public let base: ElementHandle",
+                "",
+                "    public init(_ renderer: any Renderable) {",
+                "        self.base = ElementHandle(renderer)",
+                "    }",
+                "",
+                "    #if os(WASI)",
+                "    internal var jsValue: JSValue? { base.jsValue }",
+                "    #endif",
+                "}",
+                "",
+                f"// MARK: - Inherited HTMLElement methods",
+                "",
+                f"extension {ctag}Handle {{",
+            ]
+
+            for method_name, method_body in inherited.items():
+                tag_handle_lines.append(generate_delegation(method_name, method_body))
+
+            tag_handle_lines.append("}")
+            tag_handle_lines.append("")
+            tag_handle_lines.append(f"// MARK: - {ctag}-specific methods")
+            tag_handle_lines.append("")
+            tag_handle_lines.append(f"extension {ctag}Handle {{")
+
+            for method_name, method_body in tag_methods.items():
+                tag_handle_lines.append(generate_method_swift(method_name, method_body))
+
+            tag_handle_lines.append("}")
+
+            out_url = os.path.join(outdir, f"{ctag}Handle.swift")
+            of = open(out_url, "w")
+            of.write("\n".join(tag_handle_lines))
+            of.close()
+
+        # ---- 3. Generate Element+Handle.swift (base .handle property) ----
+        handle_ext_lines = [
+            "// This file was autogenerated by Shipwright. DO NOT CHANGE.",
+            "//",
+            "//  Element+Handle.swift",
+            "//",
+            "",
+            "import Sailboat",
+            "",
+            "extension Element {",
+            "    /// Access the underlying DOM element handle for imperative method calls.",
+            "    /// Use this in lifecycle closures like `.onAppear` to call DOM methods.",
+            "    public var handle: ElementHandle {",
+            "        ElementHandle(self.renderer)",
+            "    }",
+            "}",
+        ]
+
+        out_url = os.path.join(outdir, "Element+Handle.swift")
+        of = open(out_url, "w")
+        of.write("\n".join(handle_ext_lines))
+        of.close()
+
+        # ---- 4. Generate per-tag .handle overrides ----
+        for tag, interface_name in tag_map.items():
+            if tag in SailorUtils.excluded_tags:
+                continue
+            ctag = tag.capitalize()
+
+            tag_ext_lines = [
+                "// This file was autogenerated by Shipwright. DO NOT CHANGE.",
+                "//",
+                f"//  HTML+{ctag}+Handle.swift",
+                "//",
+                "",
+                "import Sailboat",
+                "",
+                f"extension HTML.{ctag} {{",
+                f"    /// Access the typed {ctag} DOM element handle for imperative method calls.",
+                f"    public var {tag}Handle: {ctag}Handle {{",
+                f"        {ctag}Handle(self.renderer)",
+                "    }",
+                "}",
+            ]
+
+            out_url = os.path.join(outdir, f"HTML+{ctag}+Handle.swift")
+            of = open(out_url, "w")
+            of.write("\n".join(tag_ext_lines))
+            of.close()
+
+        click.echo(f"  built {len(tag_map) + 1} element handles")
