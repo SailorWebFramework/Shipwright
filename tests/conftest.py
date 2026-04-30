@@ -8,15 +8,20 @@ import shutil
 import tempfile
 import pytest
 
-# Make src/ importable
-SRC_DIR = os.path.join(os.path.dirname(__file__), "..", "src")
+# All paths are normalised to absolute so subprocess.run and os.path.exists
+# behave identically on macOS and Linux regardless of how pytest was invoked.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+SHIPWRIGHT_ROOT = os.path.normpath(os.path.join(_HERE, ".."))
+
+# Make src/ importable in this process
+SRC_DIR = os.path.join(SHIPWRIGHT_ROOT, "src")
 sys.path.insert(0, SRC_DIR)
 
-TESTS_DIR = os.path.dirname(__file__)
+TESTS_DIR = _HERE
 FIXTURES_DIR = os.path.join(TESTS_DIR, "fixtures")
 TREASURE_DIR = os.path.join(FIXTURES_DIR, "treasure")
 EXPECTED_DIR = os.path.join(FIXTURES_DIR, "expected")
-MAIN_PY = os.path.join(os.path.dirname(__file__), "..", "main.py")
+MAIN_PY = os.path.join(SHIPWRIGHT_ROOT, "main.py")
 
 
 def pytest_addoption(parser):
@@ -55,11 +60,26 @@ def generated_dir(update_goldens, tmp_path_factory):
          "--treasuredir", TREASURE_DIR],
         capture_output=True,
         text=True,
-        cwd=os.path.dirname(MAIN_PY),
+        cwd=SHIPWRIGHT_ROOT,  # normalised absolute path — not os.path.dirname(MAIN_PY)
     )
-    if result.returncode != 0:
+
+    # Fail loudly with full diagnostics if codegen produced nothing or exited non-zero.
+    # An empty outdir with returncode=0 means Sailor.build() returned early (e.g. treasure
+    # dir not found). We treat that as a failure rather than silently testing nothing.
+    generated_files = []
+    for dirpath, _, filenames in os.walk(outdir):
+        generated_files.extend(filenames)
+
+    if result.returncode != 0 or not generated_files:
         pytest.fail(
-            f"Shipwright codegen failed (exit {result.returncode}):\n"
-            f"stdout: {result.stdout}\nstderr: {result.stderr}"
+            f"Shipwright codegen {'failed' if result.returncode != 0 else 'produced no output'} "
+            f"(exit {result.returncode})\n"
+            f"  cwd:          {SHIPWRIGHT_ROOT}\n"
+            f"  MAIN_PY:      {MAIN_PY}\n"
+            f"  outdir:       {outdir}\n"
+            f"  TREASURE_DIR: {TREASURE_DIR}\n"
+            f"  treasure exists: {os.path.exists(TREASURE_DIR)}\n"
+            f"  stdout: {result.stdout!r}\n"
+            f"  stderr: {result.stderr!r}"
         )
     return outdir
