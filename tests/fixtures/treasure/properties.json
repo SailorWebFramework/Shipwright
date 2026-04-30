@@ -1,0 +1,4739 @@
+{
+    "all": {
+        "description": "The all shorthand CSS property resets all of an element's properties except unicode-bidi, direction, and CSS Custom Properties.",
+        "types": [
+            "Unit.Global"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "accent-color": {
+        "description": "Sets the accent color property.",
+        "types": [
+            "Unit.Color"
+        ],
+        "names": [
+            "color"
+        ],
+        "format": "{{color}}"
+    },
+    "align-*": {
+        "content": {
+            "description": "Sets the align content property.",
+            "types": [
+                "Unit.AlignContent"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "items": {
+            "description": "Sets the align items property.",
+            "types": [
+                "Unit.AlignItems"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "self": {
+            "description": "Sets the align self property.",
+            "types": [
+                "Unit.AlignSelf"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "aspect-ratio": {
+        "description": "Sets the aspect-ratio property.",
+        "types": [
+            "Unit.AspectRatio"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "appearance": {
+        "description": "The appearance CSS property is used to display UI elements with platform-specific styling, based on the operating system's theme.",
+        "types": [
+            "Unit.Appearance"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "text-decoration:0": {
+        "shorthand": true,
+        "description": "Sets the text decoration property.",
+        "types": [
+            "Unit.TextDecorationLine",
+            "Unit.TextDecorationStyle",
+            "Unit.Color"
+        ],
+        "names": [
+            "line",
+            "style",
+            "color"
+        ],
+        "format": "{{line}} {{style}} {{color}}"
+    },
+    "text-decoration:1": {
+        "shorthand": true,
+        "description": "Sets the text decoration property.",
+        "types": [
+            "Unit.TextDecorationStyle",
+            "Unit.Color"
+        ],
+        "names": [
+            "style",
+            "color"
+        ],
+        "format": "{{style}} {{color}}"
+    },
+    "text-decoration:2": {
+        "shorthand": true,
+        "description": "Sets the text decoration property.",
+        "types": [
+            "Unit.TextDecorationLine",
+            "Unit.Color"
+        ],
+        "names": [
+            "line",
+            "color"
+        ],
+        "format": "{{line}} {{color}}"
+    },
+    "text-decoration-*": {
+        "color": {
+            "description": "Sets the text decoration color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "line:0": {
+            "description": "Sets the text decoration line property.",
+            "types": [
+                "Unit.None"
+            ],
+            "names": [
+                "line"
+            ],
+            "format": "{{line}}"
+        },
+        "line:1": {
+            "description": "Sets the text decoration line property.",
+            "types": [
+                "Unit.TextDecorationLine"
+            ],
+            "names": [
+                "line"
+            ],
+            "format": "{{line}}"
+        },
+        "style": {
+            "description": "Sets the text decoration style property.",
+            "types": [
+                "Unit.TextDecorationStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "skip-ink": {
+            "description": "Sets the text decoration skip ink property.",
+            "types": [
+                "Unit.TextDecorationSkipInk"
+            ],
+            "names": [
+                "skipInk"
+            ],
+            "format": "{{skipInk}}"
+        },
+        "thickness": {
+            "description": "Sets the text decoration thickness property.",
+            "types": [
+                "Unit.TextDecorationThickness"
+            ],
+            "names": [
+                "thickness"
+            ],
+            "format": "{{thickness}}"
+        }
+    },
+    "text-emphasis": {
+        "shorthand": true,
+        "description": "Sets the text decoration property.",
+        "types": [
+            "Unit.TextEmphasisStyle",
+            "Unit.Color"
+        ],
+        "names": [
+            "style",
+            "color"
+        ],
+        "format": "{{style}} {{color}}"
+    },
+    "text-emphasis-*": {
+        "color": {
+            "description": "Sets the text emphasis color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the text emphasis style property.",
+            "types": [
+                "Unit.TextEmphasisStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "position": {
+            "description": "Sets the text emphasis position property.",
+            "types": [
+                "Unit.TextEmphasisPosition"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        }
+    },
+    "text-*": {
+        "align": {
+            "description": "Sets the text align property.",
+            "types": [
+                "Unit.TextAlign"
+            ],
+            "names": [
+                "align"
+            ],
+            "format": "{{align}}"
+        },
+        "align-last": {
+            "description": "Sets the text align last property.",
+            "types": [
+                "Unit.TextAlign"
+            ],
+            "names": [
+                "alignLast"
+            ],
+            "format": "{{alignLast}}"
+        },
+        "combine-upright": {
+            "description": "Sets the text combine upright property.",
+            "types": [
+                "Unit.CombineUpright"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "indent": {
+            "description": "Sets the text indent property.",
+            "types": [
+                "Unit.Indent"
+            ],
+            "names": [
+                "indent"
+            ],
+            "format": "{{indent}}"
+        },
+        "justify": {
+            "description": "Sets the text justify property.",
+            "types": [
+                "Unit.TextJustify"
+            ],
+            "names": [
+                "justify"
+            ],
+            "format": "{{justify}}"
+        },
+        "orientation": {
+            "description": "Sets the text orientation property.",
+            "types": [
+                "Unit.TextOrientation"
+            ],
+            "names": [
+                "orientation"
+            ],
+            "format": "{{orientation}}"
+        },
+        "overflow": {
+            "description": "Sets the text overflow property.",
+            "types": [
+                "Unit.TextOverflow"
+            ],
+            "names": [
+                "overflow"
+            ],
+            "format": "{{overflow}}"
+        },
+        "shadow": {
+            "description": "Sets the box shadow property.",
+            "types": [
+                "sequence[Unit.BoxShadow]"
+            ],
+            "names": [
+                "shadow"
+            ],
+            "format": "#SEQ,"
+        },
+        "transform": {
+            "description": "Sets the text transform property.",
+            "types": [
+                "Unit.TextTransform"
+            ],
+            "names": [
+                "transform"
+            ],
+            "format": "{{transform}}"
+        },
+        "rendering": {
+            "description": "Sets the text rendering property.",
+            "types": [
+                "Unit.TextRendering"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "text-underline-*": {
+        "position": {
+            "description": "Sets the text underline position property.",
+            "types": [
+                "Unit.UnderlineTextPosition"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        },
+        "offset": {
+            "description": "Sets the text underline offset property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "offset"
+            ],
+            "format": "{{offset}}"
+        }
+    },
+    "box-*": {
+        "direction-break": {
+            "description": "Sets the box direction break property.",
+            "types": [
+                "Unit.DirectionBreak"
+            ],
+            "names": [
+                "directionBreak"
+            ],
+            "format": "{{directionBreak}}"
+        },
+        "shadow": {
+            "description": "Sets the box shadow property.",
+            "types": [
+                "sequence[Unit.BoxShadow]"
+            ],
+            "names": [
+                "shadow"
+            ],
+            "format": "#SEQ,"
+        },
+        "sizing": {
+            "description": "Sets the box sizing property.",
+            "types": [
+                "Unit.BoxSizing"
+            ],
+            "names": [
+                "sizing"
+            ],
+            "format": "{{sizing}}"
+        }
+    },
+    "backdrop-filter": {
+        "description": "Add a graphical effect to the area behind an element.",
+        "types": [
+            "Unit.Filter"
+        ],
+        "names": [
+            "filter"
+        ],
+        "format": "{{filter}}"
+    },
+    "backface-visibility": {
+        "description": "Sets the visibility of the back face of an element.",
+        "types": [
+            "Unit.BackfaceVisibility"
+        ],
+        "names": [
+            "visibility"
+        ],
+        "format": "{{visibility}}"
+    },
+    "background:0": {
+        "shorthand": true,
+        "description": "Sets the visibility of the back face of an element.",
+        "types": [
+            "optional[Unit.Color]",
+            "Unit.Position",
+            "Unit.BackgroundSize",
+            "optional[Unit.Image]",
+            "optional[Unit.Repeat]",
+            "optional[Unit.VisualBox]",
+            "optional[Unit.VisualBox]",
+            "optional[Unit.Attachment]"
+        ],
+        "names": [
+            "color",
+            "position",
+            "size",
+            "image",
+            "repeat",
+            "origin",
+            "clip",
+            "attachment"
+        ],
+        "format": "{{attachment}} {{color}} {{image}} {{repeat}} {{origin}} {{clip}} {{position}} / {{size}}"
+    },
+    "background:1": {
+        "shorthand": true,
+        "description": "Sets the visibility of the back face of an element.",
+        "types": [
+            "optional[Unit.Color]",
+            "optional[Unit.Position]",
+            "optional[Unit.Image]",
+            "optional[Unit.Repeat]",
+            "optional[Unit.VisualBox]",
+            "optional[Unit.VisualBox]",
+            "optional[Unit.Attachment]"
+        ],
+        "names": [
+            "color",
+            "position",
+            "image",
+            "repeat",
+            "origin",
+            "clip",
+            "attachment"
+        ],
+        "format": "{{attachment}} {{color}} {{image}} {{repeat}} {{origin}} {{clip}} {{position}}"
+    },
+    "background-*": {
+        "attachment": {
+            "description": "Sets whether a background image is fixed or scrolls with the rest of the page.",
+            "types": [
+                "Unit.Attachment"
+            ],
+            "names": [
+                "attachment"
+            ],
+            "format": "{{attachment}}"
+        },
+        "blend-mode": {
+            "description": "Sets the background blend mode property.",
+            "types": [
+                "Unit.BlendMode"
+            ],
+            "names": [
+                "blendMode"
+            ],
+            "format": "{{blendMode}}"
+        },
+        "clip": {
+            "description": "Sets the background clip property.",
+            "types": [
+                "Unit.VisualBox"
+            ],
+            "names": [
+                "clip"
+            ],
+            "format": "{{clip}}"
+        },
+        "color": {
+            "description": "Sets the background color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "origin": {
+            "description": "Sets the background origin property.",
+            "types": [
+                "Unit.VisualBox"
+            ],
+            "names": [
+                "origin"
+            ],
+            "format": "{{origin}}"
+        },
+        "position": {
+            "description": "Sets the background position property.",
+            "types": [
+                "Unit.Position"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        },
+        "position-x": {
+            "description": "Sets the background position property.",
+            "types": [
+                "Unit.PositionX"
+            ],
+            "names": [
+                "positionX"
+            ],
+            "format": "{{positionX}}"
+        },
+        "position-y": {
+            "description": "Sets the background position property.",
+            "types": [
+                "Unit.PositionY"
+            ],
+            "names": [
+                "positionY"
+            ],
+            "format": "{{positionY}}"
+        },
+        "repeat": {
+            "description": "Repeats the background Item.",
+            "types": [
+                "sequence[Unit.Repeat]"
+            ],
+            "names": [
+                "repeat"
+            ],
+            "format": "#SEQ,"
+        },
+        "image:0": {
+            "description": "Sets the background position property.",
+            "types": [
+                "Unit.Image"
+            ],
+            "names": [
+                "image"
+            ],
+            "format": "{{image}}"
+        },
+        "image:1": {
+            "alias": "images",
+            "description": "Sets the background position property.",
+            "types": [
+                "sequence[Unit.Image]"
+            ],
+            "names": [
+                "images"
+            ],
+            "format": "#SEQ,"
+        },
+        "size:0": {
+            "description": "Sets the background position property.",
+            "types": [
+                "Unit.BackgroundSize"
+            ],
+            "names": [
+                "size"
+            ],
+            "format": "{{size}}"
+        },
+        "size:1": {
+            "description": "Sets the background position property.",
+            "alias": "sizes",
+            "types": [
+                "sequence[Unit.BackgroundSize]"
+            ],
+            "names": [
+                "sizes"
+            ],
+            "format": "#SEQ,"
+        }
+    },
+    "block-size:0": {
+        "description": "The block-size CSS property defines the horizontal or vertical size of an element's block, depending on its writing mode.",
+        "types": [
+            "Unit.Size"
+        ],
+        "names": [
+            "blockSize"
+        ],
+        "format": "{{blockSize}}"
+    },
+    "block-size:1": {
+        "description": "The block-size CSS property defines the horizontal or vertical size of an element's block, depending on its writing mode.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "lengthPercentage"
+        ],
+        "format": "{{lengthPercentage}}"
+    },
+    "border-block-end": {
+        "description": "Sets the border block end property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-block-end-*": {
+        "color": {
+            "description": "Sets the border block end color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border block end style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border block end width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-block-start": {
+        "shorthand": true,
+        "description": "Sets the border block start property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-block-start-*": {
+        "color": {
+            "description": "Sets the border block start color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border block start style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border block start width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-block": {
+        "shorthand": true,
+        "description": "Sets the border block property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.UnidirectionalWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-block-*": {
+        "color": {
+            "description": "Sets the border block color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border block style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border block width property.",
+            "types": [
+                "Unit.UnidirectionalWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-bottom": {
+        "shorthand": true,
+        "description": "Sets the border bottom property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-bottom-*": {
+        "color": {
+            "description": "Sets the border bottom color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border bottom style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border bottom width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "left-radius": {
+            "description": "Sets the border bottom left radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "leftRadius"
+            ],
+            "format": "{{leftRadius}}"
+        },
+        "right-radius": {
+            "description": "Sets the border bottom right radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "rightRadius"
+            ],
+            "format": "{{rightRadius}}"
+        }
+    },
+    "border-end-*": {
+        "end-radius": {
+            "description": "Sets the border end end radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "endRadius"
+            ],
+            "format": "{{endRadius}}"
+        },
+        "start-radius": {
+            "description": "Sets the border end start radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "startRadius"
+            ],
+            "format": "{{startRadius}}"
+        }
+    },
+    "border-inline": {
+        "shorthand": true,
+        "description": "Sets the border inline property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.UnidirectionalWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-inline-*": {
+        "color": {
+            "description": "Sets the border inline color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border inline style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border inline width property.",
+            "types": [
+                "Unit.UnidirectionalWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-inline-start": {
+        "shorthand": true,
+        "description": "Sets the border inline start property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-inline-start-*": {
+        "color": {
+            "description": "Sets the border inline start color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border inline start style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border inline start width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-inline-end": {
+        "shorthand": true,
+        "description": "Sets the border inline end property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-inline-end-*": {
+        "color": {
+            "description": "Sets the border inline end color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border inline end style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border inline end width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-left": {
+        "shorthand": true,
+        "description": "Sets the border left property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-left-*": {
+        "color": {
+            "description": "Sets the border left color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border left style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border left width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-right": {
+        "shorthand": true,
+        "description": "Sets the border right property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-right-*": {
+        "color": {
+            "description": "Sets the border right color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border right style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border right width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border-start-*": {
+        "end-radius": {
+            "description": "Sets the border start end radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "endRadius"
+            ],
+            "format": "{{endRadius}}"
+        },
+        "start-radius": {
+            "description": "Sets the border start start radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "startRadius"
+            ],
+            "format": "{{startRadius}}"
+        }
+    },
+    "border-top": {
+        "shorthand": true,
+        "description": "Sets the border top property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.LineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-top-*": {
+        "color": {
+            "description": "Sets the border top color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the border top style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border top width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "left-radius": {
+            "description": "Sets the border top left radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "leftRadius"
+            ],
+            "format": "{{leftRadius}}"
+        },
+        "right-radius": {
+            "description": "Sets the border top right radius property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "rightRadius"
+            ],
+            "format": "{{rightRadius}}"
+        }
+    },
+    "border-image:0": {
+        "shorthand": true,
+        "description": "Sets the border image property.",
+        "types": [
+            "optional[Unit.Source]",
+            "optional[Unit.RepeatImage]",
+            "optional[Unit.SliceImage]"
+        ],
+        "names": [
+            "source",
+            "repeat",
+            "slice"
+        ],
+        "format": "{{source}} {{repeat}} {{slice}}"
+    },
+    "border-image:1": {
+        "shorthand": true,
+        "description": "Sets the border image property.",
+        "types": [
+            "optional[Unit.LengthNumber]",
+            "optional[Unit.RepeatImage]",
+            "optional[Unit.SliceImage]",
+            "optional[Unit.Source]",
+            "optional[Unit.AutoLengthPercentage]"
+        ],
+        "names": [
+            "outset",
+            "repeat",
+            "slice",
+            "source",
+            "allSideWidths"
+        ],
+        "format": "{{source}} {{repeat}} {{slice}}/{{allSideWidths}}/{{outset}}"
+    },
+    "border-image:2": {
+        "shorthand": true,
+        "description": "Sets the border image property.",
+        "types": [
+            "optional[Unit.LengthNumber]",
+            "optional[Unit.RepeatImage]",
+            "optional[Unit.SliceImage]",
+            "optional[Unit.Source]",
+            "optional[Unit.AutoLengthPercentage]",
+            "optional[Unit.AutoLengthPercentage]"
+        ],
+        "names": [
+            "outset",
+            "repeat",
+            "slice",
+            "source",
+            "vertical",
+            "horizontal"
+        ],
+        "format": "{{source}} {{repeat}} {{slice}}/{{vertical}}/{{horizontal}}/{{outset}}"
+    },
+    "border-image-*": {
+        "outset": {
+            "description": "Sets the border image outset property.",
+            "types": [
+                "Unit.LengthNumber"
+            ],
+            "names": [
+                "outset"
+            ],
+            "format": "{{outset}}"
+        },
+        "repeat": {
+            "description": "Sets the border image repeat property.",
+            "types": [
+                "Unit.RepeatImage"
+            ],
+            "names": [
+                "repeat"
+            ],
+            "format": "{{repeat}}"
+        },
+        "slice": {
+            "description": "Sets the border image slice property.",
+            "types": [
+                "Unit.SliceImage"
+            ],
+            "names": [
+                "slice"
+            ],
+            "format": "{{slice}}"
+        },
+        "source": {
+            "description": "Sets the border image source property.",
+            "types": [
+                "Unit.Source"
+            ],
+            "names": [
+                "source"
+            ],
+            "format": "{{source}}"
+        },
+        "width": {
+            "description": "Sets the border image width property.",
+            "types": [
+                "Unit.BorderWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "border": {
+        "shorthand": true,
+        "description": "Sets the border property.",
+        "types": [
+            "Unit.Color",
+            "Unit.LineStyle",
+            "Unit.BorderLineWidth"
+        ],
+        "names": [
+            "color",
+            "style",
+            "width"
+        ],
+        "format": "{{color}} {{style}} {{width}}"
+    },
+    "border-*": {
+        "collapse": {
+            "description": "Sets the border collapse property.",
+            "types": [
+                "Unit.BorderCollapse"
+            ],
+            "names": [
+                "collapse"
+            ],
+            "format": "{{collapse}}"
+        },
+        "color": {
+            "description": "Sets the border color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "radius": {
+            "description": "Sets the border radius property.",
+            "types": [
+                "Unit.BorderRadius"
+            ],
+            "names": [
+                "radius"
+            ],
+            "format": "{{radius}}"
+        },
+        "spacing": {
+            "description": "Sets the border spacing property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "length"
+            ],
+            "format": "{{length}}"
+        },
+        "style": {
+            "description": "Sets the border style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the border width property.",
+            "types": [
+                "Unit.BorderLineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "break-*": {
+        "after": {
+            "description": "Sets the break after property.",
+            "types": [
+                "Unit.Break"
+            ],
+            "names": [
+                "after"
+            ],
+            "format": "{{after}}"
+        },
+        "before": {
+            "description": "Sets the break before property.",
+            "types": [
+                "Unit.Break"
+            ],
+            "names": [
+                "before"
+            ],
+            "format": "{{before}}"
+        },
+        "inside": {
+            "description": "Sets the break inside property.",
+            "types": [
+                "Unit.BreakInside"
+            ],
+            "names": [
+                "inside"
+            ],
+            "format": "{{inside}}"
+        }
+    },
+    "clip-path:0": {
+        "description": "Sets the clip path shape property.",
+        "types": [
+            "Unit.None"
+        ],
+        "names": [
+            "none"
+        ],
+        "format": "{{none}}"
+    },
+    "clip-path:1": {
+        "shorthand": true,
+        "description": "Sets the clip path shape property.",
+        "types": [
+            "Unit.Shape",
+            "Unit.GeometryBox"
+        ],
+        "names": [
+            "shape",
+            "box"
+        ],
+        "format": "{{shape}} {{box}}"
+    },
+    "clip-path-*": {
+        "source": {
+            "alias": "clip-path",
+            "description": "Sets the clip path source property.",
+            "types": [
+                "Unit.Source"
+            ],
+            "names": [
+                "source"
+            ],
+            "format": "{{source}}"
+        },
+        "shape": {
+            "alias": "clip-path",
+            "description": "Sets the clip path shape property.",
+            "types": [
+                "Unit.Shape"
+            ],
+            "names": [
+                "shape"
+            ],
+            "format": "{{shape}}"
+        },
+        "box": {
+            "alias": "clip-path",
+            "description": "Sets the clip path box property.",
+            "types": [
+                "Unit.GeometryBox"
+            ],
+            "names": [
+                "box"
+            ],
+            "format": "{{box}}"
+        }
+    },
+    "caption-side": {
+        "description": "Sets the caption side property.",
+        "types": [
+            "Unit.CaptionSide"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "caret-color": {
+        "description": "Sets the caret color property.",
+        "types": [
+            "Unit.AutoColor"
+        ],
+        "names": [
+            "color"
+        ],
+        "format": "{{color}}"
+    },
+    "clear": {
+        "description": "Sets the clear property.",
+        "types": [
+            "Unit.Clear"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "color": {
+        "description": "Sets the color property.",
+        "types": [
+            "Unit.Color"
+        ],
+        "names": [
+            "color"
+        ],
+        "format": "{{color}}"
+    },
+    "color-*": {
+        "interpolation": {
+            "description": "Sets the color interpolation property.",
+            "types": [
+                "Unit.ColorInterpolation"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "scheme": {
+            "description": "Sets the color sceme property.",
+            "types": [
+                "Unit.ColorScheme"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "columns": {
+        "shorthand": true,
+        "description": "Sets the columns property.",
+        "types": [
+            "Unit.AutoInt",
+            "Unit.Width"
+        ],
+        "names": [
+            "count",
+            "width"
+        ],
+        "format": "{{count}} {{width}}"
+    },
+    "column-*": {
+        "count": {
+            "description": "Sets the column count property.",
+            "types": [
+                "Unit.AutoInt"
+            ],
+            "names": [
+                "count"
+            ],
+            "format": "{{count}}"
+        },
+        "fill": {
+            "description": "Sets the column fill property.",
+            "types": [
+                "Unit.ColumnFill"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "gap": {
+            "description": "Sets the column gap property.",
+            "types": [
+                "Unit.NormalLengthPercentage"
+            ],
+            "names": [
+                "length"
+            ],
+            "format": "{{length}}"
+        },
+        "span": {
+            "description": "Sets the column span property.",
+            "types": [
+                "Unit.AllOrNone"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "width": {
+            "description": "Sets the column width property.",
+            "types": [
+                "Unit.Width"
+            ],
+            "names": [
+                "length"
+            ],
+            "format": "{{length}}"
+        }
+    },
+    "column-rule-*": {
+        "color": {
+            "description": "Sets the column rule color property.",
+            "types": [
+                "Unit.Color"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "style": {
+            "description": "Sets the column rule style property.",
+            "types": [
+                "Unit.LineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the column rule width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "container-*": {
+        "type": {
+            "description": "Sets the container type property.",
+            "types": [
+                "Unit.ContainerType"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "name": {
+            "description": "Sets the container name property.",
+            "types": [
+                "Unit.ContainerName"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "contain": {
+        "description": "Sets the contain property.",
+        "types": [
+            "Unit.Contain"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "direction": {
+        "description": "Sets the direction property.",
+        "types": [
+            "Unit.Direction"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "empty-cells": {
+        "description": "Sets the empty cells property.",
+        "types": [
+            "Unit.Shown"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "font-*": {
+        "family": {
+            "description": "Sets the font family property.",
+            "types": [
+                "sequence[Unit.FontFamily]"
+            ],
+            "names": [
+                "family"
+            ],
+            "format": "#SEQ,"
+        },
+        "size:0": {
+            "description": "Sets the font size property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "size"
+            ],
+            "format": "{{size}}"
+        },
+        "size:1": {
+            "description": "Sets the font size property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "size"
+            ],
+            "format": "{{size}}"
+        },
+        "weight": {
+            "description": "Sets the font weight property.",
+            "types": [
+                "Unit.FontWeight"
+            ],
+            "names": [
+                "weight"
+            ],
+            "format": "{{weight}}"
+        },
+        "style": {
+            "description": "Sets the font style property.",
+            "types": [
+                "Unit.FontStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "variant": {
+            "description": "Sets the font variant property.",
+            "types": [
+                "Unit.FontVariant"
+            ],
+            "names": [
+                "variant"
+            ],
+            "format": "{{variant}}"
+        },
+        "feature-settings": {
+            "description": "Sets the font feature settings property for OpenType features.",
+            "types": [
+                "Unit.FontFeatureSettings"
+            ],
+            "names": [
+                "settings"
+            ],
+            "format": "{{settings}}"
+        },
+        "size-adjust": {
+            "description": "Sets the font size adjust property.",
+            "types": [
+                "Unit.FontSizeAdjust"
+            ],
+            "names": [
+                "adjust"
+            ],
+            "format": "{{adjust}}"
+        },
+        "variation-settings": {
+            "description": "Sets the font variation settings property for variable fonts.",
+            "types": [
+                "Unit.FontVariationSettings"
+            ],
+            "names": [
+                "settings"
+            ],
+            "format": "{{settings}}"
+        },
+        "language-override": {
+            "description": "Sets the font language override property.",
+            "types": [
+                "Unit.FontLanguageOverride"
+            ],
+            "names": [
+                "override"
+            ],
+            "format": "{{override}}"
+        }
+    },
+    "flex:0": {
+        "shorthand": true,
+        "description": "Sets the flex property.",
+        "types": [
+            "Double",
+            "Double",
+            "Double"
+        ],
+        "names": [
+            "grow",
+            "shrink",
+            "basis"
+        ],
+        "format": "{{grow}} {{shrink}} {{basis}}"
+    },
+    "flex:1": {
+        "description": "Sets the flex property.",
+        "types": [
+            "Unit.None"
+        ],
+        "names": [
+            "none"
+        ],
+        "format": "{{none}}"
+    },
+    "flex:2": {
+        "shorthand": true,
+        "description": "Sets the flex property.",
+        "types": [
+            "Double",
+            "Double"
+        ],
+        "names": [
+            "grow",
+            "basis"
+        ],
+        "format": "{{grow}} {{basis}}"
+    },
+    "flex:3": {
+        "shorthand": true,
+        "description": "Sets the flex property.",
+        "types": [
+            "Double",
+            "Double"
+        ],
+        "names": [
+            "grow",
+            "shrink"
+        ],
+        "format": "{{grow}} {{shrink}}"
+    },
+    "flex-*": {
+        "basis": {
+            "description": "Sets the flex basis property.",
+            "types": [
+                "Unit.FlexBasis"
+            ],
+            "names": [
+                "basis"
+            ],
+            "format": "{{basis}}"
+        },
+        "direction": {
+            "description": "Sets the flex direction property.",
+            "types": [
+                "Unit.FlexDirection"
+            ],
+            "names": [
+                "direction"
+            ],
+            "format": "{{direction}}"
+        },
+        "grow": {
+            "description": "Sets the flex grow property.",
+            "types": [
+                "Double"
+            ],
+            "names": [
+                "grow"
+            ],
+            "format": "{{grow}}"
+        },
+        "shrink": {
+            "description": "Sets the flex shrink property.",
+            "types": [
+                "Double"
+            ],
+            "names": [
+                "shrink"
+            ],
+            "format": "{{shrink}}"
+        },
+        "wrap": {
+            "description": "Sets the flex wrap property.",
+            "types": [
+                "Unit.FlexWrap"
+            ],
+            "names": [
+                "wrap"
+            ],
+            "format": "{{wrap}}"
+        }
+    },
+    "float": {
+        "description": "Sets the float property.",
+        "types": [
+            "Unit.Float"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "forced-color-adjust": {
+        "description": "Sets the forced color adjust property.",
+        "types": [
+            "Unit.ForcedColorAdjust"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "gap:0": {
+        "description": "Sets the gap property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "rowGap"
+        ],
+        "format": "{{rowGap}}"
+    },
+    "gap:1": {
+        "description": "Sets the gap property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "rowGap",
+            "columnGap"
+        ],
+        "format": "{{rowGap}} {{columnGap}}"
+    },
+    "filter": {
+        "description": "Sets the filter property.",
+        "types": [
+            "Unit.Filter"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "height:0": {
+        "description": "Sets the height property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "height:1": {
+        "description": "Sets the height property.",
+        "types": [
+            "Unit.Size"
+        ],
+        "names": [
+            "heightValue"
+        ],
+        "format": "{{heightValue}}"
+    },
+    "width:0": {
+        "description": "Sets the width property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "width:1": {
+        "description": "Sets the width property.",
+        "types": [
+            "Unit.Size"
+        ],
+        "names": [
+            "widthValue"
+        ],
+        "format": "{{widthValue}}"
+    },
+    "z-index": {
+        "description": "Sets the z-index property.",
+        "types": [
+            "Unit.AutoInt"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "widows": {
+        "description": "Sets the widows property.",
+        "types": [
+            "Int"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "word-*": {
+        "break": {
+            "description": "Sets the word break property.",
+            "types": [
+                "Unit.WordBreak"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "spacing:0": {
+            "description": "Sets the word spacing property.",
+            "types": [
+                "Unit.Normal"
+            ],
+            "names": [
+                "length"
+            ],
+            "format": "{{length}}"
+        },
+        "spacing:1": {
+            "description": "Sets the word spacing property.",
+            "types": [
+                "Unit.Length"
+            ],
+            "names": [
+                "length"
+            ],
+            "format": "{{length}}"
+        }
+    },
+    "writing-mode": {
+        "description": "Sets the writing mode property.",
+        "types": [
+            "Unit.WritingMode"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "white-space": {
+        "description": "Sets the white space property.",
+        "types": [
+            "Unit.WhiteSpace"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "white-space-collapse": {
+        "description": "Sets the white space collapse property.",
+        "types": [
+            "Unit.WhiteSpaceCollapse"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "visibility": {
+        "description": "Sets the visibility property.",
+        "types": [
+            "Unit.Visibility"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "padding-*": {
+        "top": {
+            "description": "Sets the padding top property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "top"
+            ],
+            "format": "{{top}}"
+        },
+        "right": {
+            "description": "Sets the padding right property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "right"
+            ],
+            "format": "{{right}}"
+        },
+        "bottom": {
+            "description": "Sets the padding bottom property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "bottom"
+            ],
+            "format": "{{bottom}}"
+        },
+        "left": {
+            "description": "Sets the padding left property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "left"
+            ],
+            "format": "{{left}}"
+        }
+    },
+    "padding:0": {
+        "description": "Sets the padding block end property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "allFourSides"
+        ],
+        "format": "{{allFourSides}}"
+    },
+    "padding:1": {
+        "shorthand": true,
+        "description": "Sets the padding block end property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "top",
+            "bottom"
+        ],
+        "format": "{{top}} {{bottom}}"
+    },
+    "padding:2": {
+        "shorthand": true,
+        "description": "Sets the padding block end property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "top",
+            "leftRight",
+            "bottom"
+        ],
+        "format": "{{top}} {{leftRight}} {{bottom}}"
+    },
+    "padding:3": {
+        "shorthand": true,
+        "description": "Sets the padding block end property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+        ],
+        "format": "{{top}} {{right}} {{bottom}} {{left}}"
+    },
+    "padding-block-*": {
+        "end": {
+            "description": "Sets the padding block end property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "blockEnd"
+            ],
+            "format": "{{blockEnd}}"
+        },
+        "start": {
+            "description": "Sets the padding block start property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "blockStart"
+            ],
+            "format": "{{blockStart}}"
+        }
+    },
+    "padding-block": {
+        "shorthand": true,
+        "description": "Sets the padding block property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "blockStart",
+            "blockEnd"
+        ],
+        "format": "{{blockStart}} {{blockEnd}}"
+    },
+    "padding-inline": {
+        "shorthand": true,
+        "description": "Sets the padding inline property.",
+        "types": [
+            "Unit.LengthPercentage",
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "inlineStart",
+            "inlineEnd"
+        ],
+        "format": "{{inlineStart}} {{inlineEnd}}"
+    },
+    "padding-inline-*": {
+        "end": {
+            "description": "Sets the padding inline end property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "end"
+            ],
+            "format": "{{end}}"
+        },
+        "start": {
+            "description": "Sets the padding inline start property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "start"
+            ],
+            "format": "{{start}}"
+        }
+    },
+    "margin-block-*": {
+        "end": {
+            "description": "Sets the margin block end property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "end"
+            ],
+            "format": "{{end}}"
+        },
+        "start": {
+            "description": "Sets the margin block end property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "start"
+            ],
+            "format": "{{start}}"
+        }
+    },
+    "margin-block": {
+        "shorthand": true,
+        "description": "Sets the margin block end property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "start",
+            "end"
+        ],
+        "format": "{{start}} {{end}}"
+    },
+    "margin-inline": {
+        "description": "Sets the margin inline property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "inlineStart",
+            "inlineEnd"
+        ],
+        "format": "{{inlineStart}} {{inlineEnd}}"
+    },
+    "margin-inline-end": {
+        "description": "Sets the margin inline end property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "margin-inline-start": {
+        "description": "Sets the margin inline start property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "margin-*": {
+        "top": {
+            "description": "Sets the margin top property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "top"
+            ],
+            "format": "{{top}}"
+        },
+        "right": {
+            "description": "Sets the margin right property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "right"
+            ],
+            "format": "{{right}}"
+        },
+        "bottom": {
+            "description": "Sets the margin bottom property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "bottom"
+            ],
+            "format": "{{bottom}}"
+        },
+        "left": {
+            "description": "Sets the margin left property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "left"
+            ],
+            "format": "{{left}}"
+        }
+    },
+    "margin:0": {
+        "shorthand": true,
+        "description": "Sets the margin property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "topBottom",
+            "leftRight"
+        ],
+        "format": "{{topBottom}} {{leftRight}}"
+    },
+    "margin:1": {
+        "shorthand": true,
+        "description": "Sets the margin property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "top",
+            "leftRight",
+            "bottom"
+        ],
+        "format": "{{top}} {{leftRight}} {{bottom}}"
+    },
+    "margin:2": {
+        "shorthand": true,
+        "description": "Sets the margin property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+        ],
+        "format": "{{top}} {{right}} {{bottom}} {{left}}"
+    },
+    "margin:3": {
+        "description": "Sets the margin property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "allFourSides"
+        ],
+        "format": "{{allFourSides}}"
+    },
+    "min-*": {
+        "inline-size:0": {
+            "description": "Sets the min inline size property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "inlineSize"
+            ],
+            "format": "{{inlineSize}}"
+        },
+        "inline-size:1": {
+            "description": "Sets the min inline size property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "inlineSize"
+            ],
+            "format": "{{inlineSize}}"
+        },
+        "block-size:0": {
+            "description": "Sets the min block size property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "blockSize"
+            ],
+            "format": "{{blockSize}}"
+        },
+        "block-size:1": {
+            "description": "Sets the min block size property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "blockSize"
+            ],
+            "format": "{{blockSize}}"
+        },
+        "height:0": {
+            "description": "Sets the min height property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "height"
+            ],
+            "format": "{{height}}"
+        },
+        "height:1": {
+            "description": "Sets the min height property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "height"
+            ],
+            "format": "{{height}}"
+        },
+        "width:0": {
+            "description": "Sets the min width property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "width:1": {
+            "description": "Sets the min width property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "width:2": {
+            "description": "Sets the min width property.",
+            "types": [
+                "Unit.Fraction"
+            ],
+            "names": [
+                "widthFraction"
+            ],
+            "format": "{{widthFraction}}"
+        },
+        "height:2": {
+            "description": "Sets the min height property.",
+            "types": [
+                "Unit.Fraction"
+            ],
+            "names": [
+                "heightFraction"
+            ],
+            "format": "{{heightFraction}}"
+        }
+    },
+    "max-*": {
+        "block-size:0": {
+            "description": "Sets the max block size property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "blockSize"
+            ],
+            "format": "{{blockSize}}"
+        },
+        "block-size:1": {
+            "description": "Sets the max block size property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "blockSize"
+            ],
+            "format": "{{blockSize}}"
+        },
+        "height:0": {
+            "description": "Sets the max height property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "height"
+            ],
+            "format": "{{height}}"
+        },
+        "height:1": {
+            "description": "Sets the max height property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "height"
+            ],
+            "format": "{{height}}"
+        },
+        "inline-size:0": {
+            "description": "Sets the max inline size property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "inlineSize"
+            ],
+            "format": "{{inlineSize}}"
+        },
+        "inline-size:1": {
+            "description": "Sets the max inline size property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "inlineSize"
+            ],
+            "format": "{{inlineSize}}"
+        },
+        "width:0": {
+            "description": "Sets the max width property.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "width:1": {
+            "description": "Sets the max width property.",
+            "types": [
+                "Unit.Size"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        },
+        "width:2": {
+            "description": "Sets the max width property.",
+            "types": [
+                "Unit.Fraction"
+            ],
+            "names": [
+                "widthFraction"
+            ],
+            "format": "{{widthFraction}}"
+        },
+        "height:2": {
+            "description": "Sets the max height property.",
+            "types": [
+                "Unit.Fraction"
+            ],
+            "names": [
+                "heightFraction"
+            ],
+            "format": "{{heightFraction}}"
+        }
+    },
+    "left": {
+        "description": "Sets the left property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "right": {
+        "description": "Sets the right property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "top": {
+        "description": "Sets the top property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "bottom": {
+        "description": "Sets the bottom property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "position": {
+        "description": "Sets the position property.",
+        "types": [
+            "Unit.PositionType"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "print-color-adjust": {
+        "description": "Sets the print color adjust property.",
+        "types": [
+            "Unit.PrintColorAdjust"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "quotes": {
+        "description": "Sets the quotes property.",
+        "types": [
+            "Unit.Quotes"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "resize": {
+        "description": "Sets the resize property.",
+        "types": [
+            "Unit.Resize"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "translate": {
+        "description": "Sets the translate property.",
+        "types": [
+            "Unit.Translate"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "unicode-bidi": {
+        "description": "Sets the unicode bidi property.",
+        "types": [
+            "Unit.UnicodeBidi"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "tab-size:0": {
+        "description": "Sets the tab size property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "tab-size:1": {
+        "description": "Sets the tab size property.",
+        "types": [
+            "Double"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scale": {
+        "description": "Sets the scale property.",
+        "types": [
+            "Unit.Scale"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "row-gap": {
+        "description": "Sets the row gap property.",
+        "types": [
+            "Unit.NormalLengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "zoom": {
+        "description": "Sets the zoom property.",
+        "types": [
+            "Unit.Zoom"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "table-layout": {
+        "description": "Sets the table layout property.",
+        "types": [
+            "Unit.TableLayout"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "touch-action": {
+        "description": "Sets the touch action property.",
+        "types": [
+            "Unit.TouchAction"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "vertical-align": {
+        "description": "Sets the vertical align property.",
+        "types": [
+            "Unit.VerticalAlign"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "rotate": {
+        "description": "Sets the rotate property.",
+        "types": [
+            "Unit.Rotate"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "hyphens": {
+        "description": "Sets the hyphens property.",
+        "types": [
+            "Unit.Hyphens"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "inline-size": {
+        "description": "Sets the inline size property.",
+        "types": [
+            "Unit.InlineSize"
+        ],
+        "names": [
+            "length"
+        ],
+        "format": "{{length}}"
+    },
+    "hyphenate-*": {
+        "character": {
+            "description": "Sets the hyphenate character property.",
+            "types": [
+                "Unit.HyphenateCharacter"
+            ],
+            "names": [
+                "character"
+            ],
+            "format": "{{character}}"
+        },
+        "limit-chars": {
+            "description": "Sets the hyphenate limit chars property.",
+            "types": [
+                "Unit.HyphenateLimitChars"
+            ],
+            "names": [
+                "limitChars"
+            ],
+            "format": "{{limitChars}}"
+        }
+    },
+    "isolation": {
+        "description": "Sets the isolates property.",
+        "types": [
+            "Unit.IsolationMode"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "letter-spacing": {
+        "description": "Sets the letter spacing property.",
+        "types": [
+            "Unit.LetterSpacing"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "word-spacing": {
+        "description": "Sets the word spacing property.",
+        "types": [
+            "Unit.WordSpacing"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "gap": {
+        "description": "Sets the gap property.",
+        "shorthand": true,
+        "types": [
+            "Unit.NormalLengthPercentage",
+            "Unit.NormalLengthPercentage"
+        ],
+        "names": [
+            "row",
+            "column"
+        ],
+        "format": "{{row}} {{column}}"
+    },
+    "mix-blend-mode": {
+        "description": "Sets the mix blend mode property.",
+        "types": [
+            "Unit.MixBlendMode"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "opacity": {
+        "description": "Sets the opacity property.",
+        "types": [
+            "Unit.NumberPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "order": {
+        "description": "Sets the order property.",
+        "types": [
+            "Int"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "orphans": {
+        "description": "Sets the orphans property.",
+        "types": [
+            "Int"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "object-*": {
+        "fit": {
+            "description": "Sets the object fit property.",
+            "types": [
+                "Unit.ObjectFit"
+            ],
+            "names": [
+                "fit"
+            ],
+            "format": "{{fit}}"
+        },
+        "position": {
+            "description": "Sets the object position property.",
+            "types": [
+                "Unit.ObjectPosition"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        }
+    },
+    "perspective": {
+        "description": "Sets the perspective property.",
+        "types": [
+            "Unit.NoneLength"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "perspective-*": {
+        "origin": {
+            "description": "Sets the perspective origin property.",
+            "types": [
+                "Unit.ObjectPosition"
+            ],
+            "names": [
+                "origin"
+            ],
+            "format": "{{origin}}"
+        }
+    },
+    "paint-order": {
+        "description": "Sets the paint order property.",
+        "types": [
+            "Unit.PaintOrder"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "pointer-events": {
+        "description": "Sets the pointer events property.",
+        "types": [
+            "Unit.PointerEvents"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "line-*": {
+        "break": {
+            "description": "Sets the line break property.",
+            "types": [
+                "Unit.LineBreak"
+            ],
+            "names": [
+                "break"
+            ],
+            "format": "{{break}}"
+        },
+        "height": {
+            "description": "Sets the line height property.",
+            "types": [
+                "Unit.LineHeight"
+            ],
+            "names": [
+                "height"
+            ],
+            "format": "{{height}}"
+        }
+    },
+    "place-*": {
+        "content": {
+            "description": "Sets the place content property.",
+            "types": [
+                "Unit.PlaceContent"
+            ],
+            "names": [
+                "content"
+            ],
+            "format": "{{content}}"
+        },
+        "items": {
+            "description": "Sets the place content property.",
+            "types": [
+                "Unit.PlaceItems"
+            ],
+            "names": [
+                "items"
+            ],
+            "format": "{{items}}"
+        },
+        "self": {
+            "description": "Sets the place content property.",
+            "types": [
+                "Unit.PlaceSelf"
+            ],
+            "names": [
+                "self"
+            ],
+            "format": "{{self}}"
+        }
+    },
+    "page": {
+        "description": "Sets the page property.",
+        "types": [
+            "Unit.Page"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "user-*": {
+        "select": {
+            "description": "Sets the user select property.",
+            "types": [
+                "Unit.UserSelect"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "justify-*": {
+        "content": {
+            "description": "Sets the justify content property.",
+            "types": [
+                "Unit.JustifyContent"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "items": {
+            "description": "Sets the justify items property.",
+            "types": [
+                "Unit.JustifyItems"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "self": {
+            "description": "Sets the justify self property.",
+            "types": [
+                "Unit.JustifySelf"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        }
+    },
+    "overscroll-behavior": {
+        "description": "Sets the overscroll behavior property.",
+        "shorthand": true,
+        "types": [
+            "Unit.OverscrollBehavior",
+            "Unit.OverscrollBehavior"
+        ],
+        "names": [
+            "x",
+            "y"
+        ],
+        "format": "{{x}} {{y}}"
+    },
+    "overscroll-behavior-*": {
+        "block": {
+            "description": "Sets the overscroll behavior block property.",
+            "types": [
+                "Unit.OverscrollBehavior"
+            ],
+            "names": [
+                "block"
+            ],
+            "format": "{{block}}"
+        },
+        "inline": {
+            "description": "Sets the overscroll behavior inline property.",
+            "types": [
+                "Unit.OverscrollBehavior"
+            ],
+            "names": [
+                "inline"
+            ],
+            "format": "{{inline}}"
+        },
+        "x": {
+            "description": "Sets the overscroll behavior x property.",
+            "types": [
+                "Unit.OverscrollBehavior"
+            ],
+            "names": [
+                "x"
+            ],
+            "format": "{{x}}"
+        },
+        "y": {
+            "description": "Sets the overscroll behavior y property.",
+            "types": [
+                "Unit.OverscrollBehavior"
+            ],
+            "names": [
+                "y"
+            ],
+            "format": "{{y}}"
+        }
+    },
+    "outline": {
+        "shorthand": true,
+        "description": "Sets the outline property.",
+        "types": [
+            "optional[Unit.Color]",
+            "optional[Unit.LineWidth]",
+            "optional[Unit.LineStyle]"
+        ],
+        "names": [
+            "color",
+            "width",
+            "style"
+        ],
+        "format": "{{color}} {{width}} {{style}}"
+    },
+    "outline-*": {
+        "color": {
+            "description": "Sets the outline color property.",
+            "types": [
+                "Unit.AutoColor"
+            ],
+            "names": [
+                "color"
+            ],
+            "format": "{{color}}"
+        },
+        "offset": {
+            "description": "Sets the outline offset property.",
+            "types": [
+                "Unit.Length"
+            ],
+            "names": [
+                "offset"
+            ],
+            "format": "{{offset}}"
+        },
+        "style": {
+            "description": "Sets the outline style property.",
+            "types": [
+                "Unit.AutoLineStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "width": {
+            "description": "Sets the outline width property.",
+            "types": [
+                "Unit.LineWidth"
+            ],
+            "names": [
+                "width"
+            ],
+            "format": "{{width}}"
+        }
+    },
+    "counter-*": {
+        "increment:0": {
+            "description": "Sets the counter increment property.",
+            "types": [
+                "sequence[Unit.CounterIncrement]"
+            ],
+            "names": [
+                "increment"
+            ],
+            "format": "#SEQ "
+        },
+        "increment:1": {
+            "description": "Sets the counter increment property.",
+            "types": [
+                "Unit.None"
+            ],
+            "names": [
+                "increment"
+            ],
+            "format": "{{increment}}"
+        },
+        "reset:0": {
+            "description": "Sets the counter reset property.",
+            "types": [
+                "sequence[Unit.CounterReset]"
+            ],
+            "names": [
+                "reset"
+            ],
+            "format": "#SEQ "
+        },
+        "reset:1": {
+            "description": "Sets the counter reset property.",
+            "types": [
+                "Unit.None"
+            ],
+            "names": [
+                "reset"
+            ],
+            "format": "{{reset}}"
+        },
+        "set:0": {
+            "description": "Sets the counter set property.",
+            "types": [
+                "sequence[Unit.CounterSet]"
+            ],
+            "names": [
+                "set"
+            ],
+            "format": "#SEQ "
+        },
+        "set:1": {
+            "description": "Sets the counter set property.",
+            "types": [
+                "Unit.None"
+            ],
+            "names": [
+                "set"
+            ],
+            "format": "{{set}}"
+        }
+    },
+    "list-style": {
+        "shorthand": true,
+        "description": "Sets the list style property.",
+        "types": [
+            "optional[Unit.ListStyleType]",
+            "optional[Unit.ListStylePosition]",
+            "optional[Unit.NoneImage]"
+        ],
+        "names": [
+            "type",
+            "position",
+            "image"
+        ],
+        "format": "{{type}} {{position}} {{image}}"
+    },
+    "list-style-*": {
+        "image": {
+            "description": "Sets the list style image property.",
+            "types": [
+                "Unit.NoneImage"
+            ],
+            "names": [
+                "image"
+            ],
+            "format": "{{image}}"
+        },
+        "position": {
+            "description": "Sets the list style position property.",
+            "types": [
+                "Unit.ListStylePosition"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        },
+        "type": {
+            "description": "Sets the list style type property.",
+            "types": [
+                "Unit.ListStyleType"
+            ],
+            "names": [
+                "type"
+            ],
+            "format": "{{type}}"
+        }
+    },
+    "grid:0": {
+        "shorthand": true,
+        "description": "Sets the grid shorthand with template rows and columns.",
+        "types": [
+            "sequence[Unit.GridTrackSize]",
+            "sequence[Unit.GridTrackSize]"
+        ],
+        "names": [
+            "templateRows",
+            "templateColumns"
+        ],
+        "format": "#SEQ  / #SEQ "
+    },
+    "grid:1": {
+        "shorthand": true,
+        "description": "Sets the grid shorthand with auto-flow rows.",
+        "types": [
+            "Unit.GridAutoFlow",
+            "sequence[Unit.GridTrackSize]"
+        ],
+        "names": [
+            "autoFlow",
+            "autoColumns"
+        ],
+        "format": "{{autoFlow}} / #SEQ "
+    },
+    "grid:2": {
+        "shorthand": true,
+        "description": "Sets the grid to none.",
+        "types": [
+            "Unit.None"
+        ],
+        "names": [
+            "none"
+        ],
+        "format": "{{none}}"
+    },
+    "grid-*": {
+        "area:0": {
+            "description": "Sets the grid area property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "area"
+            ],
+            "format": "{{area}}"
+        },
+        "area:1": {
+            "description": "Sets the grid area property with row and column.",
+            "types": [
+                "Unit.GridLine",
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStart",
+                "columnStart"
+            ],
+            "format": "{{rowStart}} / {{columnStart}}"
+        },
+        "area:2": {
+            "description": "Sets the grid area property with row start/end and column start.",
+            "types": [
+                "Unit.GridLine",
+                "Unit.GridLine",
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStart",
+                "columnStart",
+                "rowEnd"
+            ],
+            "format": "{{rowStart}} / {{columnStart}} / {{rowEnd}}"
+        },
+        "area:3": {
+            "description": "Sets the grid area property with all four values.",
+            "types": [
+                "Unit.GridLine",
+                "Unit.GridLine",
+                "Unit.GridLine",
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStart",
+                "columnStart",
+                "rowEnd",
+                "columnEnd"
+            ],
+            "format": "{{rowStart}} / {{columnStart}} / {{rowEnd}} / {{columnEnd}}"
+        },
+        "auto-columns:0": {
+            "description": "Sets the grid auto columns property.",
+            "types": [
+                "Unit.GridTrackSize"
+            ],
+            "names": [
+                "autoColumnSize"
+            ],
+            "format": "{{autoColumnSize}}"
+        },
+        "auto-columns:1": {
+            "description": "Sets the grid auto columns property with multiple track sizes.",
+            "types": [
+                "sequence[Unit.GridTrackSize]"
+            ],
+            "names": [
+                "autoColumnSizes"
+            ],
+            "format": "{{autoColumnSizes}}"
+        },
+        "auto-flow": {
+            "description": "Sets the grid auto flow property.",
+            "types": [
+                "Unit.GridAutoFlow"
+            ],
+            "names": [
+                "flow"
+            ],
+            "format": "{{flow}}"
+        },
+        "auto-rows:0": {
+            "description": "Sets the grid auto rows property.",
+            "types": [
+                "Unit.GridTrackSize"
+            ],
+            "names": [
+                "autoRowSize"
+            ],
+            "format": "{{autoRowSize}}"
+        },
+        "auto-rows:1": {
+            "description": "Sets the grid auto rows property with multiple track sizes.",
+            "types": [
+                "sequence[Unit.GridTrackSize]"
+            ],
+            "names": [
+                "autoRowSizes"
+            ],
+            "format": "{{autoRowSizes}}"
+        },
+        "column:0": {
+            "description": "Sets the grid column property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "columnStart"
+            ],
+            "format": "{{columnStart}}"
+        },
+        "column:1": {
+            "description": "Sets the grid column start and end.",
+            "types": [
+                "Unit.GridLine",
+                "Unit.GridLine"
+            ],
+            "names": [
+                "columnStart",
+                "columnEnd"
+            ],
+            "format": "{{columnStart}} / {{columnEnd}}"
+        },
+        "column-end": {
+            "description": "Sets the grid column end property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "colEnd"
+            ],
+            "format": "{{colEnd}}"
+        },
+        "column-start": {
+            "description": "Sets the grid column start property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "colStart"
+            ],
+            "format": "{{colStart}}"
+        },
+        "gap:0": {
+            "description": "Sets the grid gap property (same as gap).",
+            "shorthand": true,
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "both"
+            ],
+            "format": "{{both}}"
+        },
+        "gap:1": {
+            "description": "Sets the grid gap property with row and column.",
+            "shorthand": true,
+            "types": [
+                "Unit.LengthPercentage",
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "row",
+                "column"
+            ],
+            "format": "{{row}} {{column}}"
+        },
+        "row:0": {
+            "description": "Sets the grid row property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStart"
+            ],
+            "format": "{{rowStart}}"
+        },
+        "row:1": {
+            "description": "Sets the grid row start and end.",
+            "types": [
+                "Unit.GridLine",
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStart",
+                "rowEnd"
+            ],
+            "format": "{{rowStart}} / {{rowEnd}}"
+        },
+        "row-end": {
+            "description": "Sets the grid row end property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowEndLine"
+            ],
+            "format": "{{rowEndLine}}"
+        },
+        "row-start": {
+            "description": "Sets the grid row start property.",
+            "types": [
+                "Unit.GridLine"
+            ],
+            "names": [
+                "rowStartLine"
+            ],
+            "format": "{{rowStartLine}}"
+        },
+        "template-areas": {
+            "description": "Sets the grid template areas property.",
+            "types": [
+                "Unit.GridTemplateAreas"
+            ],
+            "names": [
+                "areas"
+            ],
+            "format": "{{areas}}"
+        },
+        "template-columns:0": {
+            "description": "Sets the grid template columns property.",
+            "types": [
+                "Unit.GridTrackSize"
+            ],
+            "names": [
+                "colSize"
+            ],
+            "format": "{{colSize}}"
+        },
+        "template-columns:1": {
+            "description": "Sets the grid template columns property with multiple tracks.",
+            "types": [
+                "sequence[Unit.GridTrackSize]"
+            ],
+            "names": [
+                "colSizes"
+            ],
+            "format": "{{colSizes}}"
+        },
+        "template-rows:0": {
+            "description": "Sets the grid template rows property.",
+            "types": [
+                "Unit.GridTrackSize"
+            ],
+            "names": [
+                "rowSize"
+            ],
+            "format": "{{rowSize}}"
+        },
+        "template-rows:1": {
+            "description": "Sets the grid template rows property with multiple tracks.",
+            "types": [
+                "sequence[Unit.GridTrackSize]"
+            ],
+            "names": [
+                "rowSizes"
+            ],
+            "format": "{{rowSizes}}"
+        }
+    },
+    "inset:0": {
+        "shorthand": true,
+        "description": "Sets the inset property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+        ],
+        "format": "{{top}} {{right}} {{bottom}} {{left}}"
+    },
+    "inset:1": {
+        "shorthand": true,
+        "description": "Sets the inset property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "topBottom",
+            "leftRight"
+        ],
+        "format": "{{topBottom}} {{leftRight}}"
+    },
+    "inset:2": {
+        "shorthand": true,
+        "description": "Sets the inset property.",
+        "types": [
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "all"
+        ],
+        "format": "{{all}}"
+    },
+    "inset:3": {
+        "shorthand": true,
+        "description": "Sets the inset property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "top",
+            "leftRight",
+            "bottom"
+        ],
+        "format": "{{top}} {{leftRight}} {{bottom}}"
+    },
+    "inset-inline": {
+        "shorthand": true,
+        "description": "Sets the inset inline property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "start",
+            "end"
+        ],
+        "format": "{{start}} {{end}}"
+    },
+    "inset-inline-*": {
+        "end": {
+            "description": "Sets the inset inline end property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "end"
+            ],
+            "format": "{{end}}"
+        },
+        "start": {
+            "description": "Sets the inset inline start property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "start"
+            ],
+            "format": "{{start}}"
+        }
+    },
+    "inset-block": {
+        "shorthand": true,
+        "description": "Sets the inset block property.",
+        "types": [
+            "Unit.AutoLengthPercentage",
+            "Unit.AutoLengthPercentage"
+        ],
+        "names": [
+            "start",
+            "end"
+        ],
+        "format": "{{start}} {{end}}"
+    },
+    "inset-block-*": {
+        "end": {
+            "description": "Sets the inset block end property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "end"
+            ],
+            "format": "{{end}}"
+        },
+        "start": {
+            "description": "Sets the inset block start property.",
+            "types": [
+                "Unit.AutoLengthPercentage"
+            ],
+            "names": [
+                "start"
+            ],
+            "format": "{{start}}"
+        }
+    },
+    "image-*": {
+        "orientation": {
+            "description": "Sets the image orientation property.",
+            "types": [
+                "Unit.ImageOrientation"
+            ],
+            "names": [
+                "orientation"
+            ],
+            "format": "{{orientation}}"
+        },
+        "rendering": {
+            "description": "Sets the image rendering property.",
+            "types": [
+                "Unit.ImageRendering"
+            ],
+            "names": [
+                "rendering"
+            ],
+            "format": "{{rendering}}"
+        }
+    },
+    "math-*": {
+        "style": {
+            "description": "Sets the math style property.",
+            "types": [
+                "Unit.MathStyle"
+            ],
+            "names": [
+                "style"
+            ],
+            "format": "{{style}}"
+        },
+        "depth": {
+            "description": "Sets the math display property.",
+            "types": [
+                "Unit.MathDepth"
+            ],
+            "names": [
+                "depth"
+            ],
+            "format": "{{depth}}"
+        }
+    },
+    "overflow:0": {
+        "shorthand": true,
+        "description": "Sets the overflow property.",
+        "types": [
+            "Unit.OverflowValue",
+            "Unit.OverflowValue"
+        ],
+        "names": [
+            "x",
+            "y"
+        ],
+        "format": "{{x}} {{y}}"
+    },
+    "overflow:1": {
+        "description": "Sets the overflow property.",
+        "types": [
+            "Unit.OverflowValue"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "overflow-*": {
+        "block": {
+            "description": "Sets the overflow block property.",
+            "types": [
+                "Unit.OverflowValue"
+            ],
+            "names": [
+                "block"
+            ],
+            "format": "{{block}}"
+        },
+        "inline": {
+            "description": "Sets the overflow inline property.",
+            "types": [
+                "Unit.OverflowValue"
+            ],
+            "names": [
+                "inline"
+            ],
+            "format": "{{inline}}"
+        },
+        "x": {
+            "description": "Sets the overflow x property.",
+            "types": [
+                "Unit.OverflowValue"
+            ],
+            "names": [
+                "x"
+            ],
+            "format": "{{x}}"
+        },
+        "y": {
+            "description": "Sets the overflow y property.",
+            "types": [
+                "Unit.OverflowValue"
+            ],
+            "names": [
+                "y"
+            ],
+            "format": "{{y}}"
+        },
+        "anchor": {
+            "description": "Sets the overflow anchor property.",
+            "types": [
+                "Unit.OverflowAnchor"
+            ],
+            "names": [
+                "anchor"
+            ],
+            "format": "{{anchor}}"
+        },
+        "clip-margin": {
+            "description": "Sets the overflow clip margin property.",
+            "types": [
+                "Unit.OverflowClipMargin"
+            ],
+            "names": [
+                "clipMargin"
+            ],
+            "format": "{{clipMargin}}"
+        },
+        "wrap": {
+            "description": "Sets the overflow wrap property.",
+            "types": [
+                "Unit.OverflowWrap"
+            ],
+            "names": [
+                "wrap"
+            ],
+            "format": "{{wrap}}"
+        }
+    },
+    "cursor": {
+        "description": "Sets the cursor property.",
+        "types": [
+            "Unit.CursorAccent",
+            "optional[Unit.XYValue]",
+            "sequence[Unit.Source]"
+        ],
+        "shown": [
+            true,
+            true,
+            true
+        ],
+        "names": [
+            "value",
+            "position",
+            "urls"
+        ],
+        "format": "#SEQ, {{position}} {{value}}"
+    },
+    "display": {
+        "description": "Sets the display property.",
+        "types": [
+            "Unit.Display"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "content": {
+        "description": "Sets the content property.",
+        "types": [
+            "Unit.Content"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "transition:0": {
+        "shorthand": true,
+        "description": "Sets the transition shorthand property.",
+        "types": [
+            "Unit.TransitionProperty",
+            "Unit.Time",
+            "Unit.TimingFunction",
+            "Unit.Time"
+        ],
+        "names": [
+            "property",
+            "duration",
+            "timingFunction",
+            "delay"
+        ],
+        "format": "{{property}} {{duration}} {{timingFunction}} {{delay}}"
+    },
+    "transition:1": {
+        "shorthand": true,
+        "description": "Sets the transition shorthand property.",
+        "types": [
+            "Unit.TransitionProperty",
+            "Unit.Time",
+            "Unit.TimingFunction"
+        ],
+        "names": [
+            "property",
+            "duration",
+            "timingFunction"
+        ],
+        "format": "{{property}} {{duration}} {{timingFunction}}"
+    },
+    "transition:2": {
+        "shorthand": true,
+        "description": "Sets the transition shorthand property.",
+        "types": [
+            "Unit.TransitionProperty",
+            "Unit.Time"
+        ],
+        "names": [
+            "property",
+            "duration"
+        ],
+        "format": "{{property}} {{duration}}"
+    },
+    "transition-*": {
+        "delay": {
+            "description": "Sets the transition delay property.",
+            "types": [
+                "Unit.Time"
+            ],
+            "names": [
+                "delay"
+            ],
+            "format": "{{delay}}"
+        },
+        "duration": {
+            "description": "Sets the transition duration property.",
+            "types": [
+                "Unit.Time"
+            ],
+            "names": [
+                "duration"
+            ],
+            "format": "{{duration}}"
+        },
+        "property:0": {
+            "description": "Sets the transition property property.",
+            "types": [
+                "Unit.TransitionProperty"
+            ],
+            "names": [
+                "property"
+            ],
+            "format": "{{property}}"
+        },
+        "property:1": {
+            "description": "Sets the transition property to a list of properties.",
+            "types": [
+                "sequence[Unit.TransitionProperty]"
+            ],
+            "names": [
+                "properties"
+            ],
+            "format": "#SEQ,"
+        },
+        "timing-function": {
+            "description": "Sets the transition timing function property.",
+            "types": [
+                "Unit.TimingFunction"
+            ],
+            "names": [
+                "timingFunction"
+            ],
+            "format": "{{timingFunction}}"
+        }
+    },
+    "animation:0": {
+        "shorthand": true,
+        "description": "Sets the animation shorthand property.",
+        "types": [
+            "Unit.AnimationName",
+            "Unit.Time",
+            "Unit.TimingFunction",
+            "Unit.Time",
+            "Unit.AnimationIterationCount",
+            "Unit.AnimationDirection",
+            "Unit.AnimationFillMode",
+            "Unit.AnimationPlayState"
+        ],
+        "names": [
+            "name",
+            "duration",
+            "timingFunction",
+            "delay",
+            "iterationCount",
+            "direction",
+            "fillMode",
+            "playState"
+        ],
+        "format": "{{name}} {{duration}} {{timingFunction}} {{delay}} {{iterationCount}} {{direction}} {{fillMode}} {{playState}}"
+    },
+    "animation:1": {
+        "shorthand": true,
+        "description": "Sets the animation shorthand with name, duration, and timing.",
+        "types": [
+            "Unit.AnimationName",
+            "Unit.Time",
+            "Unit.TimingFunction"
+        ],
+        "names": [
+            "name",
+            "duration",
+            "timingFunction"
+        ],
+        "format": "{{name}} {{duration}} {{timingFunction}}"
+    },
+    "animation:2": {
+        "shorthand": true,
+        "description": "Sets the animation shorthand with name and duration.",
+        "types": [
+            "Unit.AnimationName",
+            "Unit.Time"
+        ],
+        "names": [
+            "name",
+            "duration"
+        ],
+        "format": "{{name}} {{duration}}"
+    },
+    "animation-*": {
+        "delay": {
+            "description": "Sets the animation delay property.",
+            "types": [
+                "Unit.Time"
+            ],
+            "names": [
+                "delay"
+            ],
+            "format": "{{delay}}"
+        },
+        "direction": {
+            "description": "Sets the animation direction property.",
+            "types": [
+                "Unit.AnimationDirection"
+            ],
+            "names": [
+                "direction"
+            ],
+            "format": "{{direction}}"
+        },
+        "duration": {
+            "description": "Sets the animation duration property.",
+            "types": [
+                "Unit.Time"
+            ],
+            "names": [
+                "duration"
+            ],
+            "format": "{{duration}}"
+        },
+        "fill-mode": {
+            "description": "Sets the animation fill mode property.",
+            "types": [
+                "Unit.AnimationFillMode"
+            ],
+            "names": [
+                "fillMode"
+            ],
+            "format": "{{fillMode}}"
+        },
+        "iteration-count": {
+            "description": "Sets the animation iteration count property.",
+            "types": [
+                "Unit.AnimationIterationCount"
+            ],
+            "names": [
+                "count"
+            ],
+            "format": "{{count}}"
+        },
+        "name": {
+            "description": "Sets the animation name property.",
+            "types": [
+                "Unit.AnimationName"
+            ],
+            "names": [
+                "name"
+            ],
+            "format": "{{name}}"
+        },
+        "play-state": {
+            "description": "Sets the animation play state property.",
+            "types": [
+                "Unit.AnimationPlayState"
+            ],
+            "names": [
+                "playState"
+            ],
+            "format": "{{playState}}"
+        },
+        "timing-function": {
+            "description": "Sets the animation timing function property.",
+            "types": [
+                "Unit.TimingFunction"
+            ],
+            "names": [
+                "timingFunction"
+            ],
+            "format": "{{timingFunction}}"
+        }
+    },
+    "transform:0": {
+        "description": "Sets the transform property with a single function.",
+        "types": [
+            "Unit.TransformFunction"
+        ],
+        "names": [
+            "transform"
+        ],
+        "format": "{{transform}}"
+    },
+    "transform:1": {
+        "description": "Sets the transform property with multiple functions.",
+        "types": [
+            "sequence[Unit.TransformFunction]"
+        ],
+        "names": [
+            "transforms"
+        ],
+        "format": "#SEQ "
+    },
+    "transform-*": {
+        "box": {
+            "description": "Sets the transform box property.",
+            "types": [
+                "Unit.TransformBox"
+            ],
+            "names": [
+                "box"
+            ],
+            "format": "{{box}}"
+        },
+        "origin:0": {
+            "description": "Sets the transform origin with a single value.",
+            "types": [
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "offset"
+            ],
+            "format": "{{offset}}"
+        },
+        "origin:1": {
+            "description": "Sets the transform origin with x and y.",
+            "types": [
+                "Unit.LengthPercentage",
+                "Unit.LengthPercentage"
+            ],
+            "names": [
+                "x",
+                "y"
+            ],
+            "format": "{{x}} {{y}}"
+        },
+        "origin:2": {
+            "description": "Sets the transform origin with x, y, and z.",
+            "types": [
+                "Unit.LengthPercentage",
+                "Unit.LengthPercentage",
+                "Unit.Length"
+            ],
+            "names": [
+                "x",
+                "y",
+                "z"
+            ],
+            "format": "{{x}} {{y}} {{z}}"
+        },
+        "origin:3": {
+            "description": "Sets the transform origin with keyword positions.",
+            "types": [
+                "Unit.ObjectPosition"
+            ],
+            "names": [
+                "position"
+            ],
+            "format": "{{position}}"
+        }
+    },
+    "fill:0": {
+        "description": "Sets the SVG fill color.",
+        "types": [
+            "Unit.Color"
+        ],
+        "names": [
+            "color"
+        ],
+        "format": "{{color}}"
+    },
+    "fill-opacity": {
+        "description": "Sets the opacity of the SVG fill.",
+        "types": [
+            "Unit.NumberPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "fill-rule": {
+        "description": "Sets the algorithm used to determine the inside part of an SVG shape.",
+        "types": [
+            "Unit.FillRule"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "stroke:0": {
+        "description": "Sets the SVG stroke color.",
+        "types": [
+            "Unit.Color"
+        ],
+        "names": [
+            "color"
+        ],
+        "format": "{{color}}"
+    },
+    "stroke-*": {
+        "dasharray": {
+            "description": "Sets the pattern of dashes and gaps used to paint the outline of SVG shapes.",
+            "types": [
+                "Unit.Length"
+            ],
+            "names": [
+                "dasharray"
+            ],
+            "format": "{{dasharray}}"
+        },
+        "dashoffset": {
+            "description": "Sets the offset for the start position of the SVG stroke dash array.",
+            "types": [
+                "Unit.Length"
+            ],
+            "names": [
+                "dashoffset"
+            ],
+            "format": "{{dashoffset}}"
+        },
+        "linecap": {
+            "description": "Sets the shape to be used at the end of open subpaths when they are stroked.",
+            "types": [
+                "Unit.StrokeLinecap"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "linejoin": {
+            "description": "Sets the shape to be used at the corners of paths when they are stroked.",
+            "types": [
+                "Unit.StrokeLinejoin"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "miterlimit": {
+            "description": "Sets the limit on the ratio of the miter length to the stroke width for mitered stroke joins.",
+            "types": [
+                "Unit.Number"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "opacity": {
+            "description": "Sets the opacity of the SVG stroke.",
+            "types": [
+                "Unit.NumberPercentage"
+            ],
+            "names": [
+                "value"
+            ],
+            "format": "{{value}}"
+        },
+        "width": {
+            "description": "Sets the width of the SVG stroke.",
+            "types": [
+                "Unit.Length"
+            ],
+            "names": [
+                "strokeWidth"
+            ],
+            "format": "{{strokeWidth}}"
+        }
+    },
+    "clip-rule": {
+        "description": "Sets the algorithm used to determine what parts of the canvas are included inside a clip path.",
+        "types": [
+            "Unit.FillRule"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "shape-rendering": {
+        "description": "Provides hints to the renderer about what trade-offs to make when rendering SVG shapes.",
+        "types": [
+            "Unit.ShapeRendering"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "marker-*": {
+        "start": {
+            "description": "Sets the arrowhead or polymarker drawn at the first vertex of an SVG element.",
+            "types": [
+                "Unit.NoneUrl"
+            ],
+            "names": [
+                "startMarker"
+            ],
+            "format": "{{startMarker}}"
+        },
+        "mid": {
+            "description": "Sets the arrowhead or polymarker drawn at the middle vertices of an SVG element.",
+            "types": [
+                "Unit.NoneUrl"
+            ],
+            "names": [
+                "midMarker"
+            ],
+            "format": "{{midMarker}}"
+        },
+        "end": {
+            "description": "Sets the arrowhead or polymarker drawn at the final vertex of an SVG element.",
+            "types": [
+                "Unit.NoneUrl"
+            ],
+            "names": [
+                "endMarker"
+            ],
+            "format": "{{endMarker}}"
+        }
+    },
+    "width:2": {
+        "description": "Sets the width property.",
+        "types": [
+            "Unit.Fraction"
+        ],
+        "names": [
+            "fraction"
+        ],
+        "format": "{{fraction}}"
+    },
+    "height:2": {
+        "description": "Sets the height property.",
+        "types": [
+            "Unit.Fraction"
+        ],
+        "names": [
+            "fraction"
+        ],
+        "format": "{{fraction}}"
+    },
+    "scroll-snap-type": {
+        "description": "Sets the scroll snap type.",
+        "types": [
+            "Unit.ScrollSnapType",
+            "optional[Unit.ScrollSnapStrictness]"
+        ],
+        "names": [
+            "axis",
+            "strictness"
+        ],
+        "format": "{{axis}} {{strictness}}"
+    },
+    "scroll-snap-align": {
+        "description": "Sets the scroll snap alignment.",
+        "types": [
+            "Unit.ScrollSnapAlign"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-snap-stop": {
+        "description": "Sets the scroll snap stop behavior.",
+        "types": [
+            "Unit.ScrollSnapStop"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-behavior": {
+        "description": "Sets whether scrolling is instant or smoothly animated.",
+        "types": [
+            "Unit.ScrollBehavior"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin": {
+        "description": "Sets the scroll-margin property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-top": {
+        "description": "Sets the scroll-margin-top property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-bottom": {
+        "description": "Sets the scroll-margin-bottom property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-left": {
+        "description": "Sets the scroll-margin-left property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-right": {
+        "description": "Sets the scroll-margin-right property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-block": {
+        "description": "Sets the scroll-margin-block property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-block-start": {
+        "description": "Sets the scroll-margin-block-start property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-block-end": {
+        "description": "Sets the scroll-margin-block-end property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-inline": {
+        "description": "Sets the scroll-margin-inline property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-inline-start": {
+        "description": "Sets the scroll-margin-inline-start property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-margin-inline-end": {
+        "description": "Sets the scroll-margin-inline-end property.",
+        "types": [
+            "Unit.Length"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding": {
+        "description": "Sets the scroll-padding property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-top": {
+        "description": "Sets the scroll-padding-top property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-bottom": {
+        "description": "Sets the scroll-padding-bottom property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-left": {
+        "description": "Sets the scroll-padding-left property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-right": {
+        "description": "Sets the scroll-padding-right property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-block": {
+        "description": "Sets the scroll-padding-block property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-block-start": {
+        "description": "Sets the scroll-padding-block-start property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-block-end": {
+        "description": "Sets the scroll-padding-block-end property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-inline": {
+        "description": "Sets the scroll-padding-inline property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-inline-start": {
+        "description": "Sets the scroll-padding-inline-start property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "scroll-padding-inline-end": {
+        "description": "Sets the scroll-padding-inline-end property.",
+        "types": [
+            "Unit.LengthPercentage"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "will-change": {
+        "description": "Hints to the browser about which properties are expected to change.",
+        "types": [
+            "Unit.WillChange"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "content-visibility": {
+        "description": "Controls whether an element renders its contents.",
+        "types": [
+            "Unit.ContentVisibility"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-image": {
+        "description": "Sets the mask image.",
+        "types": [
+            "Unit.Source"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-size": {
+        "description": "Sets the size of the mask image.",
+        "types": [
+            "Unit.BackgroundSize"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-repeat": {
+        "description": "Sets how the mask image is repeated.",
+        "types": [
+            "Unit.MaskRepeat"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-position": {
+        "description": "Sets the position of the mask image.",
+        "types": [
+            "Unit.BackgroundPosition"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-type": {
+        "description": "Sets whether the mask is treated as luminance or alpha.",
+        "types": [
+            "Unit.MaskType"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-mode": {
+        "description": "Sets the mask mode.",
+        "types": [
+            "Unit.MaskMode"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-composite": {
+        "description": "Sets the compositing operation for the mask.",
+        "types": [
+            "Unit.MaskComposite"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-origin": {
+        "description": "Sets the mask positioning area.",
+        "types": [
+            "Unit.BackgroundOrigin"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    },
+    "mask-clip": {
+        "description": "Sets the mask painting area.",
+        "types": [
+            "Unit.BackgroundClip"
+        ],
+        "names": [
+            "value"
+        ],
+        "format": "{{value}}"
+    }
+}

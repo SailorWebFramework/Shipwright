@@ -1,0 +1,1648 @@
+{
+    "a": {
+        "description": "Together with its href attribute, creates a hyperlink to web pages, files, email addresses, locations within the current page, or anything else a URL can address.",
+        "alias": "Anchor",
+        "inits": [
+            {"type": "text"}, 
+            {"type": "body"},
+            {"type": "empty"},
+            {"type": "required", "args": {"href": "String"}},
+            {"type": "required-with-body", "args": {"href": "String"}},
+            {"type": "required-with-text", "args": {"href": "String"}}
+        ],
+        "attributes": {
+            "href": {
+                "description": "The URL of the link.",
+                "type": "String"
+            },
+            "download": {
+                "description": "Specifies that the target will be downloaded when a user clicks on the hyperlink.",
+                "type": "String"
+            },
+            "hreflang": {
+                "description": "Specifies the language of the linked document.",
+                "type": "Unit.Language"
+            },
+            "media": {
+                "description": "Specifies what media/device the linked document is optimized for.",
+                "type": "String"
+            },
+            "ping": {
+                "description": "Specifies a space-separated list of URLs to which, when the link is followed, post requests with the body ping will be sent by the browser (in the background). Typically used for tracking.",
+                "type": "sequence[String]"
+            },
+            "referrerpolicy": {
+                "description": "Specifies which referrer information to send when fetching the linked resource.",
+                "type": "Unit.ReferrerPolicy"
+            },
+            "rel": {
+                "description": "Specifies the relationship between the current document and the linked document.",
+                "type": "String"
+            },
+            "target": {
+                "description": "Specifies where to open the linked document.",
+                "type": "Unit.Target"
+            }
+        }
+    },
+    "div": {
+        "description": "The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.",
+        "inits": [
+            {"type": "text"}, 
+            {"type": "body"},
+            {"type": "empty"}
+        ]
+    },
+    "h1": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h1 element represents a level 1 heading."
+    },
+    "h2": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h2 element represents a level 2 heading."
+    },
+    "h3": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h3 element represents a level 3 heading."
+    },
+    "h4": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h4 element represents a level 4 heading."
+    },
+    "h5": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h5 element represents a level 5 heading."
+    },
+    "h6": {
+        "inits": [{"type": "text"}, {"type": "body"}],
+        "description": "The h6 element represents a level 6 heading."
+    },
+    "img": {
+        "description": "The img element represents an image.",
+        "inits": [
+            {"type": "empty"},
+            {"type": "required", "args": {"src": "String"}}
+        ],
+        "attributes": {
+            "alt": {
+                "description": "The alternative text for the image.",
+                "type": "String"
+            },
+            "crossorigin": {
+                "description": "How the element handles cross-origin requests.",
+                "type": "Unit.CrossOrigin"
+            },
+            "height": {
+                "description": "The intrinsic height of the image in pixels.",
+                "type": "int"
+            },
+            "ismap": {
+                "description": "Indicates that the image is part of a server-side image map.",
+                "type": "bool"
+            },
+            "loading": {
+                "description": "Indicates how the browser should load the image.",
+                "type": "Unit.Loading"
+            },
+            "referrerpolicy": {
+                "description": "Specifies which referrer information to send when fetching the image.",
+                "type": "Unit.ReferrerPolicy"
+            },
+            "sizes": {
+                "description": "The sizes attribute gives the sizes of the icons for visual media.",
+                "type": "String"
+            },
+            "src": {
+                "description": "The URL of the image.",
+                "type": "String"
+            },
+            "srcset": {
+                "description": "A list of one or more strings separated by commas indicating a set of possible images to use for the source.",
+                "type": "String"
+            },
+            "usemap": {
+                "description": "The URL of the image map to use.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The intrinsic width of the image in pixels.",
+                "type": "int"
+            }
+        }
+    },
+    "button": {
+        "description": "The button element represents a clickable button.",
+        "inits": [
+            {"type": "empty"},
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "autofocus": {
+                "description": "Specifies that the button should automatically get focus when the page loads.",
+                "type": "bool"
+            },
+            "disabled": {
+                "description": "Specifies that the button should be disabled.",
+                "type": "bool"
+            },
+            "form": {
+                "description": "Specifies one or more forms the button belongs to.",
+                "type": "String"
+            },
+            "formaction": {
+                "description": "Specifies the URL of the file that will process the input control when the form is submitted.",
+                "type": "String"
+            },
+            "formenctype": {
+                "description": "Specifies how the form data should be encoded when submitting it to the server.",
+                "type": "Unit.FormEncType"
+            },
+            "formmethod": {
+                "description": "Specifies the HTTP method to use when sending form data.",
+                "type": "Unit.FormMethod"
+            },
+            "formnovalidate": {
+                "description": "Specifies that the form-data should not be validated on submission.",
+                "type": "bool"
+            },
+            "formtarget": {
+                "description": "Specifies where to display the response after submitting the form.",
+                "type": "Unit.Target"
+            },
+            "name": {
+                "description": "Specifies the name of the button.",
+                "type": "String"
+            },
+            "type": {
+                "description": "Specifies the type of button.",
+                "type": "Unit.ButtonType"
+            },
+            "value": {
+                "description": "Specifies the initial value of the button.",
+                "type": "String"
+            }
+        }
+    },
+    "p": {
+        "description": "The p element represents a paragraph.",
+        "alias": "Paragraph",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "span": {
+        "description": "The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children.",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "i": {
+        "description": "The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.",
+        "alias": "Italic",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "b": {
+        "description": "The b element represents a span of text to which attention is being drawn for utilitarian purposes without conveying any extra importance and with no implication of an alternate voice or mood, such as key words in a document abstract, product names in a review, actionable words in interactive text-driven software, or an article lede.",
+        "alias": "Bold",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "u": {
+        "description": "The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.",
+        "alias": "Underline",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "ul": {
+        "description": "The ul element represents an unordered list of items, typically rendered as a bulleted list.",
+        "alias": "UnorderedList",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "ol": {
+        "description": "The ol element represents an ordered list of items, typically rendered as a numbered list.",
+        "alias": "OrderedList",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "mark": {
+        "description": "The mark element represents a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.",
+        "inits": [
+            {"type": "text"}, {"type": "body"}
+        ]
+    },
+    "input": {
+        "description": "The input element represents a typed data field, usually with a form control to allow the user to edit the data.",
+        "inits": [ ],
+        "attributes": {
+            "accept": {
+                "description": "Specifies the types of files that the server accepts (only for type=\"file\").",
+                "type": "String"
+            },
+            "alt": {
+                "description": "The alternative text for the image specified by src when the input type is image.",
+                "type": "String"
+            },
+            "autocomplete": {
+                "description": "Specifies whether the input element should have autocomplete enabled.",
+                "type": "Unit.Toggle"
+            },
+            "autofocus": {
+                "description": "Specifies that the input element should automatically get focus when the page loads.",
+                "type": "bool"
+            },
+            "checked": {
+                "description": "Specifies that an input element should be pre-selected when the page loads (for type=\"radio\" or type=\"checkbox\").",
+                "type": "bool"
+            },
+            "dirname": {
+                "description": "Specifies that the input element should be directionally isolated from its surrounding content.",
+                "type": "String"
+            },
+            "disabled": {
+                "description": "Specifies that the input element should be disabled.",
+                "type": "bool"
+            },
+            "form": {
+                "description": "Specifies one or more forms the input element belongs to.",
+                "type": "String"
+            },
+            "formaction": {
+                "description": "Specifies the URL of the file that will process the input control when the form is submitted.",
+                "type": "String"
+            },
+            "formenctype": {
+                "description": "Specifies how the form data should be encoded when submitting it to the server.",
+                "type": "Unit.FormEncType"
+            },
+            "formmethod": {
+                "description": "Specifies the HTTP method to use when sending form data.",
+                "type": "Unit.FormMethod"
+            },
+            "formnovalidate": {
+                "description": "Specifies that the form-data should not be validated on submission.",
+                "type": "bool"
+            },
+            "formtarget": {
+                "description": "Specifies where to display the response after submitting the form.",
+                "type": "Unit.Target"
+            },
+            "height": {
+                "description": "The height of the image input (only for type=\"image\").",
+                "type": "int"
+            },
+            "list": {
+                "description": "Specifies a datalist for the input element.",
+                "type": "String"
+            },
+            "max": {
+                "description": "Specifies the maximum value for the input element.",
+                "type": "Unit.InputQuantity"
+            },
+            "maxlength": {
+                "description": "Specifies the maximum number of characters allowed in the input element.",
+                "type": "int"
+            },
+            "min": {
+                "description": "Specifies the minimum value for the input element.",
+                "type": "Unit.InputQuantity"
+            },
+            "minlength": {
+                "description": "Specifies the minimum number of characters allowed in the input element.",
+                "type": "int"
+            },
+            "multiple": {
+                "description": "Specifies that the user is allowed to enter more than one value in the input element.",
+                "type": "bool"
+            },
+            "name": {
+                "description": "Specifies the name of the input element.",
+                "type": "String"
+            },
+            "pattern": {
+                "description": "Specifies a regular expression that the input element's value is checked against.",
+                "type": "String"
+            },
+            "placeholder": {
+                "description": "Specifies a short hint that describes the expected value of the input element.",
+                "type": "String"
+            },
+            "popovertarget": {
+                "description": "Specifies the target of the popover.",
+                "type": "String"
+            },
+            "popovertargetaction": {
+                "description": "Specifies the action of the popover target.",
+                "type": "Unit.PopoverTargetAction"
+            },
+            "readonly": {
+                "description": "Specifies that the input element is read only.",
+                "type": "bool"
+            },
+            "required": {
+                "description": "Specifies that the input element must be filled out before submitting the form.",
+                "type": "bool"
+            },
+            "size": {
+                "description": "Specifies the width of the input element, in characters.",
+                "type": "int"
+            },
+            "src": {
+                "description": "Specifies the URL of the image to use as a submit button (only for type=\"image\").",
+                "type": "String"
+            },
+            "step": {
+                "description": "Specifies the legal number intervals for the input element.",
+                "type": "String"
+            },
+            "type": {
+                "description": "Specifies the type of input element to display.",
+                "type": "Unit.InputType"
+            },
+            "value": {
+                "description": "Specifies the initial value of the input element.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The width of the image input (only for type=\"image\").",
+                "type": "int"
+            }
+        }
+    },
+    "nav": {
+        "description": "The nav element represents a section of a page that links to other pages or to parts within the page: a section with navigation links.",
+        "alias": "NavigationSection",
+        "inits": [
+            {"type": "body"}
+        ]
+
+    },
+    "title": {
+        "description": "The title element represents the document's title or name. Authors should use titles that identify their documents even when they are used out of context, for example in a user's history or bookmarks, or in search results.",
+        "type": "head",
+        "inits": [
+            {"type": "text"}
+        ]
+    },
+    "form": {
+        "description": "The form element represents a document section that contains interactive controls to submit information to a web server.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "accept-charset": {
+                "description": "Specifies the character encodings that are to be used for the form submission.",
+                "type": "String"
+            },
+            "action": {
+                "description": "Specifies the URL of the file that will process the input control when the form is submitted.",
+                "type": "String"
+            },
+            "autocomplete": {
+                "description": "Specifies whether the form should have autocomplete enabled.",
+                "type": "Unit.Toggle"
+            },
+            "enctype": {
+                "description": "Specifies how the form data should be encoded when submitting it to the server.",
+                "type": "Unit.FormEncType"
+            },
+            "method": {
+                "description": "Specifies the HTTP method to use when sending form data.",
+                "type": "Unit.FormMethod"
+            },
+            "name": {
+                "description": "Specifies the name of the form.",
+                "type": "String"
+            },
+            "novalidate": {
+                "description": "Specifies that the form-data should not be validated on submission.",
+                "type": "bool"
+            },
+            "target": {
+                "description": "Specifies where to display the response after submitting the form.",
+                "type": "Unit.Target"
+            }
+        }
+    },
+    "base": {
+        "description": "The base element allows authors to specify the document base URL for the purposes of resolving relative URLs, and the name of the default browsing context for the purposes of following hyperlinks.",
+        "type": "head",
+        "inits": [
+            {"type": "required", "args": {"href": "String"}},
+            {"type": "required", "args": {"target": "String"}},
+            {"type": "required", "args": {"href": "String", "target": "String"}}
+
+        ],
+        "attributes": {
+            "href": {
+                "description": "The base URL to be used throughout the document for relative URLs.",
+                "type": "String"
+            },
+            "target": {
+                "description": "The default browsing context for the purposes of following hyperlinks.",
+                "type": "Unit.Target"
+            }
+        }
+    },
+    "meta": {
+        "description": "The meta element represents various kinds of metadata that cannot be expressed using the title, base, link, style, and script elements.",
+        "type": "head",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "charset": {
+                "description": "Declares the document's character encoding.",
+                "type": "String"
+            },
+            "content": {
+                "description": "The value of the element.",
+                "type": "String"
+            },
+            "http-equiv": {
+                "description": "Indicates that the content is a pragma directive.",
+                "type": "String"
+            },
+            "name": {
+                "description": "The name of the metadata.",
+                "type": "String"
+            }
+        }
+    },
+    "link": {
+        "description": "The link element allows authors to link their document to other resources.",
+        "type": "head",
+        "inits": [
+            {
+                "type": "required",
+                "args": {
+                    "rel": "String",
+                    "href": "String"
+                }
+            }
+        ],
+        "attributes": {
+            "href": {
+                "description": "The URL of the link.",
+                "type": "String"
+            },
+            "crossorigin": {
+                "description": "How the element handles cross-origin requests.",
+                "type": "Unit.CrossOrigin"
+            },
+            "hreflang": {
+                "description": "Specifies the language of the linked document.",
+                "type": "Unit.Language"
+            },
+            "media": {
+                "description": "Specifies what media/device the linked document is optimized for.",
+                "type": "String"
+            },
+            "referrerpolicy": {
+                "description": "Specifies which referrer information to send when fetching the linked resource.",
+                "type": "Unit.ReferrerPolicy"
+            },
+            "rel": {
+                "description": "Specifies the relationship between the current document and the linked document.",
+                "type": "String"
+            },
+            "sizes": {
+                "description": "The sizes attribute gives the sizes of the icons for visual media.",
+                "type": "String"
+            },
+            "type": {
+                "description": "Specifies the media type of the linked document.",
+                "type": "String"
+            }
+        }
+    },
+    "li": {
+        "description": "The li element represents a list item.",
+        "alias": "ListItem",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "value": {
+                "description": "Specifies the ordinal value of the list item.",
+                "type": "Int"
+            }
+        }
+
+    },
+    "table": {
+        "description": "The table element represents data with more than one dimension, in the form of a table.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "th": {
+        "description": "The th element defines a cell as header of a group of table cells. The exact nature of this group is defined by the scope and headers attributes.",
+        "alias": "TableHeader",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "abbr": {
+                "description": "Specifies an abbreviated version of the content in a header cell.",
+                "type": "String"
+            },
+            "colspan": {
+                "description": "Specifies the number of columns a header cell should span.",
+                "type": "int"
+            },
+            "headers": {
+                "description": "Specifies one or more header cells a cell is related to.",
+                "type": "String"
+            },
+            "rowspan": {
+                "description": "Specifies the number of rows a header cell should span.",
+                "type": "int"
+            },
+            "scope": {
+                "description": "Specifies the set of data cells for which the current header cell provides header information.",
+                "type": "Unit.Scope"
+            }
+        }
+    },
+    "tr": {
+        "description": "The tr element defines a row of cells in a table.",
+        "alias": "TableRow",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "td": {
+        "description": "The td element defines a cell of a table that contains data.",
+        "alias": "TableData",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "colspan": {
+                "description": "Specifies the number of columns a cell should span.",
+                "type": "int"
+            },
+            "headers": {
+                "description": "Specifies one or more header cells a cell is related to.",
+                "type": "String"
+            },
+            "rowspan": {
+                "description": "Specifies the number of rows a cell should span.",
+                "type": "int"
+            }
+        }
+    },
+    "label": {
+        "description": "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "for": {
+                "description": "Specifies the form control that the label element is associated with.",
+                "type": "String"
+            }
+        }
+    },
+    "iframe": {
+        "description": "The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "allow": {
+                "description": "A set of values that controls the sandboxing of the iframe.",
+                "type": "String"
+            },
+            "allowfullscreen": {
+                "description": "Whether the iframe can activate fullscreen mode.",
+                "type": "bool"
+            },
+            "height": {
+                "description": "The height of the iframe's embedded content area.",
+                "type": "int"
+            },
+            "name": {
+                "description": "A name for the nested browsing context.",
+                "type": "String"
+            },
+            "referrerpolicy": {
+                "description": "Specifies which referrer information to send when fetching the iframe's resource.",
+                "type": "Unit.ReferrerPolicy"
+            },
+            "sandbox": {
+                "description": "A set of values that controls the features to enable and disable within the iframe.",
+                "type": "Unit.Sandbox"
+            },
+            "src": {
+                "description": "The URL of the page to embed.",
+                "type": "String"
+            },
+            "srcdoc": {
+                "description": "A static HTML content to embed.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The width of the iframe's embedded content area.",
+                "type": "int"
+            }
+        }
+    },
+    "s": {
+        "description": "The s element represents contents that are no longer accurate or no longer relevant.",
+        "alias": "Strikethrough",
+        "inits": [
+            {"type": "text"}
+        ]
+    },
+    "q": {
+        "description": "The q element represents some phrasing content quoted from another source.",
+        "alias": "Quotation",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "cite": {
+                "description": "Contains a URL which points to the source of the quote.",
+                "type": "String"
+            }
+        }
+    },
+    "bdo": {
+        "description": "The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "dir": {
+                "description": "Specifies the direction of text display, either left-to-right or right-to-left.",
+                "type": "Unit.Direction"
+            }
+        }
+    }, 
+    "bdi": {
+        "description": "The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "blockquote": {
+        "description": "The blockquote element represents a section that is quoted from another source.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "cite": {
+                "description": "Contains a URL which points to the source of the quote.",
+                "type": "String"
+            }
+        }
+    },
+    "address": {
+        "description": "The address element represents the contact information for its nearest article or body element ancestor.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "area": {
+        "description": "The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "alt": {
+                "description": "The text alternative of the area element.",
+                "type": "String"
+            },
+            "coords": {
+                "description": "The coordinates of the area.",
+                "type": "String"
+            },
+            "download": {
+                "description": "Indicates that the hyperlink is to be used for downloading a resource.",
+                "type": "String"
+            },
+            "href": {
+                "description": "The URL of the hyperlink.",
+                "type": "String"
+            },
+            "hreflang": {
+                "description": "The language of the linked resource.",
+                "type": "Unit.Language"
+            },
+            "media": {
+                "description": "The media the resource applies to.",
+                "type": "String"
+            },
+            "referrerpolicy": {
+                "description": "Specifies which referrer information to send when fetching the resource.",
+                "type": "Unit.ReferrerPolicy"
+            },
+            "rel": {
+                "description": "The relationship between the document containing the hyperlink and the destination resource.",
+                "type": "String"
+            },
+            "shape": {
+                "description": "The shape of the area.",
+                "type": "Unit.AreaShape"
+            },
+            "target": {
+                "description": "The browsing context for the hyperlink.",
+                "type": "Unit.Target"
+            }
+        }
+    },
+    "article": {
+        "description": "The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable, e.g., in syndication.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "aside": {
+        "description": "The aside element represents a portion of a document whose content is only indirectly related to the document's main content.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "audio": {
+        "description": "The audio element represents a sound or audio stream.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "autoplay": {
+                "description": "A Boolean attribute; if specified, the audio will automatically begin playback as soon as it can do so, without waiting for the entire audio file to finish downloading.",
+                "type": "bool"
+            },
+            "controls": {
+                "description": "If this attribute is present, the browser will offer controls to allow the user to control audio playback, including volume, seeking, and pause/resume playback.",
+                "type": "bool"
+            },
+            "crossorigin": {
+                "description": "How the element handles cross-origin requests.",
+                "type": "Unit.CrossOrigin"
+            },
+            "loop": {
+                "description": "A Boolean attribute; if specified, the audio player will automatically seek back to the start upon reaching the end of the audio.",
+                "type": "bool"
+            },
+            "muted": {
+                "description": "A Boolean attribute; if specified, the audio will be initially silenced.",
+                "type": "bool"
+            },
+            "preload": {
+                "description": "This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience.",
+                "type": "Unit.Preload"
+            },
+            "src": {
+                "description": "The URL of the audio file.",
+                "type": "String"
+            }
+        }
+    },
+    "br": {
+        "description": "The br element represents a line break.",
+        "alias": "LineBreak",
+        "inits": [
+            {"type": "empty"}
+        ]
+    },
+    "canvas": {
+        "description": "The canvas element provides scripts with a resolution-dependent bitmap canvas, which can be used for rendering graphs, game graphics, or other visual images on the fly.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "height": {
+                "description": "The height of the coordinate space in CSS pixels.",
+                "type": "int"
+            },
+            "width": {
+                "description": "The width of the coordinate space in CSS pixels.",
+                "type": "int"
+            }
+        }
+    },
+    "caption": {
+        "description": "The caption element represents the title of the table that is its parent, if it has a parent and that is a table element.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "cite": {
+        "description": "The cite element represents the title of a work (e.g. a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theatre production, a play, an opera, a musical, an exhibition, a legal case report, a computer program, etc).",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "code": {
+        "description": "The code element represents a fragment of computer code.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "col": {
+        "description": "The col element defines a column within a table and is used for defining common semantics on all common cells.",
+        "alias": "Column",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "span": {
+                "description": "The number of columns that the col element spans.",
+                "type": "int"
+            }
+        }
+    },
+    "colgroup": {
+        "description": "The colgroup element defines a group of columns within a table.",
+        "alias": "ColumnGroup",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "span": {
+                "description": "The number of columns that the colgroup element spans.",
+                "type": "int"
+            }
+        }
+    },
+    "data": {
+        "description": "The data element represents its contents, along with a machine-readable form of those contents in the value attribute.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "value": {
+                "description": "The machine-readable form of the data.",
+                "type": "String"
+            }
+        }
+    },
+    "datalist": {
+        "description": "The datalist element contains a set of option elements that represent the permissible or recommended options available to users.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "option": {
+        "description": "The option element represents an option in a select element or as part of a list of suggestions in a datalist element.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "disabled": {
+                "description": "A Boolean attribute indicating that the option is disabled.",
+                "type": "bool"
+            },
+            "label": {
+                "description": "A string providing a label for the option.",
+                "type": "String"
+            },
+            "selected": {
+                "description": "A Boolean attribute indicating that the option is selected by default.",
+                "type": "bool"
+            },
+            "value": {
+                "description": "The value of the option.",
+                "type": "String"
+            }
+        }
+    },
+    "dd": {
+        "description": "The dd element represents the description, definition, or value, part of a term-description group in a description list.",
+        "alias": "DescriptionDetails",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "del": {
+        "description": "The del element represents a range of text that has been deleted from a document.",
+        "alias": "DeletedText",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "cite": {
+                "description": "Contains a URL which points to the source of the quote.",
+                "type": "String"
+            },
+            "datetime": {
+                "description": "This attribute indicates the time and date of the change and must be a valid date string.",
+                "type": "String"
+            }
+        }
+    },
+    "ins": {
+        "description": "The ins element represents a range of text that has been added to a document.",
+        "alias": "InsertedText",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "cite": {
+                "description": "Contains a URL which points to the source of the quote.",
+                "type": "String"
+            },
+            "datetime": {
+                "description": "This attribute indicates the time and date of the change and must be a valid date string.",
+                "type": "String"
+            }
+        }
+    },
+    "details": {
+        "description": "The details element represents a disclosure widget from which the user can obtain additional information or controls.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "open": {
+                "description": "A Boolean attribute indicating whether the details are visible.",
+                "type": "bool"
+            },
+            "name": {
+                "description": "The name of the details element.",
+                "type": "String"
+            }
+        }
+    },
+    "dfn": {
+        "description": "The dfn element represents the defining instance of a term.",
+        "alias": "Definition",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "dialog": {
+        "description": "The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "open": {
+                "description": "A Boolean attribute indicating whether the dialog is available for interaction.",
+                "type": "bool"
+            }
+        }
+    },
+    "dl": {
+        "description": "The dl element represents an association list consisting of zero or more name-value groups (a description list).",
+        "alias": "DescriptionList",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "dt": {
+        "description": "The dt element represents the term being defined within a term-description group in a description list.",
+        "alias": "DescriptionTerm",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "em": {
+        "description": "The em element represents stress emphasis of its contents.",
+        "alias": "Emphasis",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "embed": {
+        "description": "The embed element provides an integration point for an external (typically non-HTML) application or interactive content.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "height": {
+                "description": "The height of the embedded content area.",
+                "type": "int"
+            },
+            "src": {
+                "description": "The URL of the embeddable content.",
+                "type": "String"
+            },
+            "type": {
+                "description": "The type of the embedded content.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The width of the embedded content area.",
+                "type": "int"
+            }
+        }
+    },
+    "fieldset": {
+        "description": "The fieldset element represents a set of form controls optionally grouped under a common name.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "disabled": {
+                "description": "A Boolean attribute indicating whether the form controls in the fieldset are disabled.",
+                "type": "bool"
+            },
+            "form": {
+                "description": "The form element that the fieldset element is associated with (its form owner).",
+                "type": "String"
+            },
+            "name": {
+                "description": "The name of the fieldset element.",
+                "type": "String"
+            }
+        }
+    },
+    "figcaption": {
+        "description": "The figcaption element represents a caption or legend for the rest of the contents of the figcaption's parent figure element, if any.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "figure": {
+        "description": "The figure element represents a unit of content, optionally with a caption, that is self-contained, that is typically referenced as a single unit from the main flow of the document, and that can be moved away from the main flow of the document without affecting the document's meaning.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "footer": {
+        "description": "The footer element represents a footer for its nearest sectioning content or sectioning root element.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "header": {
+        "description": "The header element represents a group of introductory or navigational aids.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "HeadingGroup": {
+        "description": "The HeadingGroup element represents a group of headings.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "hr": {
+        "description": "The hr element represents a thematic break between paragraph-level elements.",
+        "alias": "HorizontalRule",
+        "inits": [
+            {"type": "empty"}
+        ]
+    },
+    "kbd": {
+        "description": "The kbd element represents user input (typically keyboard input, although it may also be used to represent other input, such as voice commands).",
+        "alias": "KeyboardInput",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "legend": {
+        "description": "The legend element represents a caption for the content of its parent fieldset.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "main": {
+        "description": "The main element represents the main content of the body of a document or application.",
+        "alias": "MainContent",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "map": {
+        "description": "The map element, in conjunction with an img element and any area element descendants, defines an image map.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "name": {
+                "description": "The name of the map element.",
+                "type": "String"
+            }
+        }
+    },
+    "menu": {
+        "description": "The menu element represents a group of commands.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "meter": {
+        "description": "The meter element represents a scalar measurement within a known range or a fractional value; for example disk usage, the relevance of a query result, or the fraction of a voting population to have selected a particular candidate.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "form": {
+                "description": "The form element that the meter element is associated with (its form owner).",
+                "type": "String"
+            },
+            "high": {
+                "description": "The upper bound of the range.",
+                "type": "Double"
+            },
+            "low": {
+                "description": "The lower bound of the range.",
+                "type": "Double"
+            },
+            "max": {
+                "description": "The maximum value.",
+                "type": "Double"
+            },
+            "min": {
+                "description": "The minimum value.",
+                "type": "Double"
+            },
+            "optimum": {
+                "description": "The optimal value.",
+                "type": "Double"
+            },
+            "value": {
+                "description": "The value.",
+                "type": "Double"
+            }
+        }
+    },
+    "noscript": {
+        "description": "The noscript element represents nothing if scripting is enabled, and represents its children if scripting is disabled.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "object": {
+        "description": "The object.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "data": {
+                "description": "The URL of the resource.",
+                "type": "String"
+            },
+            "form": {
+                "description": "The form element that the object element is associated with (its form owner).",
+                "type": "String"
+            },
+            "height": {
+                "description": "The height of the object's frame.",
+                "type": "int"
+            },
+            "name": {
+                "description": "The name of the object.",
+                "type": "String"
+            },
+            "type": {
+                "description": "The type of the resource.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The width of the object's frame.",
+                "type": "int"
+            }
+        }
+        
+    },
+    "optgroup": {
+        "description": "The optgroup element creates a grouping of options within a select element.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "alias": "OptionGroup",
+        "attributes": {
+            "disabled": {
+                "description": "A Boolean attribute indicating that the option group cannot be selected.",
+                "type": "bool"
+            },
+            "label": {
+                "description": "The label for the option group.",
+                "type": "String"
+            }
+        }
+
+    },
+    "output": {
+        "description": "The output element represents the result of a calculation or user action.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "for": {
+                "description": "The id of the form element that the output element is associated with (its form owner).",
+                "type": "String"
+            },
+            "form": {
+                "description": "The form element that the output element is associated with (its form owner).",
+                "type": "String"
+            },
+            "name": {
+                "description": "The name of the output element.",
+                "type": "String"
+            }
+        }
+    },
+    "picture": {
+        "description": "The picture element represents a container for multiple image sources.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "PreformattedText": {
+        "description": "The PreformattedText element represents preformatted text.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "progress": {
+        "description": "The progress element represents the completion progress of a task.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "max": {
+                "description": "The maximum value.",
+                "type": "Double"
+            },
+            "value": {
+                "description": "The value.",
+                "type": "Double"
+            }
+        }
+    },
+    "rp": {
+        "description": "The rp element is used to provide fall-back parentheses for browsers that do not support ruby annotations.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "rt": {
+        "description": "The rt element embraces pronunciation of characters presented in a ruby annotations, which are used to describe the pronunciation of East Asian characters.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "ruby": {
+        "description": "The ruby element represents a ruby annotation.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "samp": {
+        "description": "The samp element represents sample or quoted output from another program or computing system.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "search": {
+        "description": "The search element represents a search field.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "section": {
+        "description": "The section element represents a generic section of a document or application.",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "select": {
+        "description": "The select element represents a control for selecting amongst a set of options.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "autocomplete": {
+                "description": "Specifies whether the form control should have autocomplete enabled.",
+                "type": "Unit.Toggle"
+            },
+            "disabled": {
+                "description": "Specifies that the form control is disabled.",
+                "type": "bool"
+            },
+            "form": {
+                "description": "The form element that the select element is associated with (its form owner).",
+                "type": "String"
+            },
+            "multiple": {
+                "description": "Specifies that multiple options can be selected at once.",
+                "type": "bool"
+            },
+            "name": {
+                "description": "The name of the select element.",
+                "type": "String"
+            },
+            "required": {
+                "description": "Specifies that the user must select a value before submitting the form.",
+                "type": "bool"
+            },
+            "size": {
+                "description": "The number of options to show in the control.",
+                "type": "int"
+            }
+        }
+    },
+    "slot": {
+        "description": "The slot element represents a slot in a shadow DOM shadow tree.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "name": {
+                "description": "The name of the slot.",
+                "type": "String"
+            }
+        }
+    },
+    "small": {
+        "description": "The small element represents side comments such as small print.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "source": {
+        "description": "The source element specifies multiple media resources for the picture, the audio element, or the video element.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "media": {
+                "description": "The media query for the resource.",
+                "type": "String"
+            },
+            "sizes": {
+                "description": "The sizes for the resource.",
+                "type": "String"
+            },
+            "src": {
+                "description": "The URL of the resource.",
+                "type": "String"
+            },
+            "srcset": {
+                "description": "The URL of the resource.",
+                "type": "String"
+            },
+            "type": {
+                "description": "The type of the resource.",
+                "type": "String"
+            }
+        }
+    },
+    "strong": {
+        "description": "The strong element represents strong importance for its contents.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "sub": {
+        "description": "The sub element represents a subscript.",
+        "alias": "Subscript",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "summary": {
+        "description": "The summary element represents a summary, caption, or legend for the rest of the contents of the summary's parent details element, if any.",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "sup": {
+        "description": "The sup element represents a superscript.",
+        "alias": "Superscript",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "tbody": {
+        "description": "The tbody element represents a group of rows in a table that are all related.",
+        "alias": "TableBody",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "template": {
+        "description": "The template element is used to declare fragments of HTML that can be cloned and inserted in the document by script.",
+        "inits": [
+            {"type": "body"}
+        ],
+        "attributes": {
+            "shadowrootmode": {
+                "description": "The shadow root of the template element.",
+                "type": "Unit.ShadowRootMode"
+            }
+        }
+    },
+    "textarea": {
+        "description": "The textarea element represents a multiline plain text edit control for the element's raw value.",
+        "alias": "TextArea",
+        "inits": [],
+        "attributes": {
+            "autocomplete": {
+                "description": "Specifies whether the form control should have autocomplete enabled.",
+                "type": "Unit.Toggle"
+            },
+            "autofocus": {
+                "description": "Specifies that the form control should automatically get focus when the page is loaded.",
+                "type": "bool"
+            },
+            "cols": {
+                "description": "The visible width of the text control, in average character widths.",
+                "type": "int"
+            },
+            "disabled": {
+                "description": "Specifies that the form control is disabled.",
+                "type": "bool"
+            },
+            "form": {
+                "description": "The form element that the textarea element is associated with (its form owner).",
+                "type": "String"
+            },
+            "maxlength": {
+                "description": "The maximum number of characters (UTF-16 code units) that the user can enter.",
+                "type": "int"
+            },
+            "name": {
+                "description": "The name of the textarea element.",
+                "type": "String"
+            },
+            "placeholder": {
+                "description": "A hint to the user of what can be entered in the control.",
+                "type": "String"
+            },
+            "readonly": {
+                "description": "Specifies that the user cannot modify the form control.",
+                "type": "bool"
+            },
+            "required": {
+                "description": "Specifies that the user must fill in a value before submitting a form.",
+                "type": "bool"
+            },
+            "rows": {
+                "description": "The visible height of the text control, in lines.",
+                "type": "int"
+            },
+            "wrap": {
+                "description": "Specifies how the control wraps text.",
+                "type": "Unit.TextWrap"
+            }
+        }
+    },
+    "tfoot": {
+        "description": "The tfoot element represents the block of rows that consist of the column summaries (footers) for the columns of the table.",
+        "alias": "TableFooter",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "thead": {
+        "description": "The thead element represents the block of rows that consist of the column labels (headers) for the columns of the table.",
+        "alias": "TableHeader",
+        "inits": [
+            {"type": "body"}
+        ]
+    },
+    "time": {
+        "description": "The time element represents either a time on a 24-hour clock or a precise date in the Gregorian calendar (with optional time and timezone information).",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ],
+        "attributes": {
+            "datetime": {
+                "description": "The date and time the element represents.",
+                "type": "String"
+            }
+        }
+    },
+    "track": {
+        "description": "The track element allows authors to specify explicit external timed text tracks for media elements.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "default": {
+                "description": "Specifies that the track is to be enabled if the user's preferences do not indicate that another track would be more appropriate.",
+                "type": "bool"
+            },
+            "kind": {
+                "description": "Specifies the kind of text track.",
+                "type": "Unit.TextTrackKind"
+            },
+            "label": {
+                "description": "Specifies a user-readable title of the text track.",
+                "type": "String"
+            },
+            "src": {
+                "description": "The URL of the track file.",
+                "type": "String"
+            },
+            "srclang": {
+                "description": "Specifies the language of the track text data.",
+                "type": "Unit.Language"
+            }
+        }
+    },
+    "var": {
+        "description": "The var element represents the name of a variable in a mathematical expression or a programming context.",
+        "alias": "Variable",
+        "inits": [
+            {"type": "text"},
+            {"type": "body"}
+        ]
+    },
+    "video": {
+        "description": "The video element represents a video, and its associated audio, with the necessary controls.",
+        "inits": [
+            {"type": "empty"}
+        ],
+        "attributes": {
+            "autoplay": {
+                "description": "A Boolean attribute; if specified, the video will automatically begin playback as soon as it can do so, without waiting for the entire video file to finish downloading.",
+                "type": "bool"
+            },
+            "controls": {
+                "description": "If this attribute is present, the browser will offer controls to allow the user to control video playback, including volume, seeking, and pause/resume playback.",
+                "type": "bool"
+            },
+            "crossorigin": {
+                "description": "How the element handles cross-origin requests.",
+                "type": "Unit.CrossOrigin"
+            },
+            "height": {
+                "description": "The height of the video's display area, in CSS pixels.",
+                "type": "int"
+            },
+            "loop": {
+                "description": "A Boolean attribute; if specified, the video player will automatically seek back to the start upon reaching the end of the video.",
+                "type": "bool"
+            },
+            "muted": {
+                "description": "A Boolean attribute; if specified, the audio will be initially silenced.",
+                "type": "bool"
+            },
+            "playsinline": {
+                "description": "A Boolean attribute; if specified, the video will automatically begin playback as soon as it can do so, without waiting for the entire video file to finish downloading.",
+                "type": "bool"
+            },
+            "poster": {
+                "description": "A URL indicating a poster frame to show until the user plays or seeks.",
+                "type": "String"
+            },
+            "preload": {
+                "description": "This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience.",
+                "type": "Unit.Preload"
+            },
+            "src": {
+                "description": "The URL of the video file.",
+                "type": "String"
+            },
+            "width": {
+                "description": "The width of the video's display area, in CSS pixels.",
+                "type": "int"
+            }
+        }
+    },
+    "wbr": {
+        "description": "The wbr element represents a word break opportunity.",
+        "inits": [
+            {"type": "empty"}
+        ]
+    }
+}

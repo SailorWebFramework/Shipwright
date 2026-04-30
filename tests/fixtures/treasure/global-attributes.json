@@ -1,0 +1,92 @@
+{
+    "accesskey": {
+        "alias": "accesskey", 
+        "description": "Defines a shortcut key to focus and activate an element (typically with an aditional modifier key based on browser), value is a single character that is the shortcut key.",
+        "type": "char"
+    },
+    "class": {
+        "alias": "className", 
+        "description": "One or more class names defined as a class style.",
+        "type": "sequence[String]"
+    },
+    "contenteditable": {
+        "alias": "contenteditable", 
+        "description": "Specifies wheather or not this element is editable or not.",
+        "type": "String/bool"
+    },
+    "data-*": {
+        "alias": "data", 
+        "description": "Stores custom data to the webiste to this element (name, value).",
+        "type": "String,String"
+    },
+    "dir": {
+        "alias": "textDirection", 
+        "description": "Defines text direction of the content.",
+        "type": "Unit.Direction"
+    },
+    "draggable": {
+        "alias": "draggable", 
+        "description": "Defines whether this element is draggable, often used for drag and drop operations.",
+        "type": "Unit.AutoBool"
+    },
+    "enterkeyhint": {
+        "alias": "enterkeyhint", 
+        "description": "Allows the appearence of the enter key to be different on mobile.",
+        "type": "Unit.EnterKeyHint"
+    },
+    "hidden": {
+        "alias": "hidden", 
+        "description": "Defines whether this element is hidden or not.",
+        "type": "bool"
+    },
+    "id": {
+        "alias": "id", 
+        "description": "Defines a unique identifier for the element.",
+        "type": "String"
+    },
+    "inert": {
+        "alias": "inert", 
+        "description": "Disables element and all inner elements.",
+        "type": "bool"
+    },
+    "inputmode": {
+        "alias": "inputmode", 
+        "description": "Defines the input mode for the element when the keyboard is active.",
+        "type": "Unit.InputMode"
+    },
+    "lang": {
+        "alias": "language", 
+        "description": "Defines the language of the content.",
+        "type": "Unit.Language"
+    },
+    "popover": {
+        "alias": "popover", 
+        "description": "Defines a popover element, it will be placed on top of the content. This element is invisible until it is called by another element witha popovertarget attribute.",
+        "type": "bool"
+    },
+    "spellcheck": {
+        "alias": "spellcheck", 
+        "description": "Defines whether the element should have spell checking enabled or not.",
+        "type": "bool"
+    },
+    "style": {
+        "alias": "style", 
+        "description": "Defines the style of the element.",
+        "type": "sequence[Style.Property]"
+    },
+    "tabindex": {
+        "alias": "tabindex", 
+        "description": "Defines the tab order of the element.",
+        "type": "int"
+    },
+    "title": {
+        "alias": "title", 
+        "description": "Defines the title of the element, typically shown as a tooltip hint.",
+        "type": "String"
+    },
+    "translate": {
+        "alias": "translate", 
+        "description": "Defines whether the content should be translated or not.",
+        "type": "Unit.Question"
+    }
+}

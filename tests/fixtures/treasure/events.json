@@ -1,0 +1,840 @@
+{
+    "version": "1.0.0",
+    "global": {
+        "click": {
+            "description": "Fired when the element is clicked.",
+            "category": "mouse",
+            "js_event": "click",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "dblclick": {
+            "description": "Fired when the element is double-clicked.",
+            "category": "mouse",
+            "js_event": "dblclick",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "mousedown": {
+            "description": "Fired when a mouse button is pressed on the element.",
+            "category": "mouse",
+            "js_event": "mousedown",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "mouseup": {
+            "description": "Fired when a mouse button is released over the element.",
+            "category": "mouse",
+            "js_event": "mouseup",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "mousemove": {
+            "description": "Fired when the mouse pointer moves over the element.",
+            "category": "mouse",
+            "js_event": "mousemove",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "mouseenter": {
+            "description": "Fired when the mouse pointer enters the element. Does not bubble.",
+            "category": "mouse",
+            "js_event": "mouseenter",
+            "interface": "MouseEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "mouseleave": {
+            "description": "Fired when the mouse pointer leaves the element. Does not bubble.",
+            "category": "mouse",
+            "js_event": "mouseleave",
+            "interface": "MouseEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "mouseover": {
+            "description": "Fired when the mouse pointer enters the element or its children.",
+            "category": "mouse",
+            "js_event": "mouseover",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "mouseout": {
+            "description": "Fired when the mouse pointer leaves the element or its children.",
+            "category": "mouse",
+            "js_event": "mouseout",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "contextmenu": {
+            "description": "Fired when the right mouse button is clicked on the element.",
+            "category": "mouse",
+            "js_event": "contextmenu",
+            "interface": "MouseEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "keydown": {
+            "description": "Fired when a key is pressed down.",
+            "category": "keyboard",
+            "js_event": "keydown",
+            "interface": "KeyboardEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": {
+                "key": {
+                    "type": "string",
+                    "path": "key",
+                    "description": "The key value of the pressed key (e.g. 'Enter', 'a', 'ArrowUp')."
+                }
+            }
+        },
+        "keyup": {
+            "description": "Fired when a key is released.",
+            "category": "keyboard",
+            "js_event": "keyup",
+            "interface": "KeyboardEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": {
+                "key": {
+                    "type": "string",
+                    "path": "key",
+                    "description": "The key value of the released key."
+                }
+            }
+        },
+        "focus": {
+            "description": "Fired when the element receives focus. Does not bubble.",
+            "category": "focus",
+            "js_event": "focus",
+            "interface": "FocusEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "blur": {
+            "description": "Fired when the element loses focus. Does not bubble.",
+            "category": "focus",
+            "js_event": "blur",
+            "interface": "FocusEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "focusin": {
+            "description": "Fired when the element is about to receive focus. Bubbles.",
+            "category": "focus",
+            "js_event": "focusin",
+            "interface": "FocusEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "focusout": {
+            "description": "Fired when the element is about to lose focus. Bubbles.",
+            "category": "focus",
+            "js_event": "focusout",
+            "interface": "FocusEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "touchstart": {
+            "description": "Fired when a touch point is placed on the touch surface.",
+            "category": "touch",
+            "js_event": "touchstart",
+            "interface": "TouchEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "touchend": {
+            "description": "Fired when a touch point is removed from the touch surface.",
+            "category": "touch",
+            "js_event": "touchend",
+            "interface": "TouchEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "touchmove": {
+            "description": "Fired when a touch point is moved along the touch surface.",
+            "category": "touch",
+            "js_event": "touchmove",
+            "interface": "TouchEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "touchcancel": {
+            "description": "Fired when a touch point is disrupted (e.g. too many touch points).",
+            "category": "touch",
+            "js_event": "touchcancel",
+            "interface": "TouchEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "pointerdown": {
+            "description": "Fired when a pointer becomes active (mouse button pressed, touch contact, pen contact).",
+            "category": "pointer",
+            "js_event": "pointerdown",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "pointerup": {
+            "description": "Fired when a pointer is no longer active.",
+            "category": "pointer",
+            "js_event": "pointerup",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "pointermove": {
+            "description": "Fired when a pointer changes coordinates.",
+            "category": "pointer",
+            "js_event": "pointermove",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "pointerenter": {
+            "description": "Fired when a pointer enters the element boundary. Does not bubble.",
+            "category": "pointer",
+            "js_event": "pointerenter",
+            "interface": "PointerEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "pointerleave": {
+            "description": "Fired when a pointer leaves the element boundary. Does not bubble.",
+            "category": "pointer",
+            "js_event": "pointerleave",
+            "interface": "PointerEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "pointerover": {
+            "description": "Fired when a pointer enters the element or its children.",
+            "category": "pointer",
+            "js_event": "pointerover",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "pointerout": {
+            "description": "Fired when a pointer leaves the element or its children.",
+            "category": "pointer",
+            "js_event": "pointerout",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "pointercancel": {
+            "description": "Fired when the browser determines the pointer is unlikely to produce further events.",
+            "category": "pointer",
+            "js_event": "pointercancel",
+            "interface": "PointerEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "gotpointercapture": {
+            "description": "Fired when the element receives pointer capture.",
+            "category": "pointer",
+            "js_event": "gotpointercapture",
+            "interface": "PointerEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "lostpointercapture": {
+            "description": "Fired when pointer capture is released.",
+            "category": "pointer",
+            "js_event": "lostpointercapture",
+            "interface": "PointerEvent",
+            "bubbles": false,
+            "cancelable": false,
+            "data": null
+        },
+        "drag": {
+            "description": "Fired continuously while the element is being dragged.",
+            "category": "drag",
+            "js_event": "drag",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "dragstart": {
+            "description": "Fired when the user starts dragging the element.",
+            "category": "drag",
+            "js_event": "dragstart",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "dragend": {
+            "description": "Fired when a drag operation ends (mouse released or Escape pressed).",
+            "category": "drag",
+            "js_event": "dragend",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "dragenter": {
+            "description": "Fired when a dragged element enters a valid drop target.",
+            "category": "drag",
+            "js_event": "dragenter",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "dragleave": {
+            "description": "Fired when a dragged element leaves a valid drop target.",
+            "category": "drag",
+            "js_event": "dragleave",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "dragover": {
+            "description": "Fired continuously while a dragged element is over a valid drop target.",
+            "category": "drag",
+            "js_event": "dragover",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "drop": {
+            "description": "Fired when a dragged element is dropped on a valid drop target.",
+            "category": "drag",
+            "js_event": "drop",
+            "interface": "DragEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "copy": {
+            "description": "Fired when the user copies content to the clipboard.",
+            "category": "clipboard",
+            "js_event": "copy",
+            "interface": "ClipboardEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "cut": {
+            "description": "Fired when the user cuts content to the clipboard.",
+            "category": "clipboard",
+            "js_event": "cut",
+            "interface": "ClipboardEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "paste": {
+            "description": "Fired when the user pastes content from the clipboard.",
+            "category": "clipboard",
+            "js_event": "paste",
+            "interface": "ClipboardEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": null
+        },
+        "wheel": {
+            "description": "Fired when the mouse wheel is rotated over the element.",
+            "category": "wheel",
+            "js_event": "wheel",
+            "interface": "WheelEvent",
+            "bubbles": true,
+            "cancelable": true,
+            "data": {
+                "deltaY": {
+                    "type": "float",
+                    "path": "deltaY",
+                    "description": "The vertical scroll amount."
+                }
+            }
+        },
+        "scroll": {
+            "description": "Fired when the element is scrolled.",
+            "category": "scroll",
+            "js_event": "scroll",
+            "interface": "Event",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "scrollend": {
+            "description": "Fired when scrolling has completed.",
+            "category": "scroll",
+            "js_event": "scrollend",
+            "interface": "Event",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "input": {
+            "description": "Fired when the value of an input, select, or textarea element changes. Technically a GlobalEventHandler but only produces meaningful data on form elements.",
+            "category": "input",
+            "js_event": "input",
+            "interface": "InputEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "value": {
+                    "type": "string",
+                    "path": "target.value",
+                    "description": "The current value of the element."
+                }
+            }
+        },
+        "change": {
+            "description": "Fired when the value of an input, select, or textarea element is committed by the user. Differs from input in that it fires on commit (blur, Enter), not on every keystroke.",
+            "category": "input",
+            "js_event": "change",
+            "interface": "Event",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "value": {
+                    "type": "string",
+                    "path": "target.value",
+                    "description": "The committed value of the element."
+                }
+            }
+        },
+        "select": {
+            "description": "Fired when text is selected in an input or textarea element.",
+            "category": "input",
+            "js_event": "select",
+            "interface": "Event",
+            "bubbles": true,
+            "cancelable": false,
+            "data": null
+        },
+        "animationstart": {
+            "description": "Fired when a CSS animation starts.",
+            "category": "animation",
+            "js_event": "animationstart",
+            "interface": "AnimationEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "animationName": {
+                    "type": "string",
+                    "path": "animationName",
+                    "description": "The name of the CSS animation that started."
+                }
+            }
+        },
+        "animationend": {
+            "description": "Fired when a CSS animation completes.",
+            "category": "animation",
+            "js_event": "animationend",
+            "interface": "AnimationEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "animationName": {
+                    "type": "string",
+                    "path": "animationName",
+                    "description": "The name of the CSS animation that ended."
+                }
+            }
+        },
+        "animationiteration": {
+            "description": "Fired when a CSS animation completes one iteration.",
+            "category": "animation",
+            "js_event": "animationiteration",
+            "interface": "AnimationEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "animationName": {
+                    "type": "string",
+                    "path": "animationName",
+                    "description": "The name of the CSS animation that iterated."
+                }
+            }
+        },
+        "transitionstart": {
+            "description": "Fired when a CSS transition starts.",
+            "category": "transition",
+            "js_event": "transitionstart",
+            "interface": "TransitionEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "propertyName": {
+                    "type": "string",
+                    "path": "propertyName",
+                    "description": "The name of the CSS property associated with the transition."
+                }
+            }
+        },
+        "transitionend": {
+            "description": "Fired when a CSS transition completes.",
+            "category": "transition",
+            "js_event": "transitionend",
+            "interface": "TransitionEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "propertyName": {
+                    "type": "string",
+                    "path": "propertyName",
+                    "description": "The name of the CSS property associated with the transition."
+                }
+            }
+        },
+        "transitionrun": {
+            "description": "Fired when a CSS transition is first created (before any delay).",
+            "category": "transition",
+            "js_event": "transitionrun",
+            "interface": "TransitionEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "propertyName": {
+                    "type": "string",
+                    "path": "propertyName",
+                    "description": "The name of the CSS property associated with the transition."
+                }
+            }
+        },
+        "transitioncancel": {
+            "description": "Fired when a CSS transition is canceled.",
+            "category": "transition",
+            "js_event": "transitioncancel",
+            "interface": "TransitionEvent",
+            "bubbles": true,
+            "cancelable": false,
+            "data": {
+                "propertyName": {
+                    "type": "string",
+                    "path": "propertyName",
+                    "description": "The name of the CSS property associated with the transition."
+                }
+            }
+        }
+    },
+    "targeted": {
+        "form_submission": {
+            "tags": ["form"],
+            "events": {
+                "submit": {
+                    "description": "Fired when a form is submitted.",
+                    "category": "form",
+                    "js_event": "submit",
+                    "interface": "SubmitEvent",
+                    "bubbles": true,
+                    "cancelable": true,
+                    "data": null
+                },
+                "reset": {
+                    "description": "Fired when a form is reset.",
+                    "category": "form",
+                    "js_event": "reset",
+                    "interface": "Event",
+                    "bubbles": true,
+                    "cancelable": true,
+                    "data": null
+                },
+                "formdata": {
+                    "description": "Fired when a FormData object is constructed, after a form submission.",
+                    "category": "form",
+                    "js_event": "formdata",
+                    "interface": "FormDataEvent",
+                    "bubbles": true,
+                    "cancelable": false,
+                    "data": null
+                }
+            }
+        },
+        "media_playback": {
+            "tags": ["audio", "video"],
+            "events": {
+                "play": {
+                    "description": "Fired when playback begins after being paused or delayed.",
+                    "category": "media",
+                    "js_event": "play",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "pause": {
+                    "description": "Fired when playback is paused.",
+                    "category": "media",
+                    "js_event": "pause",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "ended": {
+                    "description": "Fired when playback reaches the end of the media.",
+                    "category": "media",
+                    "js_event": "ended",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "timeupdate": {
+                    "description": "Fired when the current playback position changes.",
+                    "category": "media",
+                    "js_event": "timeupdate",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": {
+                        "currentTime": {
+                            "type": "float",
+                            "path": "target.currentTime",
+                            "description": "The current playback position in seconds."
+                        }
+                    }
+                },
+                "volumechange": {
+                    "description": "Fired when the volume has changed.",
+                    "category": "media",
+                    "js_event": "volumechange",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": {
+                        "volume": {
+                            "type": "float",
+                            "path": "target.volume",
+                            "description": "The current volume level (0.0 to 1.0)."
+                        }
+                    }
+                },
+                "seeking": {
+                    "description": "Fired when a seek operation begins.",
+                    "category": "media",
+                    "js_event": "seeking",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "seeked": {
+                    "description": "Fired when a seek operation completes.",
+                    "category": "media",
+                    "js_event": "seeked",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "loadeddata": {
+                    "description": "Fired when the first frame of the media has loaded.",
+                    "category": "media",
+                    "js_event": "loadeddata",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "loadedmetadata": {
+                    "description": "Fired when the metadata (duration, dimensions) has loaded.",
+                    "category": "media",
+                    "js_event": "loadedmetadata",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "canplay": {
+                    "description": "Fired when enough data is available to start playback, but not enough to play through.",
+                    "category": "media",
+                    "js_event": "canplay",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "canplaythrough": {
+                    "description": "Fired when enough data is available to play through to the end without buffering.",
+                    "category": "media",
+                    "js_event": "canplaythrough",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "waiting": {
+                    "description": "Fired when playback has stopped because of a temporary lack of data.",
+                    "category": "media",
+                    "js_event": "waiting",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "stalled": {
+                    "description": "Fired when the browser is trying to get media data, but data is not forthcoming.",
+                    "category": "media",
+                    "js_event": "stalled",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "durationchange": {
+                    "description": "Fired when the duration attribute of the media has been updated.",
+                    "category": "media",
+                    "js_event": "durationchange",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": {
+                        "duration": {
+                            "type": "float",
+                            "path": "target.duration",
+                            "description": "The updated duration of the media in seconds."
+                        }
+                    }
+                },
+                "ratechange": {
+                    "description": "Fired when the playback rate has changed.",
+                    "category": "media",
+                    "js_event": "ratechange",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": {
+                        "playbackRate": {
+                            "type": "float",
+                            "path": "target.playbackRate",
+                            "description": "The current playback rate."
+                        }
+                    }
+                }
+            }
+        },
+        "resource_loading": {
+            "tags": ["img", "script", "link", "iframe", "object", "embed", "source"],
+            "events": {
+                "load": {
+                    "description": "Fired when the resource has successfully loaded.",
+                    "category": "resource",
+                    "js_event": "load",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "error": {
+                    "description": "Fired when the resource fails to load.",
+                    "category": "resource",
+                    "js_event": "error",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                }
+            }
+        },
+        "input_validation": {
+            "tags": ["input", "textarea", "select"],
+            "events": {
+                "invalid": {
+                    "description": "Fired when a form element does not satisfy its validation constraints.",
+                    "category": "form",
+                    "js_event": "invalid",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": true,
+                    "data": null
+                }
+            }
+        },
+        "details_toggle": {
+            "tags": ["details"],
+            "events": {
+                "toggle": {
+                    "description": "Fired when the open/closed state of a details element changes.",
+                    "category": "interaction",
+                    "js_event": "toggle",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                }
+            }
+        },
+        "dialog_lifecycle": {
+            "tags": ["dialog"],
+            "events": {
+                "close": {
+                    "description": "Fired when the dialog is closed.",
+                    "category": "interaction",
+                    "js_event": "close",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": false,
+                    "data": null
+                },
+                "cancel": {
+                    "description": "Fired when the user dismisses the dialog (e.g. pressing Escape).",
+                    "category": "interaction",
+                    "js_event": "cancel",
+                    "interface": "Event",
+                    "bubbles": false,
+                    "cancelable": true,
+                    "data": null
+                }
+            }
+        },
+        "slot_assignment": {
+            "tags": ["slot"],
+            "events": {
+                "slotchange": {
+                    "description": "Fired when the distributed nodes of a slot element change.",
+                    "category": "interaction",
+                    "js_event": "slotchange",
+                    "interface": "Event",
+                    "bubbles": true,
+                    "cancelable": false,
+                    "data": null
+                }
+            }
+        }
+    }
+}
