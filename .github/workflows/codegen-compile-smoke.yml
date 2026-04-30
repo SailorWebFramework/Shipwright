@@ -1,0 +1,92 @@
+name: Codegen → Compile Smoke
+
+# Regression gate: Shipwright codegen → Sailor swift build.
+#
+# Any change to Treasure JSON, Shipwright Python, or Sailor Swift that causes
+# generated code to fail compilation is caught here immediately, before it
+# can reach production.
+#
+# Architecture:
+#   1. Checkout Shipwright (this repo), Treasure (JSON inputs), Sailor (Swift consumer)
+#   2. Run Shipwright codegen, writing output directly into the Sailor checkout
+#   3. swift build the Sailor package — if generated code has syntax/type errors, FAIL
+#   4. git diff the generated dir (informational only; drift is not a failure)
+
+on:
+  push:
+    branches: [feature-fin-v2, main]
+  pull_request:
+
+# For cross-repo checkouts, we want the branch that matches the push/PR target.
+# On push: github.ref_name is the branch name.
+# On PR:   github.base_ref is the target branch (what the PR merges into).
+env:
+  CROSS_REPO_REF: ${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}
+
+jobs:
+  codegen-compile:
+    name: Codegen + Sailor Compile
+    runs-on: macos-15
+
+    steps:
+      # ── Checkout all three repos ──────────────────────────────────────────
+
+      - name: Checkout Shipwright
+        uses: actions/checkout@v4
+        with:
+          path: Shipwright
+
+      - name: Checkout Treasure (${{ env.CROSS_REPO_REF }})
+        uses: actions/checkout@v4
+        with:
+          repository: SailorWebFramework/Treasure
+          ref: ${{ env.CROSS_REPO_REF }}
+          path: Treasure
+
+      - name: Checkout Sailor (${{ env.CROSS_REPO_REF }})
+        uses: actions/checkout@v4
+        with:
+          repository: SailorWebFramework/Sailor
+          ref: ${{ env.CROSS_REPO_REF }}
+          path: Sailor
+
+      # ── Codegen ───────────────────────────────────────────────────────────
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Shipwright runtime deps
+        run: pip install chevron click
+
+      - name: Run codegen (Treasure JSON → Sailor Generated/)
+        run: |
+          cd Shipwright
+          python main.py build sailor \
+            --outdir ../Sailor/Sources/Sailor/Sources/Generated \
+            --treasuredir ../Treasure/json
+
+      # ── Compile ───────────────────────────────────────────────────────────
+
+      - name: Cache SPM packages
+        uses: actions/cache@v4
+        with:
+          path: Sailor/.build/checkouts
+          key: ${{ runner.os }}-spm-${{ hashFiles('Sailor/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Sailor swift build
+        run: |
+          cd Sailor
+          swift build --configuration debug
+
+      # ── Drift report (informational) ──────────────────────────────────────
+
+      - name: Diff regenerated vs committed (informational)
+        if: always()
+        run: |
+          echo "=== Drift between live codegen output and committed generated files ==="
+          git -C Sailor diff --stat Sources/Sailor/Sources/Generated/ || true
+          echo "=== Drift is expected when Treasure JSON was updated without re-running codegen ==="
