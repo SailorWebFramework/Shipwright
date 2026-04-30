@@ -212,6 +212,19 @@ class Sailor:
         data = json.load(f)
 
         def format_cases(body):
+            cases_raw = body.get("cases", {})
+            # Handle list-format cases: [{"name": swiftName, "value": cssValue}, ...]
+            if isinstance(cases_raw, list):
+                return [{
+                    "name": item["value"],
+                    "alias": item["name"],
+                    "description": item.get("description", ""),
+                    "args": [],
+                    "hasAssociatedValue": False,
+                    "isFormatted": False,
+                    "format": "",
+                    "last": False,
+                } for item in cases_raw]
             return list(
                 map(lambda v: {
                 "name": SailorUtils.remove_case_id(v[0]),
@@ -219,14 +232,14 @@ class Sailor:
                 "description": v[1]["description"],
                 "args": [
                     {
-                        "name": SailorUtils.formatName(name), 
+                        "name": SailorUtils.formatName(name),
                         "value": SailorUtils.convert_type(value),
                         "isShown": isShown,
                     } for value, name, isShown in zip(
-                        v[1]["values"] if "values" in v[1] else [], 
+                        v[1]["values"] if "values" in v[1] else [],
                         v[1]["names"] if "names" in v[1] else [],
                         ([True] * len(v[1]["names"] if "names" in v[1] else []) if "showNames" in v[1] else
-                        v[1]["shown"] if "shown" in v[1] 
+                        v[1]["shown"] if "shown" in v[1]
                         else [False] * len(v[1]["names"] if "names" in v[1] else [])),
                     )
                 ],
@@ -236,7 +249,7 @@ class Sailor:
                 "isFormatted": "format" in v[1],
                 "format": SailorUtils.put_formatted(v[1]["format"], v[1].get("names", []), types=v[1].get("values", [])) if "format" in v[1] else "",
                 "last": False
-            }, body["cases"].items()))
+            }, cases_raw.items()))
 
         for name, body in data.items():
             description = body["description"]
