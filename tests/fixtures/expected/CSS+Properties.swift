@@ -560,7 +560,7 @@ public enum CSS {
     public static func borderBlockEnd(color: Unit.Color) -> Property {
         Property(
             name: "border-block-end-color",
-            value: "{{blockEndColor}}"
+            value: "\(color)"
         )
     }
 
@@ -640,7 +640,7 @@ public enum CSS {
     public static func borderBlock(color: Unit.Color) -> Property {
         Property(
             name: "border-block-color",
-            value: "{{blockColor}}"
+            value: "\(color)"
         )
     }
 
@@ -648,7 +648,7 @@ public enum CSS {
     public static func borderBlock(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-block-style",
-            value: "{{blockStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -680,7 +680,7 @@ public enum CSS {
     public static func borderBottom(color: Unit.Color) -> Property {
         Property(
             name: "border-bottom-color",
-            value: "{{bottomColor}}"
+            value: "\(color)"
         )
     }
 
@@ -688,7 +688,7 @@ public enum CSS {
     public static func borderBottom(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-bottom-style",
-            value: "{{bottomStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -696,7 +696,7 @@ public enum CSS {
     public static func borderBottom(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-bottom-width",
-            value: "{{bottomWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -704,7 +704,7 @@ public enum CSS {
     public static func borderBottom(leftRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-bottom-left-radius",
-            value: "{{radius}}"
+            value: "\(leftRadius)"
         )
     }
 
@@ -712,7 +712,7 @@ public enum CSS {
     public static func borderBottom(rightRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-bottom-right-radius",
-            value: "{{radius}}"
+            value: "\(rightRadius)"
         )
     }
 
@@ -720,7 +720,7 @@ public enum CSS {
     public static func borderEnd(endRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-end-end-radius",
-            value: "{{radius}}"
+            value: "\(endRadius)"
         )
     }
 
@@ -736,7 +736,7 @@ public enum CSS {
     public static func borderEnd(startRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-end-start-radius",
-            value: "{{radius}}"
+            value: "\(startRadius)"
         )
     }
 
@@ -760,7 +760,7 @@ public enum CSS {
     public static func borderInline(color: Unit.Color) -> Property {
         Property(
             name: "border-inline-color",
-            value: "{{inlineColor}}"
+            value: "\(color)"
         )
     }
 
@@ -768,7 +768,7 @@ public enum CSS {
     public static func borderInline(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-inline-style",
-            value: "{{inlineStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -776,7 +776,7 @@ public enum CSS {
     public static func borderInline(width: Unit.UnidirectionalWidth) -> Property {
         Property(
             name: "border-inline-width",
-            value: "{{inlineWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -800,7 +800,7 @@ public enum CSS {
     public static func borderInlineStart(color: Unit.Color) -> Property {
         Property(
             name: "border-inline-start-color",
-            value: "{{inlineStartColor}}"
+            value: "\(color)"
         )
     }
 
@@ -808,7 +808,7 @@ public enum CSS {
     public static func borderInlineStart(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-inline-start-style",
-            value: "{{inlineStartStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -816,7 +816,7 @@ public enum CSS {
     public static func borderInlineStart(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-inline-start-width",
-            value: "{{inlineStartWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -840,7 +840,7 @@ public enum CSS {
     public static func borderInlineEnd(color: Unit.Color) -> Property {
         Property(
             name: "border-inline-end-color",
-            value: "{{inlineEndColor}}"
+            value: "\(color)"
         )
     }
 
@@ -848,7 +848,7 @@ public enum CSS {
     public static func borderInlineEnd(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-inline-end-style",
-            value: "{{inlineEndStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -856,7 +856,7 @@ public enum CSS {
     public static func borderInlineEnd(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-inline-end-width",
-            value: "{{inlineEndWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -880,7 +880,7 @@ public enum CSS {
     public static func borderLeft(color: Unit.Color) -> Property {
         Property(
             name: "border-left-color",
-            value: "{{leftColor}}"
+            value: "\(color)"
         )
     }
 
@@ -888,7 +888,7 @@ public enum CSS {
     public static func borderLeft(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-left-style",
-            value: "{{leftStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -896,7 +896,7 @@ public enum CSS {
     public static func borderLeft(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-left-width",
-            value: "{{leftWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -920,7 +920,7 @@ public enum CSS {
     public static func borderRight(color: Unit.Color) -> Property {
         Property(
             name: "border-right-color",
-            value: "{{rightColor}}"
+            value: "\(color)"
         )
     }
 
@@ -928,7 +928,7 @@ public enum CSS {
     public static func borderRight(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-right-style",
-            value: "{{rightStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -936,7 +936,7 @@ public enum CSS {
     public static func borderRight(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-right-width",
-            value: "{{rightWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -944,7 +944,7 @@ public enum CSS {
     public static func borderStart(endRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-start-end-radius",
-            value: "{{radius}}"
+            value: "\(endRadius)"
         )
     }
 
@@ -960,7 +960,7 @@ public enum CSS {
     public static func borderStart(startRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-start-start-radius",
-            value: "{{radius}}"
+            value: "\(startRadius)"
         )
     }
 
@@ -984,7 +984,7 @@ public enum CSS {
     public static func borderTop(color: Unit.Color) -> Property {
         Property(
             name: "border-top-color",
-            value: "{{topColor}}"
+            value: "\(color)"
         )
     }
 
@@ -992,7 +992,7 @@ public enum CSS {
     public static func borderTop(style: Unit.LineStyle) -> Property {
         Property(
             name: "border-top-style",
-            value: "{{topStyle}}"
+            value: "\(style)"
         )
     }
 
@@ -1000,7 +1000,7 @@ public enum CSS {
     public static func borderTop(width: Unit.LineWidth) -> Property {
         Property(
             name: "border-top-width",
-            value: "{{topWidth}}"
+            value: "\(width)"
         )
     }
 
@@ -1008,7 +1008,7 @@ public enum CSS {
     public static func borderTop(leftRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-top-left-radius",
-            value: "{{radius}}"
+            value: "\(leftRadius)"
         )
     }
 
@@ -1016,7 +1016,7 @@ public enum CSS {
     public static func borderTop(rightRadius: Unit.LengthPercentage) -> Property {
         Property(
             name: "border-top-right-radius",
-            value: "{{radius}}"
+            value: "\(rightRadius)"
         )
     }
 
@@ -1045,10 +1045,10 @@ public enum CSS {
     }
 
     /// Sets the border image property.
-    public static func borderImage(outset: Unit.LengthNumber? = nil, `repeat`: Unit.RepeatImage? = nil, slice: Unit.SliceImage? = nil, source: Unit.Source? = nil, vertical: Unit.AutoLengthPercentage? = nil) -> Property {
+    public static func borderImage(outset: Unit.LengthNumber? = nil, `repeat`: Unit.RepeatImage? = nil, slice: Unit.SliceImage? = nil, source: Unit.Source? = nil, vertical: Unit.AutoLengthPercentage? = nil, horizontal: Unit.AutoLengthPercentage? = nil) -> Property {
         Property(
             name: "border-image",
-            value: "\(Utils.unwrapUnit(source)) \(Utils.unwrapUnit(`repeat`)) \(Utils.unwrapUnit(slice))/\(Utils.unwrapUnit(vertical))/{{horizontal}}/\(Utils.unwrapUnit(outset))"
+            value: "\(Utils.unwrapUnit(source)) \(Utils.unwrapUnit(`repeat`)) \(Utils.unwrapUnit(slice))/\(Utils.unwrapUnit(vertical))/\(Utils.unwrapUnit(horizontal))/\(Utils.unwrapUnit(outset))"
         )
     }
 
@@ -1064,7 +1064,7 @@ public enum CSS {
     public static func borderImage(`repeat`: Unit.RepeatImage) -> Property {
         Property(
             name: "border-image-repeat",
-            value: "{{imageRepeat}}"
+            value: "\(`repeat`)"
         )
     }
 
@@ -1080,7 +1080,7 @@ public enum CSS {
     public static func borderImage(source: Unit.Source) -> Property {
         Property(
             name: "border-image-source",
-            value: "{{image}}"
+            value: "\(source)"
         )
     }
 
@@ -1112,7 +1112,7 @@ public enum CSS {
     public static func border(collapse: Unit.BorderCollapse) -> Property {
         Property(
             name: "border-collapse",
-            value: "{{value}}"
+            value: "\(collapse)"
         )
     }
 
@@ -1192,7 +1192,7 @@ public enum CSS {
     public static func clipPath(_ none: Unit.None) -> Property {
         Property(
             name: "clip-path",
-            value: "{{shape}}"
+            value: "\(none)"
         )
     }
 

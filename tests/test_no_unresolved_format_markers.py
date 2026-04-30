@@ -16,18 +16,11 @@ from conftest import EXPECTED_DIR
 # ---------------------------------------------------------------------------
 # Known files with unresolved markers — tracked as data bugs in GitHub issues
 # These are Treasure JSON format/names mismatches that survive into the output.
+# All previously known issues (#4 border-*, #5 Integer/BackgroundSize) have been
+# fixed.  This set is intentionally empty; leave it here so the xfail branch
+# below is easy to reinstate if a new regression appears.
 # ---------------------------------------------------------------------------
-KNOWN_UNRESOLVED_MARKER_FILES = {
-    # border-* grouped properties use qualified placeholder names (e.g. {{blockEndColor}})
-    # that don't match their local names[] entries; clip-path:0 uses {{shape}} but names=['none']
-    "CSS+Properties.swift",
-    # Integer, AutoInt, GridLine use {{number}} but names=['int'] or similar mismatch
-    "Units/Unit+Integer.swift",
-    "Units/Unit+AutoInt.swift",
-    "Units/Unit+GridLine.swift",
-    # BackgroundSize.size:0 uses {{both}} but names=['widthAndHeight']
-    "Units/Unit+BackgroundSize.swift",
-}
+KNOWN_UNRESOLVED_MARKER_FILES: set = set()
 
 
 def _all_swift_files(base_dir: str):
