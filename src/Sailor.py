@@ -622,28 +622,28 @@ class Sailor:
             if params:
                 param_strs = [swift_param_sig(p) for p in params]
                 sig = ", ".join(param_strs)
-                lines.append(f"{indent}public func {method_name}({sig}) {{")
+                lines.append(f"{indent}@MainActor public func {method_name}({sig}) {{")
                 lines.append(f"{indent}    #if os(WASI)")
                 # Build JS call args
                 js_args = ", ".join([swift_js_arg(p) for p in params])
-                lines.append(f"{indent}    _ = jsValue?.{js_method}?({js_args})")
+                lines.append(f"{indent}    _ = jsValue?.{js_method}({js_args})")
                 lines.append(f"{indent}    #endif")
                 lines.append(f"{indent}}}")
             elif returns:
                 cast = return_cast_map.get(returns, "result.string")
                 lines.append(f"{indent}@discardableResult")
-                lines.append(f"{indent}public func {method_name}() -> {returns}? {{")
+                lines.append(f"{indent}@MainActor public func {method_name}() -> {returns}? {{")
                 lines.append(f"{indent}    #if os(WASI)")
-                lines.append(f"{indent}    guard let result = jsValue?.{js_method}?() else {{ return nil }}")
+                lines.append(f"{indent}    guard let result = jsValue?.{js_method}() else {{ return nil }}")
                 lines.append(f"{indent}    return {cast}")
                 lines.append(f"{indent}    #else")
                 lines.append(f"{indent}    return nil")
                 lines.append(f"{indent}    #endif")
                 lines.append(f"{indent}}}")
             else:
-                lines.append(f"{indent}public func {method_name}() {{")
+                lines.append(f"{indent}@MainActor public func {method_name}() {{")
                 lines.append(f"{indent}    #if os(WASI)")
-                lines.append(f"{indent}    _ = jsValue?.{js_method}?()")
+                lines.append(f"{indent}    _ = jsValue?.{js_method}()")
                 lines.append(f"{indent}    #endif")
                 lines.append(f"{indent}}}")
 
@@ -663,14 +663,14 @@ class Sailor:
                 param_strs = [swift_param_sig(p) for p in params]
                 sig = ", ".join(param_strs)
                 call_args = ", ".join([f"{p['name']}: {p['name']}" for p in params])
-                lines.append(f"{indent}public func {method_name}({sig}) {{")
+                lines.append(f"{indent}@MainActor public func {method_name}({sig}) {{")
                 lines.append(f"{indent}    base.{method_name}({call_args})")
                 lines.append(f"{indent}}}")
             elif returns:
                 lines.append(f"{indent}@discardableResult")
-                lines.append(f"{indent}public func {method_name}() -> {returns}? {{ base.{method_name}() }}")
+                lines.append(f"{indent}@MainActor public func {method_name}() -> {returns}? {{ base.{method_name}() }}")
             else:
-                lines.append(f"{indent}public func {method_name}() {{ base.{method_name}() }}")
+                lines.append(f"{indent}@MainActor public func {method_name}() {{ base.{method_name}() }}")
 
             lines.append("")
             return "\n".join(lines)
@@ -693,7 +693,6 @@ class Sailor:
             "",
             "/// Typed element handle for calling DOM methods on any HTML element.",
             "/// Wraps the underlying renderer and provides type-safe method calls.",
-            "@MainActor",
             "public struct ElementHandle {",
             "    @_spi(Private) public let renderer: any Renderable",
             "",
@@ -703,8 +702,8 @@ class Sailor:
             "",
             "    #if os(WASI)",
             "    /// Access the underlying JSValue for direct method calls",
-            "    internal var jsValue: JSValue? {",
-            "        (renderer as? JSNode)?.element",
+            "    @MainActor internal var jsValue: JSValue? {",
+            "        (renderer as? JSNode).map { JSValue.object($0.element) }",
             "    }",
             "    #endif",
             "}",
@@ -756,7 +755,6 @@ class Sailor:
                 "#endif",
                 "",
                 f"/// Typed element handle for {ctag} — includes tag-specific DOM methods.",
-                "@MainActor",
                 f"public struct {ctag}Handle {{",
                 "    @_spi(Private) public let base: ElementHandle",
                 "",
@@ -765,7 +763,7 @@ class Sailor:
                 "    }",
                 "",
                 "    #if os(WASI)",
-                "    internal var jsValue: JSValue? { base.jsValue }",
+                "    @MainActor internal var jsValue: JSValue? { base.jsValue }",
                 "    #endif",
                 "}",
                 "",
