@@ -46,6 +46,10 @@ class Utils:
         return s[0].upper() + s[1:] if s else s
     
     def switch_to_camel(switch_str):
+        # Preserve names that start with underscore (e.g., _1_2 for fractions)
+        if switch_str.startswith("_"):
+            return switch_str
+
         chars = ["_", "-", "\\", "/"]
         output = switch_str
         for char in chars:

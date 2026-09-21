@@ -15,7 +15,7 @@ import SailorWeb
 
 extension HTML {
     /// {{description}}
-    public struct {{ctag}}: {{#head}}HeadElement{{/head}}{{^head}}BodyElement{{/head}} {
+    @MainActor public struct {{ctag}}: @preconcurrency {{#head}}HeadElement{{/head}}{{^head}}BodyElement{{/head}} {
         /// name of the html tag associated with this type
         @_spi(Private) public static var name: String { "{{tag}}" }
 
@@ -132,9 +132,16 @@ public extension HTML.{{ctag}} {
     }
     {{/isWildCard}}
     {{^isWildCard}}
+    {{#isBool}}
+    func `{{alias}}`(_ value: @autoclosure @escaping () -> Bool = true) -> Self {
+        attribute(.init(name: "{{name}}", value: { BooleanAttribute(value()) }))
+    }
+    {{/isBool}}
+    {{^isBool}}
     func `{{alias}}`(_ value: {{{type}}}) -> Self {
         attribute(.init(name: "{{name}}", value: { value().description }))
     }
+    {{/isBool}}
     {{/isWildCard}}
 
     {{/attributes}}

@@ -1,0 +1,3 @@
+chevron
+click
+pytest>=7.0

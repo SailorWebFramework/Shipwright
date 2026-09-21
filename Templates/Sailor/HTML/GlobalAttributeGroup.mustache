@@ -4,19 +4,27 @@
 //  
 
 import Sailboat
+import SailorShared
 
 public extension Element {
     {{#attributes}}
     ///{{description}}
     {{#isWildCard}}
-    func {{alias}}(_ name: String, _ value: {{{type}}}) -> Self {
-        attribute(.init(name: "{{name}}-name", value: { value().description }))
+    func `{{alias}}`(_ name: String, _ value: {{{type}}}) -> Self {
+        attribute(.init(name: "{{name}}-\(name)", value: { value().description }))
     }
     {{/isWildCard}}
     {{^isWildCard}}
-    func {{alias}}(_ value: {{{type}}}) -> Self {
+    {{#isBool}}
+    func `{{alias}}`(_ value: @autoclosure @escaping () -> Bool = true) -> Self {
+        attribute(.init(name: "{{name}}", value: { BooleanAttribute(value()) }))
+    }
+    {{/isBool}}
+    {{^isBool}}
+    func `{{alias}}`(_ value: {{{type}}}) -> Self {
         attribute(.init(name: "{{name}}", value: { value().description }))
     }
+    {{/isBool}}
     {{/isWildCard}}
 
     {{/attributes}}

@@ -60,8 +60,9 @@ class SailorUtils:
 
     def formatAttributes(attributes):
         def parse_name(name) -> str:
+            # "hidden:1" is an overload of "hidden", as with properties
             return (
-                Utils.switch_to_camel(name.replace("*", ""))
+                Utils.switch_to_camel(name.split(":")[0].replace("*", ""))
             )
         def parse_alias(name) -> str:
             name = parse_name(name)
@@ -83,6 +84,8 @@ class SailorUtils:
                         "isWildCard": "*" in item[0],
                         "isSequence": "sequence[" in item[1]["type"],
                         "isMappedBool": "/bool" in item[1]["type"],
+                        # HTML boolean attributes are rendered by presence, not "true"/"false"
+                        "isBool": item[1]["type"] == "bool",
                         "isStyle": "style" in item[0],
                     }, 
                     attributes.items()
@@ -107,6 +110,9 @@ class SailorUtils:
                 return f'Utils.when({mapSearch(name)}, ret: "{name[1:]}")'
             if "optional[" in type:
                 return f"Utils.unwrapUnit({name})"
+            if type == "Double":
+                # CSS wants "1fr" / "0.5s", not Swift's "1.0fr"
+                return f"Utils.number({name})"
             
             return name
         
@@ -116,8 +122,30 @@ class SailorUtils:
         if real_names is None:
             real_names = names
 
-        if data[0:4] == "#SEQ":
-            data = f'\\({real_names[-1]}.map {{ $0.description }}.joined(separator: "{data[4]}"))' + data[4:]
+        # Handle #SEQ markers — each #SEQ consumes the next sequence-typed parameter in order
+        if "#SEQ" in data:
+            seq_params = []
+            if types is not None:
+                for rn, t in zip(real_names, types):
+                    if "sequence[" in t:
+                        seq_params.append(rn)
+            elif names is not None:
+                seq_params = list(real_names)
+
+            seq_idx = 0
+            result = ""
+            i = 0
+            while i < len(data):
+                if data[i:i+4] == "#SEQ" and i + 4 < len(data):
+                    separator = data[i + 4]
+                    param = seq_params[seq_idx] if seq_idx < len(seq_params) else real_names[-1]
+                    result += f'\\({param}.map {{ $0.description }}.joined(separator: "{separator}"))'
+                    seq_idx += 1
+                    i += 5  # skip #SEQ and separator char
+                else:
+                    result += data[i]
+                    i += 1
+            data = result
         
         pattern = re.compile(r"{{\?.*?\?}}")
         matches = []

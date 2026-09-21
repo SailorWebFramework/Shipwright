@@ -1,0 +1,418 @@
+{
+    "version": "1.0.0",
+    "interfaces": {
+        "HTMLElement": {
+            "description": "Base interface for all HTML elements.",
+            "methods": {
+                "focus": {
+                    "description": "Moves focus to the element.",
+                    "js_method": "focus",
+                    "params": [],
+                    "returns": null
+                },
+                "blur": {
+                    "description": "Removes focus from the element.",
+                    "js_method": "blur",
+                    "params": [],
+                    "returns": null
+                },
+                "click": {
+                    "description": "Simulates a click on the element.",
+                    "js_method": "click",
+                    "params": [],
+                    "returns": null
+                },
+                "scrollIntoView": {
+                    "description": "Scrolls the element into the visible area of the browser window.",
+                    "js_method": "scrollIntoView",
+                    "params": [],
+                    "returns": null
+                },
+                "scrollTo": {
+                    "description": "Scrolls the element to a particular set of coordinates.",
+                    "js_method": "scrollTo",
+                    "params": [
+                        {
+                            "name": "x",
+                            "type": "Double",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The x-coordinate to scroll to."
+                        },
+                        {
+                            "name": "y",
+                            "type": "Double",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The y-coordinate to scroll to."
+                        }
+                    ],
+                    "returns": null
+                },
+                "requestFullscreen": {
+                    "description": "Requests that the element be displayed in fullscreen mode.",
+                    "js_method": "requestFullscreen",
+                    "params": [],
+                    "returns": null
+                },
+                "remove": {
+                    "description": "Removes the element from the DOM.",
+                    "js_method": "remove",
+                    "params": [],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLMediaElement": {
+            "description": "Interface for audio and video elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "play": {
+                    "description": "Begins playback of the media.",
+                    "js_method": "play",
+                    "params": [],
+                    "returns": null
+                },
+                "pause": {
+                    "description": "Pauses playback of the media.",
+                    "js_method": "pause",
+                    "params": [],
+                    "returns": null
+                },
+                "load": {
+                    "description": "Resets the media element and restarts the resource selection algorithm.",
+                    "js_method": "load",
+                    "params": [],
+                    "returns": null
+                },
+                "fastSeek": {
+                    "description": "Seeks to the given time with low precision.",
+                    "js_method": "fastSeek",
+                    "params": [
+                        {
+                            "name": "time",
+                            "type": "Double",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The time in seconds to seek to."
+                        }
+                    ],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLInputElement": {
+            "description": "Interface for input elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "select": {
+                    "description": "Selects all text in the input element.",
+                    "js_method": "select",
+                    "params": [],
+                    "returns": null
+                },
+                "setSelectionRange": {
+                    "description": "Sets the start and end positions of the text selection.",
+                    "js_method": "setSelectionRange",
+                    "params": [
+                        {
+                            "name": "start",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The index of the first selected character."
+                        },
+                        {
+                            "name": "end",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The index after the last selected character."
+                        }
+                    ],
+                    "returns": null
+                },
+                "setRangeText": {
+                    "description": "Replaces a range of text in the input with new text.",
+                    "js_method": "setRangeText",
+                    "params": [
+                        {
+                            "name": "replacement",
+                            "type": "String",
+                            "js_type": "string",
+                            "optional": false,
+                            "description": "The replacement text."
+                        }
+                    ],
+                    "returns": null
+                },
+                "checkValidity": {
+                    "description": "Returns true if the element's value passes constraint validation.",
+                    "js_method": "checkValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "reportValidity": {
+                    "description": "Checks validity and shows a validation message to the user if invalid.",
+                    "js_method": "reportValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "stepUp": {
+                    "description": "Increments the value of a numeric input by the step value.",
+                    "js_method": "stepUp",
+                    "params": [
+                        {
+                            "name": "n",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": true,
+                            "default": "1",
+                            "description": "Number of steps to increment."
+                        }
+                    ],
+                    "returns": null
+                },
+                "stepDown": {
+                    "description": "Decrements the value of a numeric input by the step value.",
+                    "js_method": "stepDown",
+                    "params": [
+                        {
+                            "name": "n",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": true,
+                            "default": "1",
+                            "description": "Number of steps to decrement."
+                        }
+                    ],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLTextAreaElement": {
+            "description": "Interface for textarea elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "select": {
+                    "description": "Selects all text in the textarea.",
+                    "js_method": "select",
+                    "params": [],
+                    "returns": null
+                },
+                "setSelectionRange": {
+                    "description": "Sets the start and end positions of the text selection.",
+                    "js_method": "setSelectionRange",
+                    "params": [
+                        {
+                            "name": "start",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The index of the first selected character."
+                        },
+                        {
+                            "name": "end",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The index after the last selected character."
+                        }
+                    ],
+                    "returns": null
+                },
+                "setRangeText": {
+                    "description": "Replaces a range of text in the textarea with new text.",
+                    "js_method": "setRangeText",
+                    "params": [
+                        {
+                            "name": "replacement",
+                            "type": "String",
+                            "js_type": "string",
+                            "optional": false,
+                            "description": "The replacement text."
+                        }
+                    ],
+                    "returns": null
+                },
+                "checkValidity": {
+                    "description": "Returns true if the element's value passes constraint validation.",
+                    "js_method": "checkValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "reportValidity": {
+                    "description": "Checks validity and shows a validation message to the user if invalid.",
+                    "js_method": "reportValidity",
+                    "params": [],
+                    "returns": "Bool"
+                }
+            }
+        },
+        "HTMLSelectElement": {
+            "description": "Interface for select (dropdown) elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "checkValidity": {
+                    "description": "Returns true if the element's value passes constraint validation.",
+                    "js_method": "checkValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "reportValidity": {
+                    "description": "Checks validity and shows a validation message to the user if invalid.",
+                    "js_method": "reportValidity",
+                    "params": [],
+                    "returns": "Bool"
+                }
+            }
+        },
+        "HTMLFormElement": {
+            "description": "Interface for form elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "submit": {
+                    "description": "Submits the form.",
+                    "js_method": "submit",
+                    "params": [],
+                    "returns": null
+                },
+                "reset": {
+                    "description": "Resets the form to its initial state.",
+                    "js_method": "reset",
+                    "params": [],
+                    "returns": null
+                },
+                "reportValidity": {
+                    "description": "Reports whether the form's child controls satisfy their validation constraints.",
+                    "js_method": "reportValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "checkValidity": {
+                    "description": "Returns true if all form controls satisfy their validation constraints.",
+                    "js_method": "checkValidity",
+                    "params": [],
+                    "returns": "Bool"
+                },
+                "requestSubmit": {
+                    "description": "Requests form submission with validation (unlike submit(), this triggers the submit event).",
+                    "js_method": "requestSubmit",
+                    "params": [],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLDialogElement": {
+            "description": "Interface for dialog elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "showModal": {
+                    "description": "Displays the dialog as a modal, preventing interaction with other elements.",
+                    "js_method": "showModal",
+                    "params": [],
+                    "returns": null
+                },
+                "show": {
+                    "description": "Displays the dialog as a non-modal dialog.",
+                    "js_method": "show",
+                    "params": [],
+                    "returns": null
+                },
+                "close": {
+                    "description": "Closes the dialog.",
+                    "js_method": "close",
+                    "params": [
+                        {
+                            "name": "returnValue",
+                            "type": "String",
+                            "js_type": "string",
+                            "optional": true,
+                            "description": "A string to set as the dialog's return value."
+                        }
+                    ],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLCanvasElement": {
+            "description": "Interface for canvas elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "toDataURL": {
+                    "description": "Returns a data URL containing the image in the canvas.",
+                    "js_method": "toDataURL",
+                    "params": [
+                        {
+                            "name": "type",
+                            "type": "String",
+                            "js_type": "string",
+                            "optional": true,
+                            "default": "\"image/png\"",
+                            "description": "The MIME type for the image format."
+                        }
+                    ],
+                    "returns": "String"
+                },
+                "toBlob": {
+                    "description": "Creates a Blob object representing the image in the canvas.",
+                    "js_method": "toBlob",
+                    "params": [],
+                    "returns": null
+                }
+            }
+        },
+        "HTMLDetailsElement": {
+            "description": "Interface for details (disclosure) elements.",
+            "inherits": "HTMLElement",
+            "methods": {}
+        },
+        "HTMLTableElement": {
+            "description": "Interface for table elements.",
+            "inherits": "HTMLElement",
+            "methods": {
+                "insertRow": {
+                    "description": "Inserts a new row in the table at the given position.",
+                    "js_method": "insertRow",
+                    "params": [
+                        {
+                            "name": "index",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": true,
+                            "default": "-1",
+                            "description": "The position at which to insert the row. -1 appends to the end."
+                        }
+                    ],
+                    "returns": null
+                },
+                "deleteRow": {
+                    "description": "Removes a row from the table.",
+                    "js_method": "deleteRow",
+                    "params": [
+                        {
+                            "name": "index",
+                            "type": "Int",
+                            "js_type": "number",
+                            "optional": false,
+                            "description": "The index of the row to delete."
+                        }
+                    ],
+                    "returns": null
+                }
+            }
+        }
+    },
+    "tag_interface_map": {
+        "video": "HTMLMediaElement",
+        "audio": "HTMLMediaElement",
+        "input": "HTMLInputElement",
+        "textarea": "HTMLTextAreaElement",
+        "select": "HTMLSelectElement",
+        "form": "HTMLFormElement",
+        "dialog": "HTMLDialogElement",
+        "canvas": "HTMLCanvasElement",
+        "details": "HTMLDetailsElement",
+        "table": "HTMLTableElement"
+    }
+}
