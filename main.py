@@ -25,6 +25,12 @@ def build(target, outdir, treasuredir):
     if target == "sailor":
         Sailor.build(outdir, treasuredir)
         return
+
+    # Fleet-Tailwind: writes <outdir>/TW.swift (the file Harbor's tree-shaker reads)
+    if target == "tailwind":
+        os.makedirs(outdir, exist_ok=True)
+        Sailor.buildTailwind(outdir, treasuredir, filename="TW.swift")
+        return
     
     click.echo(f"target not found.")
 
